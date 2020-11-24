@@ -10,7 +10,7 @@ class App extends Component {
     super();
     this.state = {
       todos: [],
-      insertId: null,
+      refresh: false,
     };
   }
 
@@ -18,7 +18,9 @@ class App extends Component {
     axios
       .get("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/")
       .then((res) => {
+        console.log("componentDidMount");
         this.setState({ todos: res.data });
+        console.log(this.state.todos);
       });
   }
 
@@ -39,11 +41,11 @@ class App extends Component {
       .delete(
         `https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/${id}`
       )
-      .then(
+      .then(() => {
         this.setState({
           todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-        })
-      );
+        });
+      });
   };
 
   addTodo = (listId, title) => {
@@ -52,11 +54,12 @@ class App extends Component {
         listId,
         title,
       })
-      .then((res) => {
-        this.setState({
-          todos: [...this.state.todos, res.data],
-          insertId: res.data.insertId,
-        });
+      .then(() => {
+        axios
+          .get("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/")
+          .then((res) => {
+            this.setState({ todos: res.data });
+          });
       });
   };
 
@@ -68,7 +71,6 @@ class App extends Component {
           <MainHeader />
           <TodoContainer
             todos={this.state.todos}
-            insertId={this.state.insertId}
             toggleTodo={this.toggleTodo}
             deleteTodo={this.deleteTodo}
           />

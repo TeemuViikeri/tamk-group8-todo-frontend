@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
-import axios from "axios";
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -8,7 +7,6 @@ class TodoContainer extends Component {
 
     this.state = {
       todos: [],
-      insertId: null,
     };
   }
 
