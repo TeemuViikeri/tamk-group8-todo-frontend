@@ -18,9 +18,7 @@ class App extends Component {
     axios
       .get("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/")
       .then((res) => {
-        console.log("componentDidMount");
         this.setState({ todos: res.data });
-        console.log(this.state.todos);
       });
   }
 
