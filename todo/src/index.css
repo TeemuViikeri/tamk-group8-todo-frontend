@@ -8,4 +8,19 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   --webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  background-color: #cc5252;
+}
+
+.app-container {
+  background: #cc5252;
+  display: flex;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.main-container {
+  flex: 2 1 auto;
+  max-width: 80%;
+  background: white;
 }
