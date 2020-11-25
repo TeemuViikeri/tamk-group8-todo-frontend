@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import SubmitButton from "./SubmitButton";
-import TextInput from "./TextInput";
+import SubmitButton from "../SubmitButton";
+import TextInput from "../TextInput";
 
 class TextInputField extends Component {
   state = {

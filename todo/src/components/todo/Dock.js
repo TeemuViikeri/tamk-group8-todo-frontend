@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ButtonContainer from "./ButtonContainer";
+import ButtonContainer from "../ButtonContainer";
 import TextInputField from "./TextInputField";
 
 class Dock extends Component {

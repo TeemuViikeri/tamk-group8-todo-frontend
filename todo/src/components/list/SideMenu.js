@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 
 class SideMenu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isMobileView: false,
+    };
+  }
+
   getSideMenuStyle = () => {
     return {
       color: "white",
@@ -38,7 +46,9 @@ class SideMenu extends Component {
     return (
       <div style={this.getSideMenuStyle()}>
         <h3 style={this.getSideMenuHeaderStyle()}>Side Menu</h3>
-        <div style={this.getSideMenuFooterStyle()}>Something here?</div>
+        <p></p>
+        <div style={this.getSideMenuFooterStyle()}>
+        </div>
       </div>
     );
   }

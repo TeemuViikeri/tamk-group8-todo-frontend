@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import SideMenu from "./components/SideMenu";
-import MainHeader from "./components/MainHeader";
-import TodoContainer from "./components/TodoContainer";
-import Dock from "./components/Dock";
+import SideMenu from "./components/list/SideMenu";
+import MainHeader from "./components/todo/MainHeader";
+import TodoContainer from "./components/todo/TodoContainer";
+import Dock from "./components/todo/Dock";
 import axios from "axios";
 
 class App extends Component {
@@ -64,7 +64,7 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <SideMenu />
+          <SideMenu />
         <div className={"main-container"}>
           <MainHeader />
           <TodoContainer
