@@ -7,6 +7,7 @@ class SideMenu extends Component {
       flex: "1 1 auto",
       backgroundColor: "gainsboro",
       maxWidth: "20%",
+      height: "100%",
     };
   };
 
