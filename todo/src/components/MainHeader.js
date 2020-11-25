@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import SideMenuButton from "./SideMenuButton";
 
 class MainHeader extends Component {
   constructor(props) {
@@ -20,7 +21,12 @@ class MainHeader extends Component {
   };
 
   render() {
-    return <h1 style={this.getH1Style()}>Todo List</h1>;
+    return (
+      <h1 style={this.getH1Style()}>
+        <SideMenuButton />
+        Todo List
+      </h1>
+    );
   }
 }
 
