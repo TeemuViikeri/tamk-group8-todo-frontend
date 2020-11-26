@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import ListItem from "./ListItem";
 
 class SideMenu extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isMobileView: false,
+      lists: [],
     };
   }
 
@@ -45,10 +46,21 @@ class SideMenu extends Component {
   render() {
     return (
       <div style={this.getSideMenuStyle()}>
-        <h3 style={this.getSideMenuHeaderStyle()}>Side Menu</h3>
-        <p></p>
-        <div style={this.getSideMenuFooterStyle()}>
+        <h1 style={this.getSideMenuHeaderStyle()}>Lists</h1>
+
+        <div>
+          {this.props.lists.map((list) => {
+            return (
+              <ListItem
+                key={list.id}
+                list={list}
+                deleteList={this.props.deleteList}
+              />
+            );
+          })}
         </div>
+
+        <div style={this.getSideMenuFooterStyle()}></div>
       </div>
     );
   }

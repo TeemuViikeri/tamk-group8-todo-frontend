@@ -5,20 +5,29 @@ import TodoContainer from "./components/todo/TodoContainer";
 import Dock from "./components/todo/Dock";
 import axios from "axios";
 
+const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
+
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      todos: [],
-      refresh: false,
-    };
+      (this.state = {
+        todos: [],
+        lists: [],
+        refresh: false,
+      });
   }
 
   componentDidMount() {
     axios
-      .get("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/")
+      .get(`${url}tasks/`)
       .then((res) => {
         this.setState({ todos: res.data });
+      });
+
+    axios
+      .get(`${url}lists/`)
+      .then((res) => {
+        this.setState({ lists: res.data });
       });
   }
 
@@ -35,36 +44,41 @@ class App extends Component {
   };
 
   deleteTodo = (id) => {
-    axios
-      .delete(
-        `https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/${id}`
-      )
-      .then(() => {
-        this.setState({
-          todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-        });
+    axios.delete(`${url}tasks/${id}`).then(() => {
+      this.setState({
+        todos: [...this.state.todos.filter((todo) => todo.id !== id)],
       });
+    });
+  };
+
+  deleteList = (id) => {
+    axios.delete(`${url}lists/${id}`).then(() => {
+      this.setState({
+        lists: [...this.state.lists.filter((list) => list.id !== id)],
+      });
+    });
   };
 
   addTodo = (listId, title) => {
     axios
-      .post("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/", {
+      .post(`${url}tasks/`, {
         listId,
         title,
       })
       .then(() => {
-        axios
-          .get("https://tamk-4a00ez62-3001-group08.herokuapp.com/api/tasks/")
-          .then((res) => {
-            this.setState({ todos: res.data });
-          });
+        axios.get(`${url}tasks/`).then((res) => {
+          this.setState({ todos: res.data });
+        });
       });
   };
 
   render() {
     return (
       <div className="app-container">
-          <SideMenu />
+        <SideMenu 
+        lists={this.state.lists}
+        deleteList={this.deleteList}
+        />
         <div className={"main-container"}>
           <MainHeader />
           <TodoContainer
