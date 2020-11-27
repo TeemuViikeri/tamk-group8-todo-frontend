@@ -10,25 +10,21 @@ const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
 class App extends Component {
   constructor() {
     super();
-      (this.state = {
-        todos: [],
-        lists: [],
-        refresh: false,
-      });
+    this.state = {
+      todos: [],
+      lists: [],
+      refresh: false,
+    };
   }
 
   componentDidMount() {
-    axios
-      .get(`${url}tasks/`)
-      .then((res) => {
-        this.setState({ todos: res.data });
-      });
+    axios.get(`${url}tasks/`).then((res) => {
+      this.setState({ todos: res.data });
+    });
 
-    axios
-      .get(`${url}lists/`)
-      .then((res) => {
-        this.setState({ lists: res.data });
-      });
+    axios.get(`${url}lists/`).then((res) => {
+      this.setState({ lists: res.data });
+    });
   }
 
   toggleTodo = (id) => {
@@ -72,13 +68,22 @@ class App extends Component {
       });
   };
 
+  addList = (name) => {
+    axios
+      .post(`${url}lists/`, {
+        name,
+      })
+      .then(() => {
+        axios.get(`${url}lists/`).then((res) => {
+          this.setState({ lists: res.data });
+        });
+      });
+  };
+
   render() {
     return (
       <div className="app-container">
-        <SideMenu 
-        lists={this.state.lists}
-        deleteList={this.deleteList}
-        />
+        <SideMenu lists={this.state.lists} deleteList={this.deleteList} />
         <div className={"main-container"}>
           <MainHeader />
           <TodoContainer
