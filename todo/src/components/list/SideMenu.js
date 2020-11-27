@@ -55,6 +55,7 @@ class SideMenu extends Component {
                 key={list.id}
                 list={list}
                 deleteList={this.props.deleteList}
+                setList={this.props.setList}
               />
             );
           })}

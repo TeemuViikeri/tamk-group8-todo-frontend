@@ -55,7 +55,12 @@ class TodoItem extends Component {
         }}
         style={this.getItemStyle()}
       >
-        {name}
+        <button
+        onClick={this.props.setList.bind(this, id)}
+        >
+          {name}
+        </button>
+
         <button
           onClick={this.props.deleteList.bind(this, id)}
           style={this.getButtonStyle()}

@@ -61,7 +61,7 @@ class TodoItem extends Component {
         <p>
           <input
             type="checkbox"
-            onChange={this.props.toggleTodo.bind(this, id)}
+            onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
             style={this.getCheckboxStyle()}
             checked={this.props.checked}
           />

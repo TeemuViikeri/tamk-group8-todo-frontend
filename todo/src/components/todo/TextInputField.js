@@ -3,19 +3,24 @@ import SubmitButton from "../SubmitButton";
 import TextInput from "./TextInput";
 
 class TextInputField extends Component {
-  state = {
-    listId: 1,
-    title: "",
-  };
+  constructor() {
+    super();
+    this.state = {
+      listId: 1,
+      title: "",
+    };
+  }
 
   onSubmit = (e) => {
+    console.log(this.state.todos)
+    console.log(this.props.currentList)
     if (this.state.title === "") {
       return;
     }
 
     e.preventDefault();
 
-    this.props.addTodo(this.state.listId, this.state.title);
+    this.props.addTodo(this.props.currentList, this.state.title);
     this.setState({ title: "" });
   };
 

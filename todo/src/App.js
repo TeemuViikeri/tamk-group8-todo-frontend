@@ -11,6 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      currentList: 1,
       todos: [],
       lists: [],
       refresh: false,
@@ -27,16 +28,16 @@ class App extends Component {
     });
   }
 
-  toggleTodo = (id) => {
-    this.setState({
-      todos: this.state.todos.map((todo) => {
-        if (todo.id === id) {
-          todo.is_done = !todo.is_done;
-        }
-
-        return todo;
-      }),
-    });
+  toggleTodo = (id, data) => {
+    axios
+      .put(`${url}tasks/${id}`, {
+        is_done: data,
+      })
+      .then(() => {
+        axios.get(`${url}tasks/`).then((res) => {
+          this.setState({ todos: res.data });
+        });
+      });
   };
 
   deleteTodo = (id) => {
@@ -80,10 +81,19 @@ class App extends Component {
       });
   };
 
+  setList = (listId) => {
+    this.setState({ currentList: listId });
+    console.log(this.state.currentList);
+  };
+
   render() {
     return (
       <div className="app-container">
-        <SideMenu lists={this.state.lists} deleteList={this.deleteList} />
+        <SideMenu
+          lists={this.state.lists}
+          deleteList={this.deleteList}
+          setList={this.setList}
+        />
         <div className={"main-container"}>
           <MainHeader />
           <TodoContainer
@@ -91,7 +101,7 @@ class App extends Component {
             toggleTodo={this.toggleTodo}
             deleteTodo={this.deleteTodo}
           />
-          <Dock addTodo={this.addTodo} />
+          <Dock addTodo={this.addTodo} currentList={this.state.currentList} />
         </div>
       </div>
     );

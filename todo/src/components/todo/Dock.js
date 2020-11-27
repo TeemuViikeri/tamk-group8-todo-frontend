@@ -27,7 +27,10 @@ class Dock extends Component {
         {this.state.isMobileView ? (
           <ButtonContainer />
         ) : (
-          <TextInputField addTodo={this.props.addTodo} />
+          <TextInputField 
+          addTodo={this.props.addTodo} 
+          currentList={this.props.currentList}
+          />
         )}
       </div>
     );
