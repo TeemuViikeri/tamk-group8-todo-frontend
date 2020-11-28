@@ -88,11 +88,11 @@ class App extends Component {
       });
   };
 
-  setList = (listId) => {
-    this.setState({ currentList: listId });
-    console.log(this.state.currentList);
+  setList = async (listId) => {
+    await this.setState({ currentList: listId });
+    this.getTasks();
   };
-
+  
   render() {
     return (
       <div className="app-container">
