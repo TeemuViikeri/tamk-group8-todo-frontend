@@ -19,12 +19,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(`${url}tasks/`).then((res) => {
-      this.setState({ todos: res.data });
-    });
+    this.getTasks();
 
     axios.get(`${url}lists/`).then((res) => {
       this.setState({ lists: res.data });
+    });
+  }
+
+  getTasks = () => {
+    axios.get(`${url}tasks/`).then((res) => {
+      this.setState({ todos: res.data });
     });
   }
 
