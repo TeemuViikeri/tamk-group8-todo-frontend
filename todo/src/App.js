@@ -92,6 +92,14 @@ class App extends Component {
     await this.setState({ currentList: listId });
     this.getTasks();
   };
+
+  getListNameById = () => {
+    for (const list of this.state.lists) {
+      if (list['id'] === this.state.currentList) {
+        return list['name']
+      }
+    }
+  }
   
   render() {
     return (
@@ -102,7 +110,7 @@ class App extends Component {
           setList={this.setList}
         />
         <div className={"main-container"}>
-          <MainHeader />
+          <MainHeader name={this.getListNameById()} />
           <TodoContainer
             todos={this.state.todos}
             toggleTodo={this.toggleTodo}
