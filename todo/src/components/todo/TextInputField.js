@@ -12,8 +12,6 @@ class TextInputField extends Component {
   }
 
   onSubmit = (e) => {
-    console.log(this.state.todos)
-    console.log(this.props.currentList)
     if (this.state.title === "") {
       return;
     }
