@@ -8,19 +8,6 @@ class TodoItem extends Component {
     };
   }
 
-  getCheckboxStyle = () => {
-    return {
-      width: "1.3em",
-      height: "1.3em",
-      backgroundColor: "white",
-      borderRadius: "50%",
-      verticalAlign: "-0.3em",
-      border: "1px solid #ddd",
-      outline: "none",
-      cursor: "pointer",
-    };
-  };
-
   getItemStyle = () => {
     return {
       padding: "15px 20px",
