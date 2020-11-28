@@ -10,20 +10,28 @@ class TodoContainer extends Component {
     };
   }
 
+  getFlexContainerStyle = () => {
+    return {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-evenly"
+    }
+  }
+
   render() {
     return (
-      <div>
-        {this.props.todos.map((todo) => {
-          return (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              toggleTodo={this.props.toggleTodo}
-              deleteTodo={this.props.deleteTodo}
-              checked={todo.is_done}
-            />
-          );
-        })}
+      <div style={this.getFlexContainerStyle()}>
+          {this.props.todos.map((todo) => {
+            return (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                toggleTodo={this.props.toggleTodo}
+                deleteTodo={this.props.deleteTodo}
+                checked={todo.is_done}
+              />
+            );
+          })}
       </div>
     );
   }
