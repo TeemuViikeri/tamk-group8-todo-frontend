@@ -24,7 +24,7 @@ class App extends Component {
   }
   
   getTasks = () => {
-    axios.get(`${url}tasks/`).then((res) => {
+    axios.get(`${url}tasks/?list_id=${this.state.currentList}`).then((res) => {
       this.setState({ todos: res.data });
     });
   }
