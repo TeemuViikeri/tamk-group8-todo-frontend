@@ -21,6 +21,7 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
+        <div>
           {this.props.todos.map((todo) => {
             return (
               <TodoItem
@@ -32,6 +33,20 @@ class TodoContainer extends Component {
               />
             );
           })}
+        </div>
+        <div>
+          {this.props.todos.map((todo) => {
+            return (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                toggleTodo={this.props.toggleTodo}
+                deleteTodo={this.props.deleteTodo}
+                checked={todo.is_done}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }
