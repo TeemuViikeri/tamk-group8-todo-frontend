@@ -6,8 +6,14 @@ class MainHeader extends Component {
     super(props);
 
     this.state = {
-      header: props,
+      name: 'List name',
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.name !== this.props.name) {
+      this.setState({ name: this.props.name })
+    }
   }
 
   getH1Style = () => {
@@ -24,7 +30,7 @@ class MainHeader extends Component {
     return (
       <h1 style={this.getH1Style()}>
         <SideMenuButton />
-        Todo List
+        {this.state.name}
       </h1>
     );
   }
