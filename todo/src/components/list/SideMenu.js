@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ListItem from "./ListItem";
+import ListInputField from "./ListInputField";
 
 class SideMenu extends Component {
   constructor(props) {
@@ -33,7 +34,6 @@ class SideMenu extends Component {
   getSideMenuFooterStyle = () => {
     return {
       textAlign: "left",
-      padding: "15px 20px",
       backgroundColor: "#962029",
       lineHeight: "35px",
       position: "absolute",
@@ -61,7 +61,11 @@ class SideMenu extends Component {
           })}
         </div>
 
-        <div style={this.getSideMenuFooterStyle()}></div>
+        <div style={this.getSideMenuFooterStyle()}>
+          <ListInputField 
+          addList={this.props.addList}
+          />
+        </div>
       </div>
     );
   }

@@ -108,6 +108,7 @@ class App extends Component {
           lists={this.state.lists}
           deleteList={this.deleteList}
           setList={this.setList}
+          addList={this.addList}
         />
         <div className={"main-container"}>
           <MainHeader name={this.getListNameById()} />
