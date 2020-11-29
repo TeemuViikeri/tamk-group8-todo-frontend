@@ -84,6 +84,7 @@ class App extends Component {
       .then(() => {
         axios.get(`${url}lists/`).then((res) => {
           this.setState({ lists: res.data });
+          this.setList(res.data[res.data.length-1].id)
         });
       });
   };
