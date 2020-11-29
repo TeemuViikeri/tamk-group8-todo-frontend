@@ -10,16 +10,22 @@ class TodoItem extends Component {
 
   getItemStyle = () => {
     return {
-      padding: "15px 20px",
+      padding: "7px 7px",
+      fontSize: "1em",
+      marginLeft: "1%",
+      marginRight: "1%",
       textAlign: "left",
       color: "#333",
       fontWeight: "600",
+      borderRadius: "15px",
+      width: "93%",
     };
   };
 
   getButtonStyle = () => {
     return {
       cursor: "pointer",
+      width: "5%",
       background: "none",
       border: "none",
       fontWeight: "bold",
@@ -44,6 +50,7 @@ class TodoItem extends Component {
       >
         <button
         onClick={this.props.setList.bind(this, id)}
+        style={this.getItemStyle()}
         >
           {name}
         </button>
