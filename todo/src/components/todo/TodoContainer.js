@@ -21,7 +21,7 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
-        <div>
+        <div style={{ width: "50%" }}>
           {this.props.todos.map((todo) => {
             return (
               <TodoItem
@@ -34,7 +34,7 @@ class TodoContainer extends Component {
             );
           })}
         </div>
-        <div>
+        <div style={{ width: "50%" }}>
           {this.props.todos.map((todo) => {
             return (
               <TodoItem
