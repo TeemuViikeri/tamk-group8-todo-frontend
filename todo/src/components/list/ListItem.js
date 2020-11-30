@@ -19,6 +19,7 @@ class TodoItem extends Component {
       fontWeight: "600",
       borderRadius: "15px",
       width: "93%",
+      cursor: "pointer",
     };
   };
 
