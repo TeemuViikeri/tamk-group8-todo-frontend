@@ -107,6 +107,7 @@ class App extends Component {
           <MainHeader name={this.getListNameById()} />
           <TodoContainer
             todos={this.state.todos}
+            doneTodos={this.state.doneTodos}
             toggleTodo={this.toggleTodo}
             deleteTodo={this.deleteTodo}
           />
