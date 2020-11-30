@@ -85,7 +85,8 @@ class App extends Component {
 
   setList = async (listId) => {
     await this.setState({ currentList: listId });
-    this.getTasks();
+    this.getTasks(false);
+    this.getTasks(true);
   };
 
   getListNameById = () => {
