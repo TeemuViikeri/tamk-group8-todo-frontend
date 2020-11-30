@@ -6,6 +6,7 @@ import Dock from "./components/todo/Dock";
 import axios from "axios";
 
 const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
+const apikey = process.env.REACT_APP_BACKEND_APIKEY;
 
 class App extends Component {
   constructor() {
@@ -26,18 +27,19 @@ class App extends Component {
   }
   
   getTasks = (isDone) => {
-    axios.get(`${url}tasks/?list_id=${this.state.currentList}&is_done=${isDone}`).then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}`)
+    .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
   }
   
   getLists = () => {
-    axios.get(`${url}lists/`).then((res) => {
+    axios.get(`${url}lists/?apikey=${apikey}`).then((res) => {
       this.setState({ lists: res.data });
     });
   }
 
   toggleTodo = (id, checked) => {
     axios
-      .put(`${url}tasks/${id}`, {
+      .put(`${url}tasks/${id}?apikey=${apikey}`, {
         is_done: checked,
       })
       .then(() => {
@@ -47,7 +49,7 @@ class App extends Component {
   };
 
   deleteTodo = (id, checked) => {
-    axios.delete(`${url}tasks/${id}`).then(() => {
+    axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
       checked ?
       this.setState({
         doneTodos: [...this.state.doneTodos.filter((todo) => todo.id !== id)],
@@ -59,7 +61,7 @@ class App extends Component {
   };
 
   deleteList = (id) => {
-    axios.delete(`${url}lists/${id}`).then(() => {
+    axios.delete(`${url}lists/${id}?apikey=${apikey}`).then(() => {
       this.setState({
         lists: [...this.state.lists.filter((list) => list.id !== id)],
       });
@@ -68,7 +70,7 @@ class App extends Component {
 
   addTodo = (listId, title) => {
     axios
-      .post(`${url}tasks/`, {
+      .post(`${url}tasks/?apikey=${apikey}`, {
         listId,
         title,
       })
@@ -77,11 +79,11 @@ class App extends Component {
 
   addList = (name) => {
     axios
-      .post(`${url}lists/`, {
+      .post(`${url}lists/?apikey=${apikey}`, {
         name,
       })
       .then(() => {
-        axios.get(`${url}lists/`).then((res) => {
+        axios.get(`${url}lists/?apikey=${apikey}`).then((res) => {
           this.setState({ lists: res.data });
           this.setList(res.data[res.data.length-1].id)
         });
