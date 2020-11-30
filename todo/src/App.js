@@ -42,6 +42,7 @@ class App extends Component {
       })
       .then(() => {
         this.getTasks(checked)
+        this.getTasks(!checked)
       });
   };
 
