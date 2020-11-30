@@ -13,20 +13,20 @@ class App extends Component {
     this.state = {
       currentList: 1,
       todos: [],
+      doneTodos: [],
       lists: [],
       refresh: false,
     };
   }
 
   componentDidMount() {
-    this.getTasks();
+    this.getTasks(true);
+    this.getTasks(false);
     this.getLists();
   }
   
-  getTasks = () => {
-    axios.get(`${url}tasks/?list_id=${this.state.currentList}`).then((res) => {
-      this.setState({ todos: res.data });
-    });
+  getTasks = (isDone) => {
+    axios.get(`${url}tasks/?list_id=${this.state.currentList}&is_done=${isDone}`).then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
   }
   
   getLists = () => {
