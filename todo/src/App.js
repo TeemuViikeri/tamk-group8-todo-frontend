@@ -67,7 +67,7 @@ class App extends Component {
         listId,
         title,
       })
-      .then(() => this.getTasks());
+      .then(() => this.getTasks(false));
   };
 
   addList = (name) => {
