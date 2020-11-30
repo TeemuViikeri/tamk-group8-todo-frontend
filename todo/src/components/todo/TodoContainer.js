@@ -35,7 +35,7 @@ class TodoContainer extends Component {
           })}
         </div>
         <div style={{ width: "50%" }}>
-          {this.props.todos.map((todo) => {
+          {this.props.doneTodos.map((todo) => {
             return (
               <TodoItem
                 key={todo.id}
