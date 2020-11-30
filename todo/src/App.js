@@ -46,9 +46,13 @@ class App extends Component {
       });
   };
 
-  deleteTodo = (id) => {
+  deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}`).then(() => {
+      checked ?
       this.setState({
+        doneTodos: [...this.state.doneTodos.filter((todo) => todo.id !== id)],
+      })
+      : this.setState({
         todos: [...this.state.todos.filter((todo) => todo.id !== id)],
       });
     });
