@@ -35,12 +35,14 @@ class App extends Component {
     });
   }
 
-  toggleTodo = (id, data) => {
+  toggleTodo = (id, checked) => {
     axios
       .put(`${url}tasks/${id}`, {
-        is_done: data,
+        is_done: checked,
       })
-      .then(() => this.getTasks());
+      .then(() => {
+        this.getTasks(checked)
+      });
   };
 
   deleteTodo = (id) => {
