@@ -40,11 +40,7 @@ class App extends Component {
       .put(`${url}tasks/${id}`, {
         is_done: data,
       })
-      .then(() => {
-        axios.get(`${url}tasks/`).then((res) => {
-          this.setState({ todos: res.data });
-        });
-      });
+      .then(() => this.getTasks());
   };
 
   deleteTodo = (id) => {
@@ -69,11 +65,7 @@ class App extends Component {
         listId,
         title,
       })
-      .then(() => {
-        axios.get(`${url}tasks/`).then((res) => {
-          this.setState({ todos: res.data });
-        });
-      });
+      .then(() => this.getTasks());
   };
 
   addList = (name) => {
