@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 
 class Caret extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      
-    };
-  }
-
   getCaretStyle = () => {
     return {
       width: "0",
@@ -26,11 +18,9 @@ class Caret extends Component {
   render() {
     return (
       <span 
-        id={this.props.id}
-        onClick={(e) => {
-          // Add onClick event here
-        }}
-        style={this.getCaretStyle()}>
+        onClick={this.props.toggleShow.bind(this, this.props.id)}
+        style={this.getCaretStyle()}
+      >
       </span>
     );
   }
