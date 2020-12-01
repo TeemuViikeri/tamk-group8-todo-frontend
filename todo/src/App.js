@@ -12,6 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      sortTasks: '+created',
       currentList: 1,
       todos: [],
       doneTodos: [],
@@ -27,7 +28,7 @@ class App extends Component {
   }
   
   getTasks = (isDone) => {
-    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}`)
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}&sort=${this.state.sortTasks}`)
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
   }
   
@@ -92,6 +93,12 @@ class App extends Component {
 
   setList = async (listId) => {
     await this.setState({ currentList: listId });
+    this.getTasks(false);
+    this.getTasks(true);
+  };
+
+  setOrderTasks = async (order) => {
+    await this.setState({ orderTasks: order });
     this.getTasks(false);
     this.getTasks(true);
   };
