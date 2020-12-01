@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
+import Subheader from "./Subheader";
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class TodoContainer extends Component {
     return (
       <div style={this.getFlexContainerStyle()}>
         <div style={{ width: "50%" }}>
+          <Subheader name={"To Do"} />
           {this.props.todos.map((todo) => {
             return (
               <TodoItem
@@ -35,6 +37,7 @@ class TodoContainer extends Component {
           })}
         </div>
         <div style={{ width: "50%" }}>
+          <Subheader name={"Done"} />
           {this.props.doneTodos.map((todo) => {
             return (
               <TodoItem
