@@ -25,7 +25,8 @@ class Subheader extends Component {
         {this.state.name}
         <Caret 
           id={this.props.id}
-          toggleShow={this.props.toggleShow}   
+          toggleDisplay={this.props.toggleDisplay}  
+          up={this.props.up}
         />
       </h2>
     );
