@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Caret from "./Caret";
-import { v4 as uuid } from 'uuid';
 
 
 class Subheader extends Component {
@@ -24,7 +23,10 @@ class Subheader extends Component {
     return (
       <h2 style={this.getH2Style()}>
         {this.state.name}
-        <Caret id={ uuid() } />
+        <Caret 
+          id={this.props.id}
+          toggleShow={this.props.toggleShow}   
+        />
       </h2>
     );
   }
