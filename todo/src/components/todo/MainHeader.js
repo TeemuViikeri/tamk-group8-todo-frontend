@@ -6,7 +6,7 @@ class MainHeader extends Component {
     super(props);
 
     this.state = {
-      name: 'List name',
+      name: this.props.name,
     };
   }
 
