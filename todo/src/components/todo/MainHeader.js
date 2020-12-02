@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
 import SortMenu from "./SortMenu";
-import FilterMenu from "./FilterMenu";
+// import FilterMenu from "./FilterMenu";
 
 class MainHeader extends Component {
   constructor(props) {
@@ -36,10 +36,12 @@ class MainHeader extends Component {
   render() {
     return (
       <header style={this.getMainHeaderStyle()}>
-        <SideMenuButton />
-        <h1 style={{flex: "1"}}>{this.state.name}</h1>
-        <SearchField />
-        <SortMenu setOrderTasks={this.props.setOrderTasks} />
+        <SideMenuButton flex="1"/>
+        <h1 style={{flex: "1", textAlign: "center"}}>{this.state.name}</h1>
+        <div className="widget-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}>
+          <SearchField />
+          <SortMenu setOrderTasks={this.props.setOrderTasks} />
+        </div>
       </header>
     );
   }
