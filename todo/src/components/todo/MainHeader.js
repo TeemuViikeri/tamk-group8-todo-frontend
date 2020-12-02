@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
+import SortMenu from "./SortMenu";
 
 class MainHeader extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class MainHeader extends Component {
         <SideMenuButton />
         <h1 style={{flex: "1"}}>{this.state.name}</h1>
         <SearchField />
+        <SortMenu setOrderTasks={this.props.setOrderTasks} />
       </header>
     );
   }
