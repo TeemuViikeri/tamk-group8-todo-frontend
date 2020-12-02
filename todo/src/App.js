@@ -12,6 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      deadlineFilter: '',
       orderTasks: '+created',
       currentList: 1,
       todos: [],
@@ -28,7 +29,7 @@ class App extends Component {
   }
   
   getTasks = (isDone) => {
-    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}&sort=${this.state.orderTasks}`)
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&sort=${this.state.orderTasks}`)
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
   }
   
@@ -109,8 +110,22 @@ class App extends Component {
         return list['name']
       }
     }
-  }
-  
+  };
+
+  setDeadlineFilter = async (dlFilter) => {
+    await this.setState({ deadlineFilter: dlFilter });
+    this.getTasks(false);
+    this.getTasks(true);
+  };
+
+  getDeadlineFilter = () => {
+    let dl = `&deadline=${this.state.deadlineFilter}`;
+    if (dl === '&deadline=') {
+      dl = '';
+    }
+    return dl;
+  };
+
   render() {
     return (
       <div className="app-container">

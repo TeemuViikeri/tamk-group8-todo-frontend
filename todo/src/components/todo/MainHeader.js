@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
 import SortMenu from "./SortMenu";
+import FilterMenu from "./FilterMenu";
 
 class MainHeader extends Component {
   constructor(props) {
