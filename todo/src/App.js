@@ -128,7 +128,12 @@ class App extends Component {
             toggleTodo={this.toggleTodo}
             deleteTodo={this.deleteTodo}
           />
-          <Dock addTodo={this.addTodo} currentList={this.state.currentList} />
+          <Dock 
+            width="80%"
+            bgColor="#cc5252"
+            addTodo={this.addTodo} 
+            currentList={this.state.currentList} 
+            />
         </div>
       </div>
     );
