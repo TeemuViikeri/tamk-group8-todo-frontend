@@ -62,9 +62,7 @@ class SideMenu extends Component {
         </div>
 
         <div style={this.getSideMenuFooterStyle()}>
-          <ListInputField 
-          addList={this.props.addList}
-          />
+          <ListInputField addList={this.props.addList} />
         </div>
       </div>
     );
