@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Caret from "./Caret";
+
 
 class Subheader extends Component {
   constructor(props) {
@@ -21,6 +23,11 @@ class Subheader extends Component {
     return (
       <h2 style={this.getH2Style()}>
         {this.state.name}
+        <Caret 
+          id={this.props.id}
+          toggleDisplay={this.props.toggleDisplay}  
+          up={this.props.up}
+        />
       </h2>
     );
   }
