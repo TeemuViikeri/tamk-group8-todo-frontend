@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class ListInput extends Component {
   getListInputStyle = () => {
     return {
-      flex: "10",
       padding: "10px",
       margin: "15px 20px",
       boxShadow: "0px -0px 1px 4px rgba(255, 255, 255, .2)",
