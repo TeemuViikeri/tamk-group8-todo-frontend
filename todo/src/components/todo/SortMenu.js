@@ -15,17 +15,17 @@ class SortMenu extends React.Component {
   render() {
     return (
       <div className="dropdown">
-      <button className="dropbtn"><FontAwesomeIcon icon={faSortAmountUpAlt} size="2x" /></button>
-      <div className="dropdown-content">
-        <button onClick={this.props.setOrderTasks.bind(this, "+created")}>Created ascending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "-created")}>Created descending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "+edited")}>Edited ascending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "-edited")}>Edited descending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "+priority")}>Priority ascending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "-priority")}>Priority descending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "+deadline")}>deadline ascending</button>
-        <button onClick={this.props.setOrderTasks.bind(this, "-deadline")}>deadline descending</button>
-      </div>
+        <button className="dropbtn"><FontAwesomeIcon icon={faSortAmountUpAlt} size="2x" /></button>
+        <div className="dropdown-content">
+          <button onClick={this.props.setOrderTasks.bind(this, "+created")}>Created ascending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "-created")}>Created descending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "+edited")}>Edited ascending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "-edited")}>Edited descending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "+priority")}>Priority ascending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "-priority")}>Priority descending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "+deadline")}>deadline ascending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "-deadline")}>deadline descending</button>
+        </div>
     </div> 
     )
   }
