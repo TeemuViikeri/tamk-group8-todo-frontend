@@ -13,10 +13,10 @@ class Dock extends Component {
 
   getStyle = () => {
     return {
-      backgroundColor: "#cc5252",
+      backgroundColor: this.props.bgColor,
       position: "absolute",
       bottom: "0",
-      width: "80%",
+      width: this.props.width,
       lineHeight: "35px",
     };
   };
