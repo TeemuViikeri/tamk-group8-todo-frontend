@@ -11,9 +11,10 @@ class SideMenuButton extends Component {
 
   getStyle = () => {
     return {
+      flex: "3",
       display: "inline-block",
-      marginRight: "15px",
       cursor: "pointer",
+      fontSize: "32px"
     };
   };
 
