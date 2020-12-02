@@ -56,8 +56,8 @@ class FilterMenu extends React.Component {
       <button className="dropbtn"><FontAwesomeIcon icon={faFilter} size="2x" /></button>
       <div className="dropdown-content">
         <button onClick={this.props.setDeadlineFilter.bind(this, "")}>Show all</button>
-        <button onClick={this.props.setDeadlineFilter.bind(this, "!null")}>Show tasks with deadlines</button>
-        <button onClick={this.props.setDeadlineFilter.bind(this, "NULL")}>Show tasks without deadlines</button>
+        <button onClick={this.props.setDeadlineFilter.bind(this, "notNull")}>Show tasks with deadlines</button>
+        <button onClick={this.props.setDeadlineFilter.bind(this, "null")}>Show tasks without deadlines</button>
       </div>
     </div> 
     )

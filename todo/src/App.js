@@ -139,6 +139,7 @@ class App extends Component {
           <MainHeader 
             name={this.getListNameById()}
             setOrderTasks={this.setOrderTasks}
+            setDeadlineFilter={this.setDeadlineFilter}
           />
           <TodoContainer
             todos={this.state.todos}
