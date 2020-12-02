@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
 
 class MainHeader extends Component {
@@ -16,9 +17,13 @@ class MainHeader extends Component {
     }
   }
 
-  getH1Style = () => {
+  getMainHeaderStyle = () => {
     return {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
       height: "72px",
+      lineHeight: "36px",
       color: "white",
       background: "#cc5252",
       padding: "15px 20px",
@@ -28,10 +33,11 @@ class MainHeader extends Component {
 
   render() {
     return (
-      <h1 style={this.getH1Style()}>
+      <header style={this.getMainHeaderStyle()}>
         <SideMenuButton />
-        {this.state.name}
-      </h1>
+        <h1 style={{flex: "1"}}>{this.state.name}</h1>
+        <SearchField />
+      </header>
     );
   }
 }
