@@ -12,7 +12,7 @@ class SideMenuButton extends Component {
   getStyle = () => {
     return {
       display: "inline-block",
-      marginRight: "16px",
+      marginRight: "15px",
       cursor: "pointer",
     };
   };
