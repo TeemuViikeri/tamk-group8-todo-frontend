@@ -29,7 +29,14 @@ class TextInputField extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit} style={{ display: "flex", height: "65px", }}>
-        <TextInput title={this.state.title} onChange={this.onChange} />
+        <TextInput 
+          title={this.state.title} 
+          onChange={this.onChange} 
+          flex="10" 
+          padding="10px"
+          margin="15px 20px"
+          placeholder="Any homework to do?"
+        />
         <SubmitButton />
       </form>
     );
