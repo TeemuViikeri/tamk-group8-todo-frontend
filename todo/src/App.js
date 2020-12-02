@@ -12,7 +12,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      sortTasks: '+created',
+      orderTasks: '+created',
       currentList: 1,
       todos: [],
       doneTodos: [],
@@ -28,7 +28,7 @@ class App extends Component {
   }
   
   getTasks = (isDone) => {
-    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}&sort=${this.state.sortTasks}`)
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}&sort=${this.state.orderTasks}`)
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
   }
   
@@ -121,7 +121,10 @@ class App extends Component {
           addList={this.addList}
         />
         <div className={"main-container"}>
-          <MainHeader name={this.getListNameById()} />
+          <MainHeader 
+            name={this.getListNameById()}
+            setOrderTasks={this.setOrderTasks}
+          />
           <TodoContainer
             todos={this.state.todos}
             doneTodos={this.state.doneTodos}

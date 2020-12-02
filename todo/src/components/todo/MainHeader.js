@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SideMenuButton from "./SideMenuButton";
+import SortMenu from "./SortMenu";
 
 class MainHeader extends Component {
   constructor(props) {
@@ -31,6 +32,9 @@ class MainHeader extends Component {
       <h1 style={this.getH1Style()}>
         <SideMenuButton />
         {this.state.name}
+        <SortMenu 
+        setOrderTasks={this.props.setOrderTasks}
+        />
       </h1>
     );
   }
