@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEraser } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+import { faWeightHanging } from '@fortawesome/free-solid-svg-icons'
+
 
 class TodoItem extends Component {
   constructor(props) {
@@ -68,6 +72,24 @@ class TodoItem extends Component {
             checked={this.props.checked}
           />
           <label htmlFor="checkbox"></label> {title}{" "}
+          <button
+            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            style={this.getButtonStyle()}
+          >
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
+          <button
+            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            style={this.getButtonStyle()}
+          >
+            <FontAwesomeIcon icon={faCalendarAlt} />
+          </button>
+          <button
+            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            style={this.getButtonStyle()}
+          >
+            <FontAwesomeIcon icon={faWeightHanging} />
+          </button>
           <button
             onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
             style={this.getButtonStyle()}
