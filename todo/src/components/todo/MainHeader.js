@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
 import SortMenu from "./SortMenu";
-// import FilterMenu from "./FilterMenu";
+import FilterMenu from "./FilterMenu";
 
 class MainHeader extends Component {
   constructor(props) {
@@ -41,6 +41,7 @@ class MainHeader extends Component {
         <div className="widget-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}>
           <SearchField />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
+          <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
         </div>
       </header>
     );
