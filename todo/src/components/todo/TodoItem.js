@@ -73,19 +73,19 @@ class TodoItem extends Component {
           />
           <label htmlFor="checkbox"></label> {title}{" "}
           <button
-            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            onClick={""}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faEdit} />
           </button>
           <button
-            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            onClick={""}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faCalendarAlt} />
           </button>
           <button
-            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+            onClick={""}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faWeightHanging} />
