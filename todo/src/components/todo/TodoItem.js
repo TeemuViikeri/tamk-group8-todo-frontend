@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEraser } from '@fortawesome/free-solid-svg-icons'
 
 class TodoItem extends Component {
   constructor(props) {
@@ -70,7 +72,7 @@ class TodoItem extends Component {
             onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
             style={this.getButtonStyle()}
           >
-            x
+            <FontAwesomeIcon icon={faEraser} />
           </button>
         </p>
       </div>
