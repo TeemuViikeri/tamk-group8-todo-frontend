@@ -110,6 +110,10 @@ class TodoItem extends Component {
           >
             <FontAwesomeIcon icon={faEraser} />
           </button>
+          <DateMenu 
+          setTodoDeadline={this.props.setTodoDeadline}
+          todoId={id}
+          />
         </span>
       </div>
       : // Otherwise...
