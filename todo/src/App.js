@@ -64,7 +64,7 @@ class App extends Component {
   setTodoDeadline = (id, deadlineDate) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
-        deadline: deadlineDate,
+        deadline: `${deadlineDate._d.getFullYear()}-${deadlineDate._d.getMonth()}-${deadlineDate._d.getDate()}`,
       })
       .then(() => {
         this.getTasks(true)
@@ -168,6 +168,7 @@ class App extends Component {
             doneTodos={this.state.doneTodos}
             toggleTodo={this.toggleTodo}
             setTodoPriority={this.setTodoPriority}
+            setTodoDeadline={this.setTodoDeadline}
             deleteTodo={this.deleteTodo}
           />
           <Dock 

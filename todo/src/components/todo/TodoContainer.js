@@ -67,6 +67,7 @@ class TodoContainer extends Component {
                   todo={todo}
                   toggleTodo={this.props.toggleTodo}
                   setTodoPriority={this.props.setTodoPriority}
+                  setTodoDeadline={this.props.setTodoDeadline}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
                 />
@@ -88,6 +89,8 @@ class TodoContainer extends Component {
                   key={todo.id}
                   todo={todo}
                   toggleTodo={this.props.toggleTodo}
+                  setTodoPriority={this.props.setTodoPriority}
+                  setTodoDeadline={this.props.setTodoDeadline}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
                 />

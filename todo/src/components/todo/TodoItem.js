@@ -4,6 +4,7 @@ import { faEraser } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { faWeightHanging } from '@fortawesome/free-solid-svg-icons'
+import DateMenu from "./DateMenu"
 
 
 class TodoItem extends Component {
@@ -11,7 +12,7 @@ class TodoItem extends Component {
     super(props);
     this.state = {
       btnStyle: { display: "none" },
-      checked: "false",
+      checked: false,
     };
   }
 
@@ -97,6 +98,10 @@ class TodoItem extends Component {
             <FontAwesomeIcon icon={faEraser} />
           </button>
         </p>
+        <DateMenu 
+          setTodoDeadline={this.props.setTodoDeadline}
+          todoId={id}
+          />
       </div>
     );
   }
