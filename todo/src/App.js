@@ -50,6 +50,28 @@ class App extends Component {
       });
   };
 
+  setTodoPriority = (id, priorityValue) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, {
+        priority: priorityValue,
+      })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
+      });
+  };
+
+  setTodoDeadline = (id, deadlineDate) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, {
+        deadline: deadlineDate,
+      })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
+      });
+  };
+
   deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
       checked ?
@@ -145,6 +167,7 @@ class App extends Component {
             todos={this.state.todos}
             doneTodos={this.state.doneTodos}
             toggleTodo={this.toggleTodo}
+            setTodoPriority={this.setTodoPriority}
             deleteTodo={this.deleteTodo}
           />
           <Dock 
