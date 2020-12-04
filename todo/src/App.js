@@ -45,10 +45,19 @@ class App extends Component {
         is_done: checked,
       })
       .then(() => {
-        this.getTasks(checked)
-        this.getTasks(!checked)
+        this.getTasks(true)
+        this.getTasks(false)
       });
   };
+
+  editTodo = (id, title) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, { title })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
+      });
+  }
 
   deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
@@ -145,6 +154,7 @@ class App extends Component {
             todos={this.state.todos}
             doneTodos={this.state.doneTodos}
             toggleTodo={this.toggleTodo}
+            editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
           />
           <Dock 
