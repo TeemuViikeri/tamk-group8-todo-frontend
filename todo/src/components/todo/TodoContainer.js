@@ -66,6 +66,7 @@ class TodoContainer extends Component {
                   key={todo.id} 
                   todo={todo}
                   toggleTodo={this.props.toggleTodo}
+                  setTodoPriority={this.props.setTodoPriority}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
                 />
