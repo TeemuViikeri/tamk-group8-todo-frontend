@@ -45,8 +45,8 @@ class App extends Component {
         is_done: checked,
       })
       .then(() => {
-        this.getTasks(checked)
-        this.getTasks(!checked)
+        this.getTasks(true)
+        this.getTasks(false)
       });
   };
 
@@ -54,7 +54,12 @@ class App extends Component {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
         priority: priorityValue,
-      })
+      });
+  };
+    
+  editTodo = (id, title) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, { title })
       .then(() => {
         this.getTasks(true)
         this.getTasks(false)
@@ -169,6 +174,7 @@ class App extends Component {
             toggleTodo={this.toggleTodo}
             setTodoPriority={this.setTodoPriority}
             setTodoDeadline={this.setTodoDeadline}
+            editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
           />
           <Dock 

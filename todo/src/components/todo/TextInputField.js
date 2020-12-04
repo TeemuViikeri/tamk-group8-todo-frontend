@@ -11,15 +11,21 @@ class TextInputField extends Component {
     };
   }
 
-  onSubmit = (e) => {
+  onSubmit = (e) => {   
     if (this.state.title === "") {
       return;
     }
-
+    
     e.preventDefault();
 
-    this.props.addTodo(this.props.currentList, this.state.title);
-    this.setState({ title: "" });
+    if (this.props.addTodo !== undefined) {
+      this.props.addTodo(this.props.currentList, this.state.title);
+      this.setState({ title: "" });
+    } else {
+      this.props.editTodo(this.props.editId, this.state.title)
+      this.setState({ title: "" });
+      this.props.finishEditing();
+    }
   };
 
   onChange = (e) => {
@@ -36,8 +42,16 @@ class TextInputField extends Component {
           padding="10px"
           margin="15px 20px"
           placeholder="Any homework to do?"
+          borderBottom={this.props.borderBottom}
+          borderRadiusInput={this.props.borderRadiusInput}
+          bgColorInput={this.props.bgColorInput}
         />
-        <SubmitButton />
+        <SubmitButton 
+          text={this.props.btnText} 
+          borderRadiusSubmit={this.props.borderRadiusSubmit}
+          bgColorSubmit={this.props.bgColorSubmit}
+          textColorSubmit={this.props.textColorSubmit}
+        />
       </form>
     );
   }

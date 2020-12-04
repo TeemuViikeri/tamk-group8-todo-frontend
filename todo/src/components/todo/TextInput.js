@@ -10,8 +10,10 @@ class TextInput extends Component {
       verticalAlign: this.props.verticalAlign,
       boxShadow: "0px -0px 1px 4px rgba(255, 255, 255, .2)",
       border: "none",
-      borderRadius: "12px",
+      borderBottom: this.props.borderBottom,
+      borderRadius: this.props.borderRadiusInput,
       color: "black",
+      backgroundColor: this.props.bgColorInput
     };
   };
 
@@ -24,6 +26,8 @@ class TextInput extends Component {
           placeholder={this.props.placeholder}
           value={this.props.title}
           onChange={this.props.onChange}
+          borderBottom={this.props.borderBottom}
+          borderRadius={this.props.borderRadiusInput}
         />
     );
   }

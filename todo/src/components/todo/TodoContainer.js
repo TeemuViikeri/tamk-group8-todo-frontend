@@ -58,7 +58,7 @@ class TodoContainer extends Component {
             name="To Do"
             toggleDisplay={this.toggleDisplay}
             up={this.state.display.get(1)[1]}
-          />
+            />
           <div id="wrapper-1">
             {this.props.todos.map((todo) => {
               return (
@@ -68,6 +68,7 @@ class TodoContainer extends Component {
                   toggleTodo={this.props.toggleTodo}
                   setTodoPriority={this.props.setTodoPriority}
                   setTodoDeadline={this.props.setTodoDeadline}
+                  editTodo={this.props.editTodo}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
                 />
@@ -91,6 +92,7 @@ class TodoContainer extends Component {
                   toggleTodo={this.props.toggleTodo}
                   setTodoPriority={this.props.setTodoPriority}
                   setTodoDeadline={this.props.setTodoDeadline}
+                  editTodo={this.props.editTodo}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
                 />
