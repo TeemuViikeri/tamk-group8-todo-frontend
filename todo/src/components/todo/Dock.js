@@ -28,8 +28,12 @@ class Dock extends Component {
           <ButtonContainer />
         ) : (
           <TextInputField 
-          addTodo={this.props.addTodo} 
-          currentList={this.props.currentList}
+            addTodo={this.props.addTodo} 
+            currentList={this.props.currentList}
+            btnText="Add"
+            borderRadiusInput="12px"
+            borderRadiusSubmit="12px"
+            borderBottom=""
           />
         )}
       </div>
