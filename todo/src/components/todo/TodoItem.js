@@ -4,6 +4,7 @@ import { faEraser } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import { faWeightHanging } from '@fortawesome/free-solid-svg-icons'
+import TextInputField from "./TextInputField";
 
 
 class TodoItem extends Component {
@@ -11,7 +12,8 @@ class TodoItem extends Component {
     super(props);
     this.state = {
       btnStyle: { display: "none" },
-      checked: "false",
+      checked: false,
+      isEditing: false
     };
   }
 
@@ -51,10 +53,21 @@ class TodoItem extends Component {
     };
   };
 
+  finishEditing = () => {
+    this.setState({ isEditing: false })
+  }
+
+  handleEditEvent = () => {
+    this.setState({ isEditing: true })
+  }
+
   render() {
     const { id, title } = this.props.todo;
 
     return (
+      // If state property isEditing is false...
+      !this.state.isEditing ?
+      // Render normal to do task
       <div
         onMouseEnter={(e) => {
           this.setState({ btnStyle: { display: "inline-block" } });
@@ -64,7 +77,7 @@ class TodoItem extends Component {
         }}
         style={this.getItemStyle()}
       >
-        <p>
+        <span>
           <input
             type="checkbox"
             onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
@@ -73,7 +86,7 @@ class TodoItem extends Component {
           />
           <label htmlFor="checkbox"></label> {title}{" "}
           <button
-            onClick={""}
+            onClick={() => this.handleEditEvent()}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faEdit} />
@@ -96,8 +109,19 @@ class TodoItem extends Component {
           >
             <FontAwesomeIcon icon={faEraser} />
           </button>
-        </p>
+        </span>
       </div>
+      : // Otherwise...
+      <TextInputField 
+        btnText="Edit" 
+        borderBottom="1px solid #999"
+        editTodo={this.props.editTodo}
+        bindObj={this}
+        bgColorSubmit="#cc5252"
+        textColorSubmit="white"
+        editId={id}
+        finishEditing={this.finishEditing}
+      />
     );
   }
 }
