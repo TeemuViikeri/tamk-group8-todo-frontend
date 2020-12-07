@@ -2,27 +2,63 @@ import React, { Component } from "react";
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEraser } from '@fortawesome/free-solid-svg-icons'
 
 class DateMenu extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      dateDisplay: new Date(),
     };
   }
+  
+  dateHandler = () => {
+    if (typeof this.props.deadline === "string") {
+      this.setState({ dateDisplay: new Date(this.props.deadline) }) 
+    } else {
+      this.setState({ dateDisplay: new Date() }) 
+    }
+  }
 
+  dateAssembler = () => {
+    if (!isNaN(this.state.dateDisplay.getFullYear())) {
+      return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth()}-${this.state.dateDisplay.getDate()}`;
+    } else {
+      return "";
+    }
+  }
+
+  deleteDeadline = () => {
+    if (this.props.deadline !== "0000-00-00") {
+      return <button
+          onClick={this.props.setTodoDeadlineNull.bind(this, this.props.todoId)}
+          style={this.props.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faEraser} />
+        </button>
+    }
+  }
 
   render() {
+    this.dateHandler();
     return (
-      <div className="App">
-        <SingleDatePicker
-          date={this.state.date} // momentPropTypes.momentObj or null
-          onDateChange={date => this.props.setTodoDeadline(this.props.todoId, date)} // PropTypes.func.isRequired
-          focused={this.state.focused} // PropTypes.bool
-          onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-          id="your_unique_id" // PropTypes.string.isRequired,
-        />
-      </div>
+      !this.props.isDateEditing ?
+        <div>
+          {this.dateAssembler()}
+          {this.deleteDeadline()}
+        </div>
+      : // Else
+        <div className="App">
+          <SingleDatePicker
+            date={this.state.date} // momentPropTypes.momentObj or null
+            onDateChange={date => this.props.stopDateEditing(date)} // PropTypes.func.isRequired
+            focused={this.state.focused} // PropTypes.bool
+            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+            id="your_unique_id" // PropTypes.string.isRequired,
+          />
+        </div>
     );
   }
 }

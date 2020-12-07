@@ -72,6 +72,7 @@ class TodoContainer extends Component {
                   editTodo={this.props.editTodo}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
+                  setTodoDeadlineNull={this.props.setTodoDeadlineNull}
                 />
               );
             })}
@@ -96,6 +97,7 @@ class TodoContainer extends Component {
                   editTodo={this.props.editTodo}
                   deleteTodo={this.props.deleteTodo}
                   checked={todo.is_done}
+                  setTodoDeadlineNull={this.props.setTodoDeadlineNull}
                 />
               );
             })}

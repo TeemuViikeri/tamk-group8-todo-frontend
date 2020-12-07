@@ -70,7 +70,18 @@ class App extends Component {
   setTodoDeadline = (id, deadlineDate) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
-        deadline: `${deadlineDate._d.getFullYear()}-${deadlineDate._d.getMonth()}-${deadlineDate._d.getDate()}`,
+        deadline: `${deadlineDate._d.getFullYear()}-${deadlineDate._d.getMonth() + 1}-${deadlineDate._d.getDate()}`,
+      })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
+      });
+  };
+
+  setTodoDeadlineNull = (id) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, {
+        deadline: `NULL`,
       })
       .then(() => {
         this.getTasks(true)
@@ -192,6 +203,7 @@ class App extends Component {
             setTodoDeadline={this.setTodoDeadline}
             editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
+            setTodoDeadlineNull={this.setTodoDeadlineNull}
             flex="21"
           />
           <Dock 
