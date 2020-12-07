@@ -8,21 +8,41 @@ class DateMenu extends Component {
     super(props);
 
     this.state = {
+      dateDisplay: null,
     };
   }
+  
+  dateHandler = () => {
+    if (typeof this.props.deadline === "string") {
+      this.state.dateDisplay = new Date(this.props.deadline)
+    } else {
+      this.state.dateDisplay = null
+    }
+  }
 
+  dateAssembler = () => {
+    if (!isNaN(this.state.dateDisplay.getFullYear())) {
+      return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth()}-${this.state.dateDisplay.getDate()}`;
+    } else {
+      return "";
+    }
+  }
 
   render() {
+    this.dateHandler();
     return (
-      <div className="App">
-        <SingleDatePicker
-          date={this.state.date} // momentPropTypes.momentObj or null
-          onDateChange={date => this.props.setTodoDeadline(this.props.todoId, date)} // PropTypes.func.isRequired
-          focused={this.state.focused} // PropTypes.bool
-          onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-          id="your_unique_id" // PropTypes.string.isRequired,
-        />
-      </div>
+      !this.props.isDateEditing ?
+        <div>{this.dateAssembler()}</div>
+      : // Else
+        <div className="App">
+          <SingleDatePicker
+            date={this.state.date} // momentPropTypes.momentObj or null
+            onDateChange={date => this.props.stopDateEditing(date)} // PropTypes.func.isRequired
+            focused={this.state.focused} // PropTypes.bool
+            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+            id="your_unique_id" // PropTypes.string.isRequired,
+          />
+        </div>
     );
   }
 }

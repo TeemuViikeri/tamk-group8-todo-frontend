@@ -14,7 +14,8 @@ class TodoItem extends Component {
     this.state = {
       btnStyle: { display: "none" },
       checked: false,
-      isEditing: false
+      isEditing: false,
+      isDateEditing: false,
     };
   }
 
@@ -58,13 +59,21 @@ class TodoItem extends Component {
     this.setState({ isEditing: false })
   }
 
+  stopDateEditing = (newDeadline) => {
+    this.setState({ isDateEditing: false})
+    this.props.setTodoDeadline(this.props.todo.id, newDeadline)
+  }
+
+  startDateEditing = () => {
+    this.setState({ isDateEditing: true })
+  }
+
   handleEditEvent = () => {
     this.setState({ isEditing: true })
   }
 
   render() {
     const { id, title } = this.props.todo;
-
     return (
       // If state property isEditing is false...
       !this.state.isEditing ?
@@ -93,7 +102,7 @@ class TodoItem extends Component {
             <FontAwesomeIcon icon={faEdit} />
           </button>
           <button
-            onClick={""}
+            onClick={() => this.startDateEditing()}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faCalendarAlt} />
@@ -111,8 +120,10 @@ class TodoItem extends Component {
             <FontAwesomeIcon icon={faEraser} />
           </button>
           <DateMenu 
-          setTodoDeadline={this.props.setTodoDeadline}
+          stopDateEditing={this.stopDateEditing}
           todoId={id}
+          deadline={this.props.todo.deadline}
+          isDateEditing={this.state.isDateEditing}
           />
         </span>
       </div>

@@ -69,7 +69,7 @@ class App extends Component {
   setTodoDeadline = (id, deadlineDate) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
-        deadline: `${deadlineDate._d.getFullYear()}-${deadlineDate._d.getMonth()}-${deadlineDate._d.getDate()}`,
+        deadline: `${deadlineDate._d.getFullYear()}-${deadlineDate._d.getMonth() + 1}-${deadlineDate._d.getDate()}`,
       })
       .then(() => {
         this.getTasks(true)
