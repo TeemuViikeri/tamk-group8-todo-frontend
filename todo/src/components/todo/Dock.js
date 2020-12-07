@@ -14,10 +14,8 @@ class Dock extends Component {
   getStyle = () => {
     return {
       backgroundColor: this.props.bgColor,
-      position: "absolute",
-      bottom: "0",
-      width: this.props.width,
       lineHeight: "35px",
+      flex: this.props.flex
     };
   };
 
@@ -31,10 +29,13 @@ class Dock extends Component {
             addTodo={this.props.addTodo} 
             currentList={this.props.currentList}
             btnText="Add"
+            padding="10px"
+            placeholder="Any homework to do?"
             borderRadiusInput="12px"
             borderRadiusSubmit="12px"
-            borderBottom=""
-            flex="10"
+            borderBottom="none"
+            flexInput="7"
+            flexBtn="1"
           />
         )}
       </div>
