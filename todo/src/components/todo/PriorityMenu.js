@@ -1,14 +1,14 @@
 import React from "react";
+import InputRange from 'react-input-range';
 
 class PriorityMenu extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = { 
       value: { min: 1, max: 5 },
     };
   }
-
 
   render() {
     return (
