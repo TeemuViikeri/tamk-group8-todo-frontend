@@ -27,7 +27,8 @@ class TodoContainer extends Component {
     return {
       display: "flex",
       flexDirection: "row",
-      justifyContent: "space-evenly"
+      justifyContent: "space-evenly",
+      flex: this.props.flex,
     }
   }
 
