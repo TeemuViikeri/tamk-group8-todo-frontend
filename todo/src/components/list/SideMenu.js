@@ -13,11 +13,13 @@ class SideMenu extends Component {
 
   getSideMenuStyle = () => {
     return {
+      width: "0px",
       color: "white",
-      flex: "1 1 auto",
+      flex: "0 1 auto",
+      display: "flex",
+      flexDirection: "column",
       backgroundColor: "gainsboro",
-      maxWidth: "20%",
-      height: "100%",
+      height: "100vh",
     };
   };
 
@@ -28,27 +30,29 @@ class SideMenu extends Component {
       backgroundColor: "#962029",
       lineHeight: "43px",
       height: "72px",
+      flex: "1",
     };
   };
 
   getSideMenuFooterStyle = () => {
     return {
+      display: "flex",
+      flexDirection: "row",
       textAlign: "left",
       backgroundColor: "#962029",
       lineHeight: "35px",
-      position: "absolute",
       bottom: "0",
-      width: "20%",
       height: "65px",
+      flex: "1"
     };
   };
 
   render() {
     return (
-      <div style={this.getSideMenuStyle()}>
+      <div id="sideMenu" style={this.getSideMenuStyle()}>
         <h1 style={this.getSideMenuHeaderStyle()}>Lists</h1>
 
-        <div>
+        <div style={{flex: "21"}}>
           {this.props.lists.map((list) => {
             return (
               <ListItem
