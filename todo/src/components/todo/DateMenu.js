@@ -10,7 +10,7 @@ class DateMenu extends Component {
     super(props);
 
     this.state = {
-      dateDisplay: null,
+      dateDisplay: new Date,
     };
   }
   
@@ -18,7 +18,7 @@ class DateMenu extends Component {
     if (typeof this.props.deadline === "string") {
       this.state.dateDisplay = new Date(this.props.deadline)
     } else {
-      this.state.dateDisplay = null
+      this.state.dateDisplay = new Date
     }
   }
 
