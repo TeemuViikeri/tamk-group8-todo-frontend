@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEraser } from '@fortawesome/free-solid-svg-icons'
 
 class DateMenu extends Component {
   constructor(props) {
@@ -28,11 +30,25 @@ class DateMenu extends Component {
     }
   }
 
+  deleteDeadline = () => {
+    if (this.props.deadline !== "0000-00-00") {
+      return <button
+          onClick={this.props.setTodoDeadlineNull.bind(this, this.props.todoId)}
+          style={this.props.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faEraser} />
+        </button>
+    }
+  }
+
   render() {
     this.dateHandler();
     return (
       !this.props.isDateEditing ?
-        <div>{this.dateAssembler()}</div>
+        <div>
+          {this.dateAssembler()}
+          {this.deleteDeadline()}
+        </div>
       : // Else
         <div className="App">
           <SingleDatePicker

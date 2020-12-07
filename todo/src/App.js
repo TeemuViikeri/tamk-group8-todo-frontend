@@ -77,6 +77,17 @@ class App extends Component {
       });
   };
 
+  setTodoDeadlineNull = (id) => {
+    axios
+      .put(`${url}tasks/${id}?apikey=${apikey}`, {
+        deadline: `NULL`,
+      })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
+      });
+  };
+
   deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
       checked ?
@@ -176,6 +187,7 @@ class App extends Component {
             setTodoDeadline={this.setTodoDeadline}
             editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
+            setTodoDeadlineNull={this.setTodoDeadlineNull}
           />
           <Dock 
             width="80%"

@@ -124,6 +124,8 @@ class TodoItem extends Component {
           todoId={id}
           deadline={this.props.todo.deadline}
           isDateEditing={this.state.isDateEditing}
+          getButtonStyle={this.getButtonStyle}
+          setTodoDeadlineNull={this.props.setTodoDeadlineNull}
           />
         </span>
       </div>
