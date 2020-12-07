@@ -19,6 +19,7 @@ class App extends Component {
       doneTodos: [],
       lists: [],
       refresh: false,
+      sideMenuIsOpen: false
     };
   }
 
@@ -153,6 +154,18 @@ class App extends Component {
     return dl;
   };
 
+  openSideMenu = () => {
+    const el = document.getElementById('sideMenu')
+    el.style.width = "20%"
+    el.style.transition = "width 0.5s"
+  }
+
+  closeSideMenu = () => {
+    const el = document.getElementById('sideMenu')
+    el.style.width = "0%"
+    el.style.transition = "width 0.5s"
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -167,6 +180,9 @@ class App extends Component {
             name={this.getListNameById()}
             setOrderTasks={this.setOrderTasks}
             setDeadlineFilter={this.setDeadlineFilter}
+            flex="1"
+            openSideMenu={this.openSideMenu}
+            closeSideMenu={this.closeSideMenu}
           />
           <TodoContainer
             todos={this.state.todos}
@@ -176,12 +192,13 @@ class App extends Component {
             setTodoDeadline={this.setTodoDeadline}
             editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
+            flex="21"
           />
           <Dock 
-            width="80%"
             bgColor="#cc5252"
             addTodo={this.addTodo} 
-            currentList={this.state.currentList} 
+            currentList={this.state.currentList}
+            flex="1"
             />
         </div>
       </div>
