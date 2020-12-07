@@ -10,28 +10,31 @@ class SearchField extends Component {
     };
   }
 
-  getFormStyle = () => {
+  getStyle = () => {
     return {
+      flex: "1",
       display: "inline-block", 
       lineHeight: "36px",
       position: "relative",
-      flex: "1",
-      bottom: "10px"
+      bottom: "12px",
     }
   }
 
   render() {
     return (
-          <form style={this.getFormStyle()}>
-            <TextInputField
-              title={this.state.title} 
-              placeholder="Search task"
-              padding="8px"
-              flex="6"
-              btnText="Find"
-              borderBottom="none"
-            />
-          </form>
+      <div style={this.getStyle()}>
+        <TextInputField
+          title={this.state.title} 
+          placeholder="Search task"
+          padding="8px"
+          flexInput="3"
+          flexBtn="1"
+          btnText="Find"
+          borderBottom="none"
+          borderRadiusInput="12px"
+          borderRadiusSubmit="12px"
+        />
+      </div>
     )
   }
 }
