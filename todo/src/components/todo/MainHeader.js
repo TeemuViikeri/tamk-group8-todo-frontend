@@ -24,6 +24,7 @@ class MainHeader extends Component {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-between",
+      flex: this.props.flex,
       height: "72px",
       lineHeight: "36px",
       color: "white",
@@ -36,9 +37,16 @@ class MainHeader extends Component {
   render() {
     return (
       <header style={this.getMainHeaderStyle()}>
-        <SideMenuButton flex="1"/>
-        <h1 style={{flex: "1", textAlign: "center"}}>{this.state.name}</h1>
-        <div className="widget-container" style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}>
+        <SideMenuButton 
+          flex="1"
+          openSideMenu={this.props.openSideMenu}
+          closeSideMenu={this.props.closeSideMenu}
+        />
+        <h1 style={{flex: "3", textAlign: "center"}}>{this.state.name}</h1>
+        <div 
+          className="widget-container" 
+          style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}
+        >
           <SearchField />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
