@@ -34,11 +34,14 @@ class TextInputField extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} style={{ display: "flex", height: "65px", }}>
+      <form 
+        onSubmit={this.onSubmit} 
+        style={{ display: "flex", height: "65px", flexDirection: "row" }}
+      >
         <TextInput 
           title={this.state.title} 
           onChange={this.onChange} 
-          flex={this.props.flex}
+          flexInput={this.props.flexInput}
           padding={this.props.padding}
           margin="15px 20px"
           placeholder={this.props.placeholder}
@@ -49,6 +52,7 @@ class TextInputField extends Component {
         />
         <SubmitButton 
           padding={this.props.padding}
+          flexBtn={this.props.flexBtn}
           text={this.props.btnText} 
           borderRadiusSubmit={this.props.borderRadiusSubmit}
           bgColorSubmit={this.props.bgColorSubmit}
