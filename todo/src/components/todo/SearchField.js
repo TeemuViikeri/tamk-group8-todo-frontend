@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TextInput from "./TextInput";
+import TextInputField from "./TextInputField";
 
 class SearchField extends Component {
   constructor(props) {
@@ -16,18 +16,20 @@ class SearchField extends Component {
       lineHeight: "36px",
       position: "relative",
       flex: "1",
+      bottom: "10px"
     }
   }
 
   render() {
     return (
           <form style={this.getFormStyle()}>
-            <TextInput 
+            <TextInputField
               title={this.state.title} 
-              // onChange={this.onChange} 
               placeholder="Search task"
-              padding="10px"
-              flex="1"
+              padding="8px"
+              flex="6"
+              btnText="Find"
+              borderBottom="none"
             />
           </form>
     )

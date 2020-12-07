@@ -38,15 +38,17 @@ class TextInputField extends Component {
         <TextInput 
           title={this.state.title} 
           onChange={this.onChange} 
-          flex="10" 
-          padding="10px"
+          flex={this.props.flex}
+          padding={this.props.padding}
           margin="15px 20px"
-          placeholder="Any homework to do?"
+          placeholder={this.props.placeholder}
           borderBottom={this.props.borderBottom}
           borderRadiusInput={this.props.borderRadiusInput}
           bgColorInput={this.props.bgColorInput}
+          width={this.props.width}
         />
         <SubmitButton 
+          padding={this.props.padding}
           text={this.props.btnText} 
           borderRadiusSubmit={this.props.borderRadiusSubmit}
           bgColorSubmit={this.props.bgColorSubmit}

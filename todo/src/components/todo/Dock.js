@@ -34,6 +34,7 @@ class Dock extends Component {
             borderRadiusInput="12px"
             borderRadiusSubmit="12px"
             borderBottom=""
+            flex="10"
           />
         )}
       </div>

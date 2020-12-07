@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class TextInput extends Component {
   getTextInputStyle = () => {
     return {
+      width: this.props.width,
       display: "inline-block",
       flex: this.props.flex,
       padding: this.props.padding,
