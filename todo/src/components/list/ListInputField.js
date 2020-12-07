@@ -27,9 +27,9 @@ class ListInputField extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} style={{ display: "flex", height: "65px", }}>
-        <ListInput title={this.state.listName} onChange={this.onChange} />
-        <SubmitButton text="Add" borderRadiusSubmit="12px" />
+      <form onSubmit={this.onSubmit} style={{ display: "flex", height: "65px", width: "100%" }}>
+        <ListInput title={this.state.listName} onChange={this.onChange} flexInput="3"/>
+        <SubmitButton text="Add" borderRadiusSubmit="12px" flexBtn="2" />
       </form>
     );
   }
