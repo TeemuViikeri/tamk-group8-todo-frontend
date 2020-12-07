@@ -5,10 +5,10 @@ class ListInput extends Component {
     return {
       padding: "10px",
       margin: "15px 20px",
-      boxShadow: "0px -0px 1px 4px rgba(255, 255, 255, .2)",
       border: "none",
       borderRadius: "12px",
       color: "black",
+      flex: this.props.flexInput
     };
   };
 
