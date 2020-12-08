@@ -14,16 +14,21 @@ class TodoItem extends Component {
 
   getItemStyle = () => {
     return {
-      padding: "7px 7px",
+      padding: "8px 20px",
       fontSize: "1em",
-      marginLeft: "1%",
-      marginRight: "1%",
+      margin: "1% 1% 1% 0",
       textAlign: "left",
-      color: "#333",
+      color: this.props.currentList === this.props.id ? "white" : "#333",
+      fontStyle: this.props.currentList === this.props.id ? "italic" : "normal",
       fontWeight: "600",
-      borderRadius: "15px",
-      width: "93%",
+      borderRadius: "0 15px 15px 0",
+      borderTop: "1px solid rgba(0, 0, 0, 0.3)",
+      borderRight: "1px solid rgba(0, 0, 0, 0.3)",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.3)",
+      borderLeft: "none",
+      width: "90%",
       cursor: "pointer",
+      backgroundColor: this.props.currentList === this.props.id ? "#cc5252" : "white"
     };
   };
 
@@ -35,13 +40,17 @@ class TodoItem extends Component {
       border: "none",
       fontWeight: "bold",
       padding: "2px",
-      color: "black",
+      color: this.props.currentList === this.props.id ? "white" : "black",
       verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
+      zIndex: "1",
+      float: "right",
+      position: "relative",
+      top: "2px"
     };
   };
 
-  submit = (id) => {
+  submit = (e, id) => {
     confirmAlert({
       title: `Are you sure you want to delete list ${this.props.list.name}?`,
       message: "This action cannot be undone.",
@@ -56,6 +65,8 @@ class TodoItem extends Component {
         }
       ]
     });
+    // Stops onClick event from bubbling to parent event's onClick event
+    e.stopPropagation()
   };
 
   render() {
@@ -68,21 +79,20 @@ class TodoItem extends Component {
         onMouseLeave={(e) => {
           this.setState({ btnStyle: { display: "none" } });
         }}
-        style={this.getItemStyle()}
       >
-        <button
-        onClick={this.props.setList.bind(this, id)}
-        style={this.getItemStyle()}
+        <div
+          onClick={this.props.setList.bind(this, id)}
+          style={this.getItemStyle()}
         >
           {name}
-        </button>
+          <button
+            onClick={e => this.submit(e, id)}
+            style={this.getButtonStyle()}
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>
+        </div>
 
-        <button
-          onClick={() => this.submit(id)}
-          style={this.getButtonStyle()}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </button>
       </div>
     );
   }

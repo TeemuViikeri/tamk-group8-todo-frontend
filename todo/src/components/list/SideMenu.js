@@ -31,6 +31,7 @@ class SideMenu extends Component {
       lineHeight: "43px",
       height: "72px",
       flex: "1",
+      marginBottom: "15px",
     };
   };
 
@@ -56,10 +57,12 @@ class SideMenu extends Component {
           {this.props.lists.map((list) => {
             return (
               <ListItem
+                id={list.id}
                 key={list.id}
                 list={list}
                 deleteList={this.props.deleteList}
                 setList={this.props.setList}
+                currentList={this.props.currentList}
               />
             );
           })}
