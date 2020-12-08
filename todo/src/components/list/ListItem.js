@@ -39,6 +39,12 @@ class TodoItem extends Component {
     };
   };
 
+handleOnClick = async (id) => {
+    if (await window.confirm("Are your sure?")) {
+      this.props.deleteList(id);
+    }
+  }
+
   render() {
     const { id, name } = this.props.list;
     return (
@@ -59,7 +65,7 @@ class TodoItem extends Component {
         </button>
 
         <button
-          onClick={this.props.deleteList.bind(this, id)}
+          onClick={() => this.handleOnClick(id)}
           style={this.getButtonStyle()}
         >
           <FontAwesomeIcon icon={faTrashAlt} />
