@@ -14,17 +14,15 @@ class DateMenu extends Component {
     };
   }
   
-  dateHandler = () => {
-    if (typeof this.props.deadline === "string") {
-      this.setState({ dateDisplay: new Date(this.props.deadline) }) 
-    } else {
-      this.setState({ dateDisplay: new Date() }) 
+  componentDidUpdate(prevState) {
+    if (this.props.deadline !== prevState.deadline) {
+      this.setState({ dateDisplay: new Date(this.props.deadline) }, () => console.log(this.state.dateDisplay))
     }
   }
 
   dateAssembler = () => {
     if (!isNaN(this.state.dateDisplay.getFullYear())) {
-      return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth()}-${this.state.dateDisplay.getDate()}`;
+      return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth() + 1}-${this.state.dateDisplay.getDate()}`;
     } else {
       return "";
     }
@@ -42,7 +40,6 @@ class DateMenu extends Component {
   }
 
   render() {
-    this.dateHandler();
     return (
       !this.props.isDateEditing ?
         <div>
