@@ -185,6 +185,7 @@ class App extends Component {
           deleteList={this.deleteList}
           setList={this.setList}
           addList={this.addList}
+          currentList={this.state.currentList}
         />
         <div className={"main-container"}>
           <MainHeader 
