@@ -10,13 +10,13 @@ class DateMenu extends Component {
     super(props);
 
     this.state = {
-      dateDisplay: new Date(),
+      dateDisplay: new Date(this.props.deadline)
     };
   }
   
-  componentDidUpdate(prevState) {
-    if (this.props.deadline !== prevState.deadline) {
-      this.setState({ dateDisplay: new Date(this.props.deadline) }, () => console.log(this.state.dateDisplay))
+  componentDidUpdate(prevProps) { 
+    if (this.props.deadline !== prevProps.deadline) {
+      this.setState({ dateDisplay: new Date(this.props.deadline) })
     }
   }
 
@@ -39,7 +39,7 @@ class DateMenu extends Component {
     }
   }
 
-  render() {
+  render() {    
     return (
       !this.props.isDateEditing ?
         <div>
