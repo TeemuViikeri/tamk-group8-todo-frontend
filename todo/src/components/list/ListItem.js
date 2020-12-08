@@ -43,7 +43,7 @@ class TodoItem extends Component {
 
   submit = (id) => {
     confirmAlert({
-      title: `Are you sure to delete ${this.props.list.name}?`,
+      title: `Are you sure you want to delete list ${this.props.list.name}?`,
       message: "This action cannot be undone.",
       buttons: [
         {
