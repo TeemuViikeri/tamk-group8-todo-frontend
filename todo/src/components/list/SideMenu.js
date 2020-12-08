@@ -31,6 +31,7 @@ class SideMenu extends Component {
       lineHeight: "43px",
       height: "72px",
       flex: "1",
+      marginBottom: "15px",
     };
   };
 
