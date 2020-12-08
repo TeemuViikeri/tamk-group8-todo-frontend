@@ -14,16 +14,20 @@ class TodoItem extends Component {
 
   getItemStyle = () => {
     return {
-      padding: "7px 7px",
+      padding: "8px 20px",
       fontSize: "1em",
-      marginLeft: "1%",
-      marginRight: "1%",
+      margin: "1% 1% 1% 0",
       textAlign: "left",
       color: "#333",
       fontWeight: "600",
-      borderRadius: "15px",
-      width: "93%",
+      borderRadius: "0 15px 15px 0",
+      borderTop: "1px solid rgba(0, 0, 0, 0.3)",
+      borderRight: "1px solid rgba(0, 0, 0, 0.3)",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.3)",
+      borderLeft: "none",
+      width: "90%",
       cursor: "pointer",
+      backgroundColor: "white"
     };
   };
 
@@ -38,10 +42,12 @@ class TodoItem extends Component {
       color: "black",
       verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
+      zIndex: "1",
+      float: "right"
     };
   };
 
-  submit = (id) => {
+  submit = (e, id) => {
     confirmAlert({
       title: `Are you sure to delete ${this.props.list.name}?`,
       message: "This action cannot be undone.",
@@ -56,6 +62,8 @@ class TodoItem extends Component {
         }
       ]
     });
+    // Stops onClick event from bubbling to parent event's onClick event
+    e.stopPropagation()
   };
 
   render() {
@@ -68,21 +76,20 @@ class TodoItem extends Component {
         onMouseLeave={(e) => {
           this.setState({ btnStyle: { display: "none" } });
         }}
-        style={this.getItemStyle()}
       >
         <button
-        onClick={this.props.setList.bind(this, id)}
-        style={this.getItemStyle()}
+          onClick={this.props.setList.bind(this, id)}
+          style={this.getItemStyle()}
         >
           {name}
+          <button
+            onClick={e => this.submit(e, id)}
+            style={this.getButtonStyle()}
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>
         </button>
 
-        <button
-          onClick={() => this.submit(id)}
-          style={this.getButtonStyle()}
-        >
-          <FontAwesomeIcon icon={faTrashAlt} />
-        </button>
       </div>
     );
   }
