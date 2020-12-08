@@ -139,9 +139,12 @@ class TodoItem extends Component {
         bindObj={this}
         bgColorSubmit="#cc5252"
         textColorSubmit="white"
+        placeholder={title}
         editId={id}
         finishEditing={this.finishEditing}
         padding="10px"
+        marginInput="15px 20px"
+        marginSubmit="15px 0"
       />
     );
   }

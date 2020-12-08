@@ -6,7 +6,7 @@ class TextInput extends Component {
       display: "inline-block",
       flex: this.props.flexInput,
       padding: this.props.padding,
-      margin: this.props.margin,
+      margin: this.props.marginInput,
       verticalAlign: this.props.verticalAlign,
       border: "none",
       borderBottom: this.props.borderBottom,

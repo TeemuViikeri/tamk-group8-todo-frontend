@@ -44,7 +44,7 @@ class TextInputField extends Component {
           onChange={this.onChange} 
           flexInput={this.props.flexInput}
           padding={this.props.padding}
-          margin="15px 20px"
+          marginInput={this.props.marginInput}
           placeholder={this.props.placeholder}
           borderBottom={this.props.borderBottom}
           borderRadiusInput={this.props.borderRadiusInput}
@@ -53,6 +53,7 @@ class TextInputField extends Component {
         />
         <SubmitButton 
           padding={this.props.padding}
+          marginSubmit={this.props.marginSubmit}
           flexBtn={this.props.flexBtn}
           text={this.props.btnText} 
           borderRadiusSubmit={this.props.borderRadiusSubmit}
