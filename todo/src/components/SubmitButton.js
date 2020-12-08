@@ -9,6 +9,7 @@ class SubmitButton extends Component {
       margin: "15px 20px 15px 0",
       border: "none",
       borderRadius: this.props.borderRadiusSubmit,
+      padding: this.props.padding
     };
   };
 
