@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEraser } from '@fortawesome/free-solid-svg-icons'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import { faWeightHanging } from '@fortawesome/free-solid-svg-icons'
+import { 
+  faEraser, 
+  faEdit, 
+  faCalendarAlt, 
+  faWeightHanging 
+  } from '@fortawesome/free-solid-svg-icons'
 import DateMenu from "./DateMenu"
 import TextInputField from "./TextInputField";
 
