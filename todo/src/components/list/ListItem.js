@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import './react-confirm-alert.css'; // Import css
 
 class TodoItem extends Component {
   constructor(props) {
@@ -39,11 +41,22 @@ class TodoItem extends Component {
     };
   };
 
-handleOnClick = async (id) => {
-    if (await window.confirm("Are you sure?")) {
-      this.props.deleteList(id);
-    }
-  }
+  submit = (id) => {
+    confirmAlert({
+      title: `Are you sure to delete ${this.props.list.name}?`,
+      message: "This action cannot be undone.",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => this.props.deleteList(id)
+        },
+        {
+          label: "No",
+          onClick: () => console.log("Delete alert rejected.")
+        }
+      ]
+    });
+  };
 
   render() {
     const { id, name } = this.props.list;
@@ -65,7 +78,7 @@ handleOnClick = async (id) => {
         </button>
 
         <button
-          onClick={() => this.handleOnClick(id)}
+          onClick={() => this.submit(id)}
           style={this.getButtonStyle()}
         >
           <FontAwesomeIcon icon={faTrashAlt} />
