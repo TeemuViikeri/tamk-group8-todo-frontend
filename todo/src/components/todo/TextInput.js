@@ -25,8 +25,8 @@ class TextInput extends Component {
         placeholder={this.props.placeholder}
         value={this.props.title}
         onChange={this.props.onChange}
-        borderBottom={this.props.borderBottom}
-        borderRadius={this.props.borderRadiusInput}
+        borderbottom={this.props.borderBottom}
+        borderradius={this.props.borderRadiusInput}
       />
     );
   }
