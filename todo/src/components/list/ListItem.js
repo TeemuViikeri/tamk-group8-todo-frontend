@@ -18,7 +18,8 @@ class TodoItem extends Component {
       fontSize: "1em",
       margin: "1% 1% 1% 0",
       textAlign: "left",
-      color: "#333",
+      color: this.props.currentList === this.props.id ? "white" : "#333",
+      fontStyle: this.props.currentList === this.props.id ? "italic" : "normal",
       fontWeight: "600",
       borderRadius: "0 15px 15px 0",
       borderTop: "1px solid rgba(0, 0, 0, 0.3)",
@@ -27,7 +28,7 @@ class TodoItem extends Component {
       borderLeft: "none",
       width: "90%",
       cursor: "pointer",
-      backgroundColor: "white"
+      backgroundColor: this.props.currentList === this.props.id ? "#cc5252" : "white"
     };
   };
 
@@ -39,11 +40,13 @@ class TodoItem extends Component {
       border: "none",
       fontWeight: "bold",
       padding: "2px",
-      color: "black",
+      color: this.props.currentList === this.props.id ? "white" : "black",
       verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
       zIndex: "1",
-      float: "right"
+      float: "right",
+      position: "relative",
+      top: "2px"
     };
   };
 
@@ -77,7 +80,7 @@ class TodoItem extends Component {
           this.setState({ btnStyle: { display: "none" } });
         }}
       >
-        <button
+        <div
           onClick={this.props.setList.bind(this, id)}
           style={this.getItemStyle()}
         >
@@ -88,7 +91,7 @@ class TodoItem extends Component {
           >
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
-        </button>
+        </div>
 
       </div>
     );
