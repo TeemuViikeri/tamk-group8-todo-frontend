@@ -40,7 +40,7 @@ class TodoItem extends Component {
   };
 
 handleOnClick = async (id) => {
-    if (await window.confirm("Are your sure?")) {
+    if (await window.confirm("Are you sure?")) {
       this.props.deleteList(id);
     }
   }
