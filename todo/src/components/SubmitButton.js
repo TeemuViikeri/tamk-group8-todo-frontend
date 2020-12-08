@@ -6,7 +6,7 @@ class SubmitButton extends Component {
       flex: this.props.flexBtn,
       backgroundColor: this.props.bgColorSubmit,
       color: this.props.textColorSubmit,
-      margin: "15px 20px 15px 0",
+      margin: this.props.marginSubmit,
       border: "none",
       borderRadius: this.props.borderRadiusSubmit,
       padding: this.props.padding

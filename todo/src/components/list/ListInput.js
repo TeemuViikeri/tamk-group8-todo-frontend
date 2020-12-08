@@ -4,9 +4,9 @@ class ListInput extends Component {
   getListInputStyle = () => {
     return {
       padding: "10px",
-      margin: "15px 20px",
+      margin: this.props.marginInput,
       border: "none",
-      borderRadius: "12px",
+      borderRadius: this.props.borderRadiusInput,
       color: "black",
       flex: this.props.flexInput
     };
