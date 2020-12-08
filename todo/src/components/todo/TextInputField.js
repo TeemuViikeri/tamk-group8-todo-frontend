@@ -12,12 +12,13 @@ class TextInputField extends Component {
   }
 
   onSubmit = (e) => {   
-    if (this.state.title === "") {
-      return;
-    }
-    
     e.preventDefault();
 
+    if (this.state.title === "") {
+      this.props.finishEditing()
+      return
+    }
+    
     if (this.props.addTodo !== undefined) {
       this.props.addTodo(this.props.currentList, this.state.title);
       this.setState({ title: "" });
