@@ -15,7 +15,7 @@ class TextInputField extends Component {
     e.preventDefault();
 
     if (this.state.title === "") {
-      this.props.finishEditing()
+      this.props.finishEditing();
       return
     }
     
