@@ -120,12 +120,12 @@ class TodoItem extends Component {
             <FontAwesomeIcon icon={faEraser} />
           </button>
           <DateMenu 
-          stopDateEditing={this.stopDateEditing}
-          todoId={id}
-          deadline={this.props.todo.deadline}
-          isDateEditing={this.state.isDateEditing}
-          getButtonStyle={this.getButtonStyle}
-          setTodoDeadlineNull={this.props.setTodoDeadlineNull}
+            stopDateEditing={this.stopDateEditing}
+            todoId={id}
+            deadline={this.props.todo.deadline}
+            isDateEditing={this.state.isDateEditing}
+            getButtonStyle={this.getButtonStyle}
+            setTodoDeadlineNull={this.props.setTodoDeadlineNull}
           />
         </span>
       </div>
@@ -139,6 +139,7 @@ class TodoItem extends Component {
         textColorSubmit="white"
         editId={id}
         finishEditing={this.finishEditing}
+        padding="10px"
       />
     );
   }
