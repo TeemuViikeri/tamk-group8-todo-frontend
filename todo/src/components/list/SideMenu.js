@@ -57,10 +57,12 @@ class SideMenu extends Component {
           {this.props.lists.map((list) => {
             return (
               <ListItem
+                id={list.id}
                 key={list.id}
                 list={list}
                 deleteList={this.props.deleteList}
                 setList={this.props.setList}
+                currentList={this.props.currentList}
               />
             );
           })}
