@@ -21,8 +21,6 @@ class Caret extends Component {
       bottom: "6px",
       left: "6px",
       cursor: "pointer",
-      transform: this.props.up ? "rotate(0.5turn)" : "",
-      transition: "all .2s linear"
     }
   }
   

@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.1.1",
     "@testing-library/user-event": "^12.2.0",
     "axios": "^0.21.0",
+    "rc-slider": "^9.6.5",
     "react": "^17.0.1",
     "react-confirm-alert": "^2.6.2",
     "react-dates": "^21.8.0",

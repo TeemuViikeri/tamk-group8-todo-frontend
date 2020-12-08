@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert } from 'react-confirm-alert'; // Import
-import './react-confirm-alert.css'; // Import css
+import '../react-confirm-alert.css'; // Import css
 
 class TodoItem extends Component {
   constructor(props) {

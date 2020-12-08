@@ -8,6 +8,10 @@ import {
   } from '@fortawesome/free-solid-svg-icons'
 import DateMenu from "./DateMenu"
 import TextInputField from "./TextInputField";
+import { confirmAlert } from 'react-confirm-alert';
+import '../react-confirm-alert.css';
+import Slider, { Range } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
 
 class TodoItem extends Component {
@@ -18,6 +22,7 @@ class TodoItem extends Component {
       checked: false,
       isEditing: false,
       isDateEditing: false,
+      tester: 3,
     };
   }
 
@@ -31,6 +36,8 @@ class TodoItem extends Component {
       border: "1px solid #ddd",
       outline: "none",
       cursor: "pointer",
+      transform: this.state.checked ? "scale(0.5)" : "scale(1)",
+      transition: "transform 100ms",
     };
   };
 
@@ -74,6 +81,31 @@ class TodoItem extends Component {
     this.setState({ isEditing: true })
   }
 
+  setPriorityDialog = () => {
+    confirmAlert({
+      title: `Give ${this.props.todo.title} a priority.`,
+      message: <Slider 
+                  min={1} 
+                  max={33965} 
+                  defaultValue={33960} 
+                  marks={{ 1: "Low", 2: "", 3: "Medium", 4: "", 5: "High" }}
+                  
+                  />,
+      buttons: [
+        {
+          label: "Set",
+          onClick: () => console.log(document.getElementsByClassName("react-confirm-alert-body"))
+        },
+        {
+          label: "Cancel",
+          onClick: () => console.log("Priority change canceled.")
+        }
+      ]
+    });
+    console.log(document.getElementsByClassName("react-confirm-alert-body"))
+  };
+
+
   render() {
     const { id, title } = this.props.todo;
     return (
@@ -110,7 +142,7 @@ class TodoItem extends Component {
             <FontAwesomeIcon icon={faCalendarAlt} />
           </button>
           <button
-            onClick={""}
+            onClick={() => this.setPriorityDialog()}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faWeightHanging} />
