@@ -174,7 +174,8 @@ class TodoItem extends Component {
         placeholder={title}
         editId={id}
         finishEditing={this.finishEditing}
-        padding="10px"
+        paddingInput="10px"
+        paddingSubmit="10px"
         marginInput="15px 20px"
         marginSubmit="15px 0"
       />
