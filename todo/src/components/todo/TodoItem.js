@@ -165,19 +165,19 @@ class TodoItem extends Component {
       </div>
       : // Otherwise...
       <TextInputField 
-        btnText="Edit" 
-        borderBottom="1px solid #999"
+        editId={id}
+        placeholder={title}
         editTodo={this.props.editTodo}
-        bindObj={this}
+        finishEditing={this.finishEditing}
+        btnText="Edit" 
         bgColorSubmit="#cc5252"
         textColorSubmit="white"
-        placeholder={title}
-        editId={id}
-        finishEditing={this.finishEditing}
+        height="65px"
         paddingInput="10px"
         paddingSubmit="10px"
         marginInput="15px 20px"
         marginSubmit="15px 0"
+        borderBottom="1px solid #999"
       />
     );
   }
