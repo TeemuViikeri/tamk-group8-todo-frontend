@@ -1,19 +1,25 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import '../react-confirm-alert.css'; // Import css
+import TextInputField from '../todo/TextInputField'
 
 class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       btnStyle: { display: "none" },
+      isEditing: false
     };
   }
 
   getItemStyle = () => {
     return {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
       padding: "8px 20px",
       fontSize: "1em",
       margin: "1% 1% 1% 0",
@@ -41,14 +47,19 @@ class TodoItem extends Component {
       fontWeight: "bold",
       padding: "2px",
       color: this.props.currentList === this.props.id ? "white" : "black",
-      verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
       zIndex: "1",
       float: "right",
-      position: "relative",
-      top: "2px"
     };
   };
+
+  handleEditEvent = () => {
+    this.setState({ isEditing: true })
+  }
+
+  finishEditing = () => {
+    this.setState({ isEditing: false })
+  }
 
   submit = (e, id) => {
     confirmAlert({
@@ -72,6 +83,9 @@ class TodoItem extends Component {
   render() {
     const { id, name } = this.props.list;
     return (
+      // If state property isEditing is false...
+      !this.state.isEditing ?
+      // Render normal list item
       <div
         onMouseEnter={(e) => {
           this.setState({ btnStyle: { display: "inline-block" } });
@@ -79,21 +93,48 @@ class TodoItem extends Component {
         onMouseLeave={(e) => {
           this.setState({ btnStyle: { display: "none" } });
         }}
+        onClick={this.props.setList.bind(this, id)}
+        style={this.getItemStyle()}
       >
-        <div
-          onClick={this.props.setList.bind(this, id)}
-          style={this.getItemStyle()}
-        >
-          {name}
+        {name}
+        <span style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
+          <button
+            onClick={() => this.handleEditEvent()}
+            style={this.getButtonStyle()}
+            >
+            <FontAwesomeIcon icon={faEdit} />
+          </button>
           <button
             onClick={e => this.submit(e, id)}
             style={this.getButtonStyle()}
           >
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
-        </div>
-
+        </span>
       </div>
+      : // Otherwise...
+      <TextInputField 
+        btnText="Edit" 
+        editList={this.props.editList}
+        bgColorSubmit="#cc5252"
+        textColorSubmit="white"
+        placeholder={name}
+        editId={id}
+        finishEditing={this.finishEditing}
+        flexInput="10"
+        flexBtn="1"
+        height="39px"
+        width="90%"
+        heightInput="39px"
+        heightSubmit="39px"
+        paddingInput="8px 20px"
+        paddingSubmit="8px 20px"
+        marginInput="1% 0 1% 0"
+        marginSubmit="1% 0 1% 0"
+        borderBottom="1px solid #999"
+        borderRadiusInput= "0"
+        borderRadiusSubmit= "0 16px 16px 0"
+      />
     );
   }
 }

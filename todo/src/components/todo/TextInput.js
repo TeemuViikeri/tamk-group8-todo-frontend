@@ -5,14 +5,15 @@ class TextInput extends Component {
     return {
       display: "inline-block",
       flex: this.props.flexInput,
-      padding: this.props.padding,
+      padding: this.props.paddingInput,
       margin: this.props.marginInput,
       verticalAlign: this.props.verticalAlign,
       border: "none",
       borderBottom: this.props.borderBottom,
       borderRadius: this.props.borderRadiusInput,
       color: "black",
-      backgroundColor: this.props.bgColorInput
+      backgroundColor: this.props.bgColorInput,
+      height: this.props.heightInput
     };
   };
 
