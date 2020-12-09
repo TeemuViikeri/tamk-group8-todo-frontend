@@ -5,7 +5,7 @@ class TextInput extends Component {
     return {
       display: "inline-block",
       flex: this.props.flexInput,
-      padding: this.props.padding,
+      padding: this.props.paddingInput,
       margin: this.props.marginInput,
       verticalAlign: this.props.verticalAlign,
       border: "none",
