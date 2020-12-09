@@ -121,12 +121,19 @@ class TodoItem extends Component {
         placeholder={name}
         editId={id}
         finishEditing={this.finishEditing}
+        flexInput="10"
+        flexBtn="1"
+        height="39px"
+        width="90%"
+        heightInput="39px"
+        heightSubmit="39px"
         paddingInput="8px 20px"
         paddingSubmit="8px 20px"
-        marginInput="1% 1% 1% 0"
-        marginSubmit="15px 0"
+        marginInput="1% 0 1% 0"
+        marginSubmit="1% 0 1% 0"
         borderBottom="1px solid #999"
-        borderRadiusInput= "0 15px 15px 0"
+        borderRadiusInput= "0"
+        borderRadiusSubmit= "0 16px 16px 0"
       />
     );
   }
