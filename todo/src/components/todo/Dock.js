@@ -29,7 +29,8 @@ class Dock extends Component {
             addTodo={this.props.addTodo} 
             currentList={this.props.currentList}
             btnText="Add"
-            padding="10px"
+            paddingInput="10px"
+            paddingSubmit="10px"
             marginInput="15px 0 15px 20px"
             marginSubmit="15px 20px 15px 0"
             bgColorSubmit="gainsboro"
