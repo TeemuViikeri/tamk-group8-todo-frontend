@@ -46,7 +46,7 @@ class MainHeader extends Component {
         <h1 style={{flex: "3", textAlign: "center"}}>{this.state.name}</h1>
         <div 
           className="widget-container" 
-          style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}
+          style={{display: "flex", flexDirection: "row", flex: "1"}}
         >
           <SearchField />
           <ColorMenu />
