@@ -26,7 +26,8 @@ class SearchField extends Component {
         <TextInputField
           title={this.state.title} 
           placeholder="Search task"
-          padding="10px"
+          paddingInput="10px"
+          paddingSubmit="10px"
           marginInput="15px 0 15px 20px"
           marginSubmit="15px 20px 15px 0"
           flexInput="3"
