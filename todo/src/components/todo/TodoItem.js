@@ -10,7 +10,7 @@ import DateMenu from "./DateMenu"
 import TextInputField from "./TextInputField";
 import { confirmAlert } from 'react-confirm-alert';
 import '../react-confirm-alert.css';
-import Slider, { Range } from 'rc-slider';
+import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 
@@ -22,7 +22,7 @@ class TodoItem extends Component {
       checked: false,
       isEditing: false,
       isDateEditing: false,
-      tester: 3,
+      tempPriority: 3,
     };
   }
 
@@ -81,20 +81,26 @@ class TodoItem extends Component {
     this.setState({ isEditing: true })
   }
 
+  handleValueChange = async tempPriority => {
+    await this.setState({ tempPriority })
+  }
+
   setPriorityDialog = () => {
     confirmAlert({
       title: `Give ${this.props.todo.title} a priority.`,
       message: <Slider 
                   min={1} 
-                  max={33965} 
-                  defaultValue={33960} 
+                  max={5} 
+                  defaultValue={this.props.todo.priority} 
                   marks={{ 1: "Low", 2: "", 3: "Medium", 4: "", 5: "High" }}
-                  
-                  />,
+                  onChange={this.handleValueChange}
+                />,
       buttons: [
         {
           label: "Set",
-          onClick: () => console.log(document.getElementsByClassName("react-confirm-alert-body"))
+          onClick: () => this.props.setTodoPriority(
+            this.props.todo.id, 
+            document.getElementsByClassName("rc-slider-handle")[0].getAttribute("aria-valuenow"))
         },
         {
           label: "Cancel",
@@ -102,9 +108,7 @@ class TodoItem extends Component {
         }
       ]
     });
-    console.log(document.getElementsByClassName("react-confirm-alert-body"))
   };
-
 
   render() {
     const { id, title } = this.props.todo;

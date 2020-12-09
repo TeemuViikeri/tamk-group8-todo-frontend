@@ -55,6 +55,10 @@ class App extends Component {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
         priority: priorityValue,
+      })
+      .then(() => {
+        this.getTasks(true)
+        this.getTasks(false)
       });
   };
     
