@@ -58,6 +58,12 @@ class App extends Component {
       });
   };
     
+  editList = (id, name) => {
+    axios
+      .put(`${url}lists/${id}?apikey=${apikey}`, { name })
+      .then(() => this.getLists());
+  };
+  
   editTodo = (id, title) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, { title })
@@ -185,6 +191,7 @@ class App extends Component {
           deleteList={this.deleteList}
           setList={this.setList}
           addList={this.addList}
+          editList={this.editList}
           currentList={this.state.currentList}
         />
         <div className={"main-container"}>
