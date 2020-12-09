@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
+import ColorMenu from "./ColorMenu";
 import SortMenu from "./SortMenu";
 import FilterMenu from "./FilterMenu";
 
@@ -48,6 +49,7 @@ class MainHeader extends Component {
           style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}
         >
           <SearchField />
+          <ColorMenu />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
         </div>
