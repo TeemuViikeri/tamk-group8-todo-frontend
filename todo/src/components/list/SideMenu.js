@@ -15,7 +15,7 @@ class SideMenu extends Component {
     return {
       width: "0px",
       color: "white",
-      flex: "0 1 auto",
+      flex: "auto 0 auto",
       display: "flex",
       flexDirection: "column",
       backgroundColor: "gainsboro",
@@ -38,13 +38,11 @@ class SideMenu extends Component {
   getSideMenuFooterStyle = () => {
     return {
       display: "flex",
-      flexDirection: "row",
-      textAlign: "left",
       backgroundColor: "#962029",
       lineHeight: "35px",
-      bottom: "0",
       height: "65px",
-      flex: "1"
+      flex: "0 1 auto",
+      justifyContent: "center"
     };
   };
 
