@@ -187,6 +187,12 @@ class App extends Component {
     el.style.transition = "width 0.5s"
   }
 
+  setColor = (id, color) => {
+    axios
+      .put(`${url}lists/${id}?apikey=${apikey}`, { color })
+      .then(() => this.getLists());
+  }
+
   render() {
     return (
       <div className="app-container">
