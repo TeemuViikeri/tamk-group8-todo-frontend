@@ -11,11 +11,11 @@ class ListInputField extends Component {
   }
 
   onSubmit = (e) => {
+    e.preventDefault();
+
     if (this.state.listName === "") {
       return;
     }
-
-    e.preventDefault();
 
     this.props.addList(this.state.listName);
     this.setState({ title: "" });
