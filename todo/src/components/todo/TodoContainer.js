@@ -55,7 +55,6 @@ class TodoContainer extends Component {
   }
 
   render() {
-    console.log(this.state.display);
     return (
       <div style={this.getFlexContainerStyle()}>
         <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
