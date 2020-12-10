@@ -49,7 +49,7 @@ class MainHeader extends Component {
           style={{display: "flex", flexDirection: "row", flex: "1"}}
         >
           <SearchField />
-          <ColorMenu />
+          <ColorMenu setColor={this.props.setColor} currentList={this.props.currentList} />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
         </div>
