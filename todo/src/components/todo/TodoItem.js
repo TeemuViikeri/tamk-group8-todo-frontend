@@ -23,6 +23,7 @@ class TodoItem extends Component {
       isEditing: false,
       isDateEditing: false,
       tempPriority: 3,
+      sliderColor: "#cc5252",
     };
   }
 
@@ -94,6 +95,9 @@ class TodoItem extends Component {
                   defaultValue={this.props.todo.priority} 
                   marks={{ 1: "Low", 2: "", 3: "Medium", 4: "", 5: "High" }}
                   onChange={this.handleValueChange}
+                  handleStyle={{border: `solid 2px ${this.state.sliderColor}`}}
+                  trackStyle={{backgroundColor: this.state.sliderColor}}
+                  activeDotStyle={{border: `solid 2px ${this.state.sliderColor}`}}
                 />,
       buttons: [
         {
