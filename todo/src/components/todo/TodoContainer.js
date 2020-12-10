@@ -38,7 +38,7 @@ class TodoContainer extends Component {
     const d = this.state.display.get(Number(id))[0];
     e.style.height = d;
     e.style.transition = "height 1s"
-    e.style.overflow = "auto"
+    e.style.overflow = "hidden"
   }
 
   toggleDisplay = (subheaderId) => {
@@ -63,7 +63,7 @@ class TodoContainer extends Component {
             name="To Do"
             toggleDisplay={this.toggleDisplay}
             up={this.state.display.get(1)[1]}
-            />
+          />
           <div id="wrapper-1">
             {this.props.todos.map((todo) => {
               return (
