@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchField from "./SearchField";
 import SideMenuButton from "./SideMenuButton";
+import ColorMenu from "./ColorMenu";
 import SortMenu from "./SortMenu";
 import FilterMenu from "./FilterMenu";
 
@@ -45,9 +46,10 @@ class MainHeader extends Component {
         <h1 style={{flex: "3", textAlign: "center"}}>{this.state.name}</h1>
         <div 
           className="widget-container" 
-          style={{display: "flex", flexDirection: "row", justifyContent: "space-between", flex: "1"}}
+          style={{display: "flex", flexDirection: "row", flex: "1"}}
         >
           <SearchField />
+          <ColorMenu />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
         </div>

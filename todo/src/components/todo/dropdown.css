@@ -11,6 +11,12 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  margin-left: 8px;
+}
+
+.colorMenu {
+  margin-right: 4px;
+  margin-left: 0;
 }
 
 /* Dropdown Content (Hidden by Default) */
