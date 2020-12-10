@@ -21,7 +21,7 @@ class DateMenu extends Component {
   }
 
   dateAssembler = () => {
-    if (!isNaN(this.state.dateDisplay.getFullYear())) {
+    if (!isNaN(this.state.dateDisplay.getFullYear()) && this.props.deadline !== null) {
       return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth() + 1}-${this.state.dateDisplay.getDate()}`;
     } else {
       return "";
@@ -29,7 +29,7 @@ class DateMenu extends Component {
   }
 
   deleteDeadline = () => {
-    if (this.props.deadline !== "0000-00-00") {
+    if (this.props.deadline !== "0000-00-00" && this.props.deadline !== null) {
       return <button
           onClick={this.props.setTodoDeadlineNull.bind(this, this.props.todoId)}
           style={this.props.getButtonStyle()}
