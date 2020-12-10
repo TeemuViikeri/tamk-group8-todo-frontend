@@ -5,9 +5,7 @@ import TodoContainer from "./components/todo/TodoContainer";
 import Dock from "./components/todo/Dock";
 import axios from "axios";
 
-// const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
-// const apikey = process.env.REACT_APP_BACKEND_APIKEY;
-const url = "http://localhost:8080/api/";
+const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
 const apikey = process.env.REACT_APP_BACKEND_APIKEY;
 
 class App extends Component {
