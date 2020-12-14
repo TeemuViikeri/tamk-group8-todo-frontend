@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import Subheader from "./Subheader";
+import ReactPaginate from 'react-paginate';
+import "./pagination.css"
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -13,6 +15,8 @@ class TodoContainer extends Component {
     this.state = {
       todos: [],
       display: map,
+      notDoneCurrentPage: 0,
+      doneCurrentPage: 0,
     };
   }
 
@@ -54,6 +58,34 @@ class TodoContainer extends Component {
     this.setState({ display: m })
   }
 
+  // figure out why page count is stuck at 1
+  // it works if you give it a higher int.
+  handleNotDonePageClick = (e) => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * this.props.getPaginationLimit(false);
+
+    this.props.setOffset(false, offset);
+    this.setState({
+        notDoneCurrentPage: selectedPage,
+    }, () => {
+        this.props.getTasks(false)
+    });
+
+  };
+
+  handleDonePageClick = (e) => {
+    const selectedPage = e.selected;
+    const offset = selectedPage * this.props.getPaginationLimit(true);
+
+    this.props.setOffset(true, offset);
+    this.setState({
+        doneCurrentPage: selectedPage,
+    }, () => {
+        this.props.getTasks(true)
+    });
+
+  };
+
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
@@ -83,6 +115,20 @@ class TodoContainer extends Component {
               );
             })}
           </div>
+          <div>
+            <ReactPaginate
+              previousLabel={"prev"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              pageCount={this.props.notDonePageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handleNotDonePageClick}
+              containerClassName={"pagination"}
+              subContainerClassName={"pages pagination"}
+              activeClassName={"active"}/>
+          </div>
         </div>
         <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
           <Subheader  
@@ -109,6 +155,20 @@ class TodoContainer extends Component {
                 />
               );
             })}
+          </div>
+          <div>
+            <ReactPaginate
+              previousLabel={"prev"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              pageCount={this.props.donePageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handleDonePageClick}
+              containerClassName={"pagination"}
+              subContainerClassName={"pages pagination"}
+              activeClassName={"active"}/>
           </div>
         </div>
       </div>

@@ -93,6 +93,8 @@ class TodoItem extends Component {
   setPriorityDialog = () => {
     confirmAlert({
       title: `Give ${this.props.todo.title} a priority.`,
+      // Yes, this gives a console error because the message isn't a string
+      // No, we can't fix it.
       message: <Slider 
                   min={1} 
                   max={5} 
@@ -108,6 +110,8 @@ class TodoItem extends Component {
           label: "Set",
           onClick: () => this.props.setTodoPriority(
             this.props.todo.id, 
+            // confirmAlert won't play nice with rc-slider 
+            // so we have to use this abomination.
             document.getElementsByClassName("rc-slider-handle")[0].getAttribute("aria-valuenow"))
         },
         {

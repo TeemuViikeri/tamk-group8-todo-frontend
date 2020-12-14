@@ -19,10 +19,18 @@ class App extends Component {
       currentList: 1,
       currentColor: 0,
       todos: [],
+      todosCount: 1,
       doneTodos: [],
+      doneTodosCount: 1,
       lists: [],
       refresh: false,
-      sideMenuIsOpen: false
+      sideMenuIsOpen: false,
+      notDonePaginationLimit: 11,
+      notDonePaginationOffset: 0,
+      notDonePageCount: 1,
+      donePaginationLimit: 11,
+      donePaginationOffset: 0,
+      donePageCount: 1,
     };
   }
 
@@ -30,11 +38,39 @@ class App extends Component {
     this.getTasks(true);
     this.getTasks(false);
     this.getLists();
+    this.getTasksCount(true);
+    this.getTasksCount(false);
+    this.getPageCount(true, this.state.donePaginationLimit, this.state.doneTodosCount)
+    this.getPageCount(true, this.state.notDonePaginationLimit, this.state.todosCount)
   }
   
   getTasks = (isDone) => {
-    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&sort=${this.state.orderTasks}`)
-    .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }));
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&sort=${this.state.orderTasks}&limit=${this.getPaginationLimit(isDone)}&offset=${this.getPaginationOffset(isDone)}`)
+    .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }))
+    .then(this.getTasksCount(isDone));
+  }
+
+  // to the method below
+  // 
+
+  getTasksCount = (isDone) => {
+    axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&count=true`)
+    .then((res) => isDone ? this.setState({ doneTodosCount: res.data[0].count }) : this.setState({ todosCount: res.data[0].count }))
+    .then(() => {
+      if (isDone) {
+        this.getPageCount(true, this.state.donePaginationLimit, this.state.doneTodosCount)
+      } else {
+        this.getPageCount(false, this.state.notDonePaginationLimit, this.state.todosCount)
+      }
+      });
+  }
+
+  getPageCount = (isDone, limit, count)  => {
+    if (isDone) {
+      this.setState({ donePageCount: Math.ceil(count / limit) })
+    } else {
+      this.setState({ notDonePageCount: Math.ceil(count / limit) })
+    }
   }
   
   getLists = () => {
@@ -182,12 +218,36 @@ class App extends Component {
     const el = document.getElementById('sideMenu')
     el.style.width = "20%"
     el.style.transition = "width 0.5s"
-  }
+  };
 
   closeSideMenu = () => {
     const el = document.getElementById('sideMenu')
     el.style.width = "0%"
     el.style.transition = "width 0.5s"
+  };
+
+  getPaginationLimit = done => {
+    if (done) {
+      return this.state.donePaginationLimit;
+    } else {
+      return this.state.notDonePaginationLimit;
+    }
+  }
+
+  getPaginationOffset = done => {
+    if (done) {
+      return this.state.donePaginationOffset;
+    } else {
+      return this.state.notDonePaginationOffset;
+    }
+  }
+
+  setOffset = (done, newOffset) => {
+    if (done) {
+      this.setState({ donePaginationOffset: newOffset })
+    } else {
+      this.setState({ notDonePaginationOffset: newOffset })
+    }
   }
 
   setColor = async (id, color) => {
@@ -255,6 +315,14 @@ class App extends Component {
             setTodoDeadlineNull={this.setTodoDeadlineNull}
             flex="21"
             palette={palette}
+            todosCount={this.state.todosCount}
+            doneTodosCount={this.state.doneTodosCount}
+            getPaginationOffset={this.getPaginationOffset}
+            getPaginationLimit={this.getPaginationLimit}
+            setOffset={this.setOffset}
+            getTasks={this.getTasks}
+            notDonePageCount={this.state.notDonePageCount}
+            donePageCount={this.state.donePageCount}
           />
           <Dock 
             addTodo={this.addTodo} 
