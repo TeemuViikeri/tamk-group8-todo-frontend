@@ -90,9 +90,17 @@ class TodoItem extends Component {
     await this.setState({ tempPriority })
   }
 
+  getDialogTitle = title => {
+    if (title.length > 20) {
+      title = title.substring(0, 18) + "...";
+    }
+
+    return title;
+  }
+
   setPriorityDialog = () => {
     confirmAlert({
-      title: `Give ${this.props.todo.title} a priority.`,
+      title: `Give "${this.getDialogTitle(this.props.todo.title)}" a priority.`,
       // Yes, this gives a console error because the message isn't a string
       // No, we can't fix it.
       message: <Slider 
