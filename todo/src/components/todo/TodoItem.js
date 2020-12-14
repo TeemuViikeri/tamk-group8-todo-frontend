@@ -76,7 +76,10 @@ class TodoItem extends Component {
 
   stopDateEditing = (newDeadline) => {
     this.setState({ isDateEditing: false})
-    this.props.setTodoDeadline(this.props.todo.id, newDeadline)
+    
+    if (newDeadline !== undefined) {
+      this.props.setTodoDeadline(this.props.todo.id, newDeadline)
+    }
   }
 
   startDateEditing = () => {
@@ -178,6 +181,7 @@ class TodoItem extends Component {
           <FontAwesomeIcon icon={faEraser} />
         </button>
         <DateMenu 
+          palette={this.props.palette}
           stopDateEditing={this.stopDateEditing}
           todoId={id}
           deadline={this.props.todo.deadline}
