@@ -11,7 +11,7 @@ class TextInput extends Component {
       border: "none",
       borderBottom: this.props.borderBottom,
       borderRadius: this.props.borderRadiusInput,
-      color: "black",
+      color: this.props.textColorInput,
       backgroundColor: this.props.bgColorInput,
       height: this.props.heightInput
     };
