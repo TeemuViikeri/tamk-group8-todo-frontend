@@ -7,7 +7,8 @@ class ListInput extends Component {
       margin: this.props.marginInput,
       border: "none",
       borderRadius: this.props.borderRadiusInput,
-      color: "black",
+      color: this.props.textColorInput,
+      backgroundColor: this.props.bgColorInput,
       flex: this.props.flexInput
     };
   };
