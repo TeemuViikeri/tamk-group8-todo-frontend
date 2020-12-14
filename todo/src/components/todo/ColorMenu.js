@@ -57,7 +57,7 @@ class FilterMenu extends React.Component {
             onClick={this.props.setColor.bind(this, this.props.currentList, 1 )}
             style={{ 
               display: "inline-block",
-              backgroundColor: "blue",
+              backgroundColor: "#2554C7",
               width: "24px",
               height: "24px",
               margin: "4px",
@@ -70,7 +70,7 @@ class FilterMenu extends React.Component {
             onClick={this.props.setColor.bind(this, this.props.currentList, 2 )}
             style={{ 
               display: "inline-block",
-              backgroundColor: "green",
+              backgroundColor: "#278427",
               width: "24px",
               height: "24px",
               margin: "4px",
@@ -83,7 +83,7 @@ class FilterMenu extends React.Component {
             onClick={this.props.setColor.bind(this, this.props.currentList, 3 )}
             style={{ 
               display: "inline-block",
-              backgroundColor: "darkviolet",
+              backgroundColor: "#6e2ac7",
               width: "24px",
               height: "24px",
               margin: "4px",
