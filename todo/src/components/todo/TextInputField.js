@@ -62,6 +62,7 @@ class TextInputField extends Component {
           borderBottom={this.props.borderBottom}
           borderRadiusInput={this.props.borderRadiusInput}
           bgColorInput={this.props.bgColorInput}
+          textColorInput={this.props.textColorInput}
           width={this.props.width}
           heightInput={this.props.heightInput}
           />
