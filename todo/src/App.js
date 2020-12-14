@@ -28,9 +28,11 @@ class App extends Component {
       notDonePaginationLimit: 11,
       notDonePaginationOffset: 0,
       notDonePageCount: 1,
+      notDoneCurrentPage: 0,
       donePaginationLimit: 11,
       donePaginationOffset: 0,
       donePageCount: 1,
+      doneCurrentPage: 0,
     };
   }
 
@@ -49,9 +51,6 @@ class App extends Component {
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }))
     .then(this.getTasksCount(isDone));
   }
-
-  // to the method below
-  // 
 
   getTasksCount = (isDone) => {
     axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&count=true`)
@@ -250,6 +249,14 @@ class App extends Component {
     }
   }
 
+  setCurrentPage = (done, newPage) => {
+    if (done) {
+      this.setState({ doneCurrentPage: newPage })
+    } else {
+      this.setState({ notDoneCurrentPage: newPage })
+    }
+  }
+
   setColor = async (id, color) => {
     await axios.put(`${url}lists/${id}?apikey=${apikey}`, { color })
     await this.getLists()
@@ -323,6 +330,10 @@ class App extends Component {
             getTasks={this.getTasks}
             notDonePageCount={this.state.notDonePageCount}
             donePageCount={this.state.donePageCount}
+            setCurrentPage={this.setCurrentPage}
+            notDoneCurrentPage={this.state.notDoneCurrentPage}
+            doneCurrentPage={this.state.doneCurrentPage}
+            currentList={this.state.currentList}
           />
           <Dock 
             addTodo={this.addTodo} 

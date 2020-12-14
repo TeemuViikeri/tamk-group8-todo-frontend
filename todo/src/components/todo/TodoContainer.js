@@ -20,10 +20,20 @@ class TodoContainer extends Component {
     };
   }
 
-  componentDidUpdate(prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (this.state.display !== prevState.display) {
       this.getWrapperStyle("wrapper-1")
       this.getWrapperStyle("wrapper-2")
+    }
+
+    // If list is changed reset pagination.
+    if (this.props.currentList !== prevProps.currentList) {
+      this.setState({ notDoneCurrentPage: 0 })
+      this.setState({ doneCurrentPage: 0 })
+      this.props.setOffset(true, 0)
+      this.props.setOffset(false, 0)
+      this.props.setCurrentPage(true, this.state.doneCurrentPage)
+      this.props.setCurrentPage(false, this.state.notDoneCurrentPage)
     }
   }
 
@@ -36,7 +46,7 @@ class TodoContainer extends Component {
     }
   }
 
-  getWrapperStyle = (wrapperId) => {
+  getWrapperStyle = (wrapperId) => {    
     const e = document.getElementById(wrapperId);
     const id = wrapperId.slice(-1, wrapperId.length); 
     const d = this.state.display.get(Number(id))[0];
@@ -58,13 +68,14 @@ class TodoContainer extends Component {
     this.setState({ display: m })
   }
 
-  // figure out why page count is stuck at 1
-  // it works if you give it a higher int.
+  // take selected page and calculate offset based on pagination limit and page number.
+  // Then update current page and reload tasks.
   handleNotDonePageClick = (e) => {
     const selectedPage = e.selected;
     const offset = selectedPage * this.props.getPaginationLimit(false);
 
     this.props.setOffset(false, offset);
+    this.props.setCurrentPage(false, selectedPage);
     this.setState({
         notDoneCurrentPage: selectedPage,
     }, () => {
@@ -78,6 +89,7 @@ class TodoContainer extends Component {
     const offset = selectedPage * this.props.getPaginationLimit(true);
 
     this.props.setOffset(true, offset);
+    this.props.setCurrentPage(true, selectedPage)
     this.setState({
         doneCurrentPage: selectedPage,
     }, () => {
@@ -127,7 +139,9 @@ class TodoContainer extends Component {
               onPageChange={this.handleNotDonePageClick}
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}
-              activeClassName={"active"}/>
+              activeClassName={"active"}
+              forcePage={this.state.notDoneCurrentPage}
+              />
           </div>
         </div>
         <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
@@ -168,7 +182,9 @@ class TodoContainer extends Component {
               onPageChange={this.handleDonePageClick}
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}
-              activeClassName={"active"}/>
+              activeClassName={"active"}
+              forcePage={this.state.doneCurrentPage}
+              />
           </div>
         </div>
       </div>
