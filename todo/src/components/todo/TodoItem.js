@@ -52,7 +52,8 @@ class TodoItem extends Component {
       color: this.props.palette.fillTextColor,
       fontWeight: "600",
       textDecoration: this.props.todo.is_done ? "line-through" : "none",
-      backgroundColor: this.props.palette.fillTask
+      backgroundColor: this.props.palette.fillTask,
+      whiteSpace: "pre-wrap",
     };
   };
 
@@ -149,47 +150,45 @@ class TodoItem extends Component {
         }}
         style={this.getItemStyle()}
       >
-        <span>
-          <input
-            type="checkbox"
-            onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
-            style={this.getCheckboxStyle()}
-            checked={this.props.checked}
-          />
-          <label htmlFor="checkbox"></label> {title}{" "}
-          <button
-            onClick={() => this.handleEditEvent()}
-            style={this.getButtonStyle()}
-          >
-            <FontAwesomeIcon icon={faEdit} />
-          </button>
-          <button
-            onClick={() => this.startDateEditing()}
-            style={this.getButtonStyle()}
-          >
-            <FontAwesomeIcon icon={faCalendarAlt} />
-          </button>
-          <button
-            onClick={() => this.setPriorityDialog()}
-            style={this.getButtonStyle()}
-          >
-            <FontAwesomeIcon icon={faWeightHanging} />
-          </button>
-          <button
-            onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
-            style={this.getButtonStyle()}
-          >
-            <FontAwesomeIcon icon={faEraser} />
-          </button>
-          <DateMenu 
-            stopDateEditing={this.stopDateEditing}
-            todoId={id}
-            deadline={this.props.todo.deadline}
-            isDateEditing={this.state.isDateEditing}
-            getButtonStyle={this.getButtonStyle}
-            setTodoDeadlineNull={this.props.setTodoDeadlineNull}
-          />
-        </span>
+        <input
+          type="checkbox"
+          onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
+          style={this.getCheckboxStyle()}
+          checked={this.props.checked}
+        />
+        <label htmlFor="checkbox"></label> {title}{" "}
+        <button
+          onClick={() => this.handleEditEvent()}
+          style={this.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faEdit} />
+        </button>
+        <button
+          onClick={() => this.startDateEditing()}
+          style={this.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </button>
+        <button
+          onClick={() => this.setPriorityDialog()}
+          style={this.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faWeightHanging} />
+        </button>
+        <button
+          onClick={this.props.deleteTodo.bind(this, id, this.props.checked)}
+          style={this.getButtonStyle()}
+        >
+          <FontAwesomeIcon icon={faEraser} />
+        </button>
+        <DateMenu 
+          stopDateEditing={this.stopDateEditing}
+          todoId={id}
+          deadline={this.props.todo.deadline}
+          isDateEditing={this.state.isDateEditing}
+          getButtonStyle={this.getButtonStyle}
+          setTodoDeadlineNull={this.props.setTodoDeadlineNull}
+        />
       </div>
       : // Otherwise...
       <TextInputField 

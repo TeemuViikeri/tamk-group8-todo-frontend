@@ -35,7 +35,11 @@ class TextInputField extends Component {
     }
 
     if (this.props.editList !== undefined) {
-      console.log("here");
+      if (this.state.title === "") {
+        this.props.finishEditing();
+        return
+      }
+
       this.props.editList(this.props.editId, this.state.title)
       this.setState({ title: "" });
       this.props.finishEditing();
