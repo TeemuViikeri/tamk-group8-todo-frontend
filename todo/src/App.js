@@ -45,13 +45,25 @@ class App extends Component {
     this.getPageCount(true, this.state.donePaginationLimit, this.state.doneTodosCount)
     this.getPageCount(true, this.state.notDonePaginationLimit, this.state.todosCount)
   }
-  
+
+  /**
+   * call backend with APIKey and any required filters and sorters included. 
+   * Pagination included at the end of the string.
+   * 
+   * @param {boolean} isDone so the same function can be used for getting finished and unfinished tasks.
+   */
   getTasks = (isDone) => {
     axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&sort=${this.state.orderTasks}&limit=${this.getPaginationLimit(isDone)}&offset=${this.getPaginationOffset(isDone)}`)
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }))
     .then(this.getTasksCount(isDone));
   }
 
+  /**
+   * Get a count of tasks for pagination from backend to save on the amount of data
+   * that has to be downloaded.
+   * 
+   * @param {boolean} isDone so the same function can be used for counting finished and unfinished tasks.
+   */
   getTasksCount = (isDone) => {
     axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&count=true`)
     .then((res) => isDone ? this.setState({ doneTodosCount: res.data[0].count }) : this.setState({ todosCount: res.data[0].count }))
@@ -64,6 +76,14 @@ class App extends Component {
       });
   }
 
+  /**
+   * Calculate the amount of pages by dividing the amount of tasks
+   * with the limit per page and rounding up.
+   * 
+   * @param {boolean} isDone so the same function can be used with finished and unfinished tasks.
+   * @param {int} limit the amount of tasks that can be loaded at the same time.
+   * @param {int} count The amount of todos.
+   */
   getPageCount = (isDone, limit, count)  => {
     if (isDone) {
       this.setState({ donePageCount: Math.ceil(count / limit) })
@@ -71,13 +91,23 @@ class App extends Component {
       this.setState({ notDonePageCount: Math.ceil(count / limit) })
     }
   }
-  
+
+  /**
+   * get every list from the backend, apikey included.
+   */
   getLists = () => {
     axios.get(`${url}lists/?apikey=${apikey}`).then((res) => {
       this.setState({ lists: res.data });
     });
   }
 
+
+  /**
+   * update database boolean value of given id to the given value.
+   * 
+   * @param {int} id id of the task being modified.
+   * @param {boolean} checked the new value of the todo.
+   */
   toggleTodo = (id, checked) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
@@ -89,6 +119,14 @@ class App extends Component {
       });
   };
 
+  /**
+   * update priority value of given id to priorityValue.
+   * The number is treated to be anywhere between 1 and 5.
+   * 5 means highest priority while 1 means the lowest.
+   * 
+   * @param {int} id id of the task being modified.
+   * @param {int} priorityValue the new priority value being assigned.
+   */
   setTodoPriority = (id, priorityValue) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
@@ -100,12 +138,24 @@ class App extends Component {
       });
   };
     
+  /**
+   * This method is used for updating list names.
+   * 
+   * @param {int} id  id of the list being modified.
+   * @param {string} name the new value of the list name being assigned.
+   */
   editList = (id, name) => {
     axios
       .put(`${url}lists/${id}?apikey=${apikey}`, { name })
       .then(() => this.getLists());
   };
-  
+
+  /**
+   * This method is used for updating task texts.
+   * 
+   * @param {int} id id of the task being modified.
+   * @param {string} title the new value of the task text being assigned.
+   */
   editTodo = (id, title) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, { title })
@@ -115,6 +165,13 @@ class App extends Component {
       });
   };
 
+  /**
+   * This method is used for setting the deadline date of the task.
+   * Only the year, month and day are saved following the ISO 8601 standard.
+   * 
+   * @param {int} id id of the task being modified.
+   * @param {date} deadlineDate the value of the deadline date being assigned.
+   */
   setTodoDeadline = (id, deadlineDate) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
@@ -126,6 +183,12 @@ class App extends Component {
       });
   };
 
+  /**
+   * This method is used for setting the deadline as null.
+   * In the database this appears as "0000-00-00".
+   * 
+   * @param {int} id id of the task being modified.
+   */
   setTodoDeadlineNull = (id) => {
     axios
       .put(`${url}tasks/${id}?apikey=${apikey}`, {
@@ -137,6 +200,12 @@ class App extends Component {
       });
   };
 
+  /**
+   * This method deletes the task of given Id from local- and serverside data.
+   * 
+   * @param {int} id id of the task being deleted.
+   * @param {*} checked used to determine where to delete the local data.
+   */
   deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
       checked ?
@@ -149,6 +218,11 @@ class App extends Component {
     });
   };
 
+  /**
+   * delete the list of given id from local- and serverside data.
+   * 
+   * @param {int} id id of the list being deleted.
+   */
   deleteList = (id) => {
     axios.delete(`${url}lists/${id}?apikey=${apikey}`).then(() => {
       this.setState({
@@ -157,6 +231,13 @@ class App extends Component {
     });
   };
 
+  /**
+   * add a new task and include list Id for the database to use as a foreign key
+   * and the text content of the task, rest of the data is assigned as defaults.
+   * 
+   * @param {int} listId id of the list the list the task will be included in.
+   * @param {string} title the text content of the new task.
+   */
   addTodo = (listId, title) => {
     axios
       .post(`${url}tasks/?apikey=${apikey}`, {
@@ -166,6 +247,12 @@ class App extends Component {
       .then(() => this.getTasks(false));
   };
 
+  /**
+   * Create a new list, only name is required since everything else is assigned
+   * to its default values.
+   * 
+   * @param {string} name The name of the new list.
+   */
   addList = (name) => {
     axios
       .post(`${url}lists/?apikey=${apikey}`, {
@@ -179,18 +266,32 @@ class App extends Component {
       });
   };
 
+  /**
+   * Update currentList value and load new tasks with the value as a filter.
+   * 
+   * @param {int} listId id of the list that'll be used in the getTasks filters.
+   */
   setList = async (listId) => {
     await this.setState({ currentList: listId });
     this.getTasks(false);
     this.getTasks(true);
   };
 
+  /**
+   * assign sorter(s) and refresh current tasks with the new sorter.
+   * 
+   * @param {string} order includes sorting values separated by a "," symbol.
+   */
   setOrderTasks = async (order) => {
     await this.setState({ orderTasks: order });
     this.getTasks(false);
     this.getTasks(true);
   };
 
+  /**
+   * Iterate through current array of lists and find where Id matches currentList.
+   * Then return the name of that list to be used in the MainHeader.js
+   */
   getListNameById = () => {
     for (const list of this.state.lists) {
       if (list['id'] === this.state.currentList) {
@@ -199,12 +300,26 @@ class App extends Component {
     }
   };
 
+  /**
+   * Set deadline filter to be used with getTasks()
+   * Then refresh the tasks to apply the filter.
+   * 
+   * Only used in FilterMenu.js and chooses between showing all tasks or
+   * only those either with or without a deadline date.
+   * 
+   * @param {string} dlFilter is sent either empty, "null" or "notNull" String.
+   */
   setDeadlineFilter = async (dlFilter) => {
     await this.setState({ deadlineFilter: dlFilter });
     this.getTasks(false);
     this.getTasks(true);
   };
 
+  /**
+   * used to either add the deadline filter to getTasks
+   * or if the deadlineFilter String is empty return an empty string
+   * as to not mess with the rest of the get request.
+   */
   getDeadlineFilter = () => {
     let dl = `&deadline=${this.state.deadlineFilter}`;
     if (dl === '&deadline=') {
@@ -213,6 +328,7 @@ class App extends Component {
     return dl;
   };
 
+  // Used for animated opening and closing of the list menu.
   openSideMenu = () => {
     const el = document.getElementById('sideMenu')
     el.style.width = "20%"
@@ -225,6 +341,10 @@ class App extends Component {
     el.style.transition = "width 0.5s"
   };
 
+  /** 
+   * Getters and setters for client-side pagination variables.
+   * @param {boolean} done is used on each to switch between finished and unfinished tasks.
+   */
   getPaginationLimit = done => {
     if (done) {
       return this.state.donePaginationLimit;
@@ -257,6 +377,7 @@ class App extends Component {
     }
   }
 
+  // Color getters and setters.
   setColor = async (id, color) => {
     await axios.put(`${url}lists/${id}?apikey=${apikey}`, { color })
     await this.getLists()
@@ -283,6 +404,7 @@ class App extends Component {
           height: "100vh",
         }}
       >
+        {/* Includes lists and the input for adding new lists. */}
         <SideMenu
           lists={this.state.lists}
           deleteList={this.deleteList}
@@ -300,6 +422,7 @@ class App extends Component {
             flexDirection: "column"
           }}
         >
+          {/* Includes the title and dropdown menus for customization.*/}
           <MainHeader 
             name={this.getListNameById()}
             setOrderTasks={this.setOrderTasks}
@@ -311,6 +434,10 @@ class App extends Component {
             currentList={this.state.currentList}
             palette={palette}
           />
+
+          {/* Includes tasks, all of their associated buttons 
+              as well as pagination, subheaders and 
+              carets for collapsing the content. */}
           <TodoContainer
             todos={this.state.todos}
             doneTodos={this.state.doneTodos}
@@ -335,6 +462,7 @@ class App extends Component {
             doneCurrentPage={this.state.doneCurrentPage}
             currentList={this.state.currentList}
           />
+          {/* Include inputs for creating new tasks.*/}
           <Dock 
             addTodo={this.addTodo} 
             currentList={this.state.currentList}
