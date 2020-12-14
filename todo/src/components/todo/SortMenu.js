@@ -23,8 +23,8 @@ class SortMenu extends React.Component {
           <button onClick={this.props.setOrderTasks.bind(this, "-edited")}>Edited descending</button>
           <button onClick={this.props.setOrderTasks.bind(this, "+priority")}>Priority ascending</button>
           <button onClick={this.props.setOrderTasks.bind(this, "-priority")}>Priority descending</button>
-          <button onClick={this.props.setOrderTasks.bind(this, "+deadline")}>deadline ascending</button>
-          <button onClick={this.props.setOrderTasks.bind(this, "-deadline")}>deadline descending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "+deadline")}>Deadline ascending</button>
+          <button onClick={this.props.setOrderTasks.bind(this, "-deadline")}>Deadline descending</button>
         </div>
     </div> 
     )
