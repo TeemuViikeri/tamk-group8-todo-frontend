@@ -13,8 +13,8 @@ class Subheader extends Component {
 
   getH2Style = () => {
     return {
-      color: "white",
-      backgroundColor: "#cc5252",
+      color: this.props.palette.fillHeaderColor,
+      backgroundColor: this.props.palette.primary,
       padding: "15px 20px 15px 20px",
       textAlign: "left",
     };
@@ -28,6 +28,7 @@ class Subheader extends Component {
           id={this.props.id}
           toggleDisplay={this.props.toggleDisplay}  
           up={this.props.up}
+          palette={this.props.palette}
         />
       </h2>
     );

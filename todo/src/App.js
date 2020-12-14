@@ -4,6 +4,7 @@ import MainHeader from "./components/todo/MainHeader";
 import TodoContainer from "./components/todo/TodoContainer";
 import Dock from "./components/todo/Dock";
 import axios from "axios";
+import colors from "./colors";
 
 const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
 const apikey = process.env.REACT_APP_BACKEND_APIKEY;
@@ -11,10 +12,12 @@ const apikey = process.env.REACT_APP_BACKEND_APIKEY;
 class App extends Component {
   constructor() {
     super();
+
     this.state = {
       deadlineFilter: '',
       orderTasks: '+created',
       currentList: 1,
+      currentColor: 0,
       todos: [],
       todosCount: 1,
       doneTodos: [],
@@ -254,15 +257,32 @@ class App extends Component {
     }
   }
 
-  setColor = (id, color) => {
-    axios
-      .put(`${url}lists/${id}?apikey=${apikey}`, { color })
-      .then(() => this.getLists());
+  setColor = async (id, color) => {
+    await axios.put(`${url}lists/${id}?apikey=${apikey}`, { color })
+    await this.getLists()
+    await this.setState({ currentColor: color })
+  }
+
+  getCurrentColor = () => {
+    const colorCode = this.state.currentColor
+    const colorCodes = {red: 0, blue: 1, green: 2, violet: 3, dark: 4}
+
+    for (const key in colorCodes) {
+      if (colorCodes[key] === colorCode) return key;
+    }
   }
 
   render() {
+    const color = this.getCurrentColor();
+    const palette = colors[color];
+    document.body.style.backgroundColor = palette.bgPrimary;
+
     return (
-      <div className="app-container">
+      <div className="app-container" style={{
+          display: "flex",
+          height: "100vh",
+        }}
+      >
         <SideMenu
           lists={this.state.lists}
           deleteList={this.deleteList}
@@ -270,8 +290,16 @@ class App extends Component {
           addList={this.addList}
           editList={this.editList}
           currentList={this.state.currentList}
+          palette={palette}
+          
         />
-        <div className={"main-container"}>
+        <div className={"main-container"} style={{
+            flex: "1 1 auto",
+            backgroundColor: palette.bgPrimary,
+            display: "flex",
+            flexDirection: "column"
+          }}
+        >
           <MainHeader 
             name={this.getListNameById()}
             setOrderTasks={this.setOrderTasks}
@@ -281,6 +309,7 @@ class App extends Component {
             closeSideMenu={this.closeSideMenu}
             setColor={this.setColor}
             currentList={this.state.currentList}
+            palette={palette}
           />
           <TodoContainer
             todos={this.state.todos}
@@ -292,6 +321,7 @@ class App extends Component {
             deleteTodo={this.deleteTodo}
             setTodoDeadlineNull={this.setTodoDeadlineNull}
             flex="21"
+            palette={palette}
             todosCount={this.state.todosCount}
             doneTodosCount={this.state.doneTodosCount}
             getPaginationOffset={this.getPaginationOffset}
@@ -306,10 +336,10 @@ class App extends Component {
             currentList={this.state.currentList}
           />
           <Dock 
-            bgColor="#cc5252"
             addTodo={this.addTodo} 
             currentList={this.state.currentList}
             flex="1"
+            palette={palette}
             />
         </div>
       </div>

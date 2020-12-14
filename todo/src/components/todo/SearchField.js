@@ -36,7 +36,10 @@ class SearchField extends Component {
           borderBottom="none"
           borderRadiusInput="12px 0 0 12px"
           borderRadiusSubmit="0 12px 12px 0"
-          bgColorSubmit="gainsboro"
+          bgColorInput={this.props.palette.fillInputColor}
+          textColorInput={this.props.palette.fillTextColor}
+          bgColorSubmit={this.props.palette.fillButton}
+          textColorSubmit={this.props.palette.fillTextColor}
         />
       </div>
     )

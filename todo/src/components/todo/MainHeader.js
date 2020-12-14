@@ -28,8 +28,8 @@ class MainHeader extends Component {
       flex: this.props.flex,
       height: "72px",
       lineHeight: "36px",
-      color: "white",
-      background: "#cc5252",
+      color: this.props.palette.fillHeaderColor,
+      backgroundColor: this.props.palette.primary,
       padding: "15px 20px",
       textAlign: "left",
     };
@@ -48,8 +48,8 @@ class MainHeader extends Component {
           className="widget-container" 
           style={{display: "flex", flexDirection: "row", flex: "1"}}
         >
-          <SearchField />
-          <ColorMenu setColor={this.props.setColor} currentList={this.props.currentList} />
+          <SearchField palette={this.props.palette} />
+          <ColorMenu setColor={this.props.setColor} currentList={this.props.currentList} palette={this.props.palette} />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />
         </div>

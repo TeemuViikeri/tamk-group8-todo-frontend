@@ -13,7 +13,7 @@ class Dock extends Component {
 
   getStyle = () => {
     return {
-      backgroundColor: this.props.bgColor,
+      backgroundColor: this.props.palette.primary,
       lineHeight: "35px",
       flex: this.props.flex
     };
@@ -33,8 +33,10 @@ class Dock extends Component {
             paddingSubmit="10px"
             marginInput="15px 0 15px 20px"
             marginSubmit="15px 20px 15px 0"
-            bgColorSubmit="gainsboro"
-            textColorSubmit="black"
+            bgColorSubmit={this.props.palette.fillButton}
+            textColorSubmit={this.props.palette.fillTextColor}
+            bgColorInput={this.props.palette.fillInputColor}
+            textColorInput={this.props.palette.fillTextColor}
             placeholder="Any homework to do?"
             borderRadiusInput="12px 0 0 12px"
             borderRadiusSubmit="0 12px 12px 0"

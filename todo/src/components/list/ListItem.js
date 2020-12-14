@@ -24,7 +24,7 @@ class TodoItem extends Component {
       fontSize: "1em",
       margin: "1% 1% 1% 0",
       textAlign: "left",
-      color: this.props.currentList === this.props.id ? "white" : "#333",
+      color: this.props.currentList === this.props.id ? this.props.palette.fillActiveTextColor : this.props.palette.fillTextColor,
       fontStyle: this.props.currentList === this.props.id ? "italic" : "normal",
       fontWeight: "600",
       borderRadius: "0 15px 15px 0",
@@ -34,7 +34,7 @@ class TodoItem extends Component {
       borderLeft: "none",
       width: "90%",
       cursor: "pointer",
-      backgroundColor: this.props.currentList === this.props.id ? "#cc5252" : "white"
+      backgroundColor: this.props.currentList === this.props.id ? this.props.palette.fillActiveList : this.props.palette.fillList
     };
   };
 
@@ -46,7 +46,7 @@ class TodoItem extends Component {
       border: "none",
       fontWeight: "bold",
       padding: "2px",
-      color: this.props.currentList === this.props.id ? "white" : "black",
+      color: this.props.currentList === this.props.id ? this.props.palette.fillActiveTextColor : this.props.palette.fillTextColor,
       display: this.state.btnStyle.display,
       zIndex: "1",
       float: "right",
@@ -121,8 +121,8 @@ class TodoItem extends Component {
       <TextInputField 
         btnText="Edit" 
         editList={this.props.editList}
-        bgColorSubmit="#cc5252"
-        textColorSubmit="white"
+        bgColorSubmit={this.props.palette.primary}
+        textColorSubmit={this.props.palette.fillActiveTextColor}
         placeholder={name}
         editId={id}
         finishEditing={this.finishEditing}

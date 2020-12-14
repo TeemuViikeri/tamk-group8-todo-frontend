@@ -40,7 +40,9 @@ class ListInputField extends Component {
       >
         <ListInput 
           title={this.state.listName} 
-          onChange={this.onChange} 
+          onChange={this.onChange}
+          textColorInput={this.props.palette.fillTextColor}
+          bgColorInput={this.props.palette.fillInputColor}
           flexInput="4.5" 
           paddingInput="10px"
           marginInput="15px 0 15px 20px" 
@@ -49,7 +51,8 @@ class ListInputField extends Component {
         <SubmitButton 
           text="Add" 
           flexBtn="1" 
-          bgColorSubmit="gainsboro" 
+          bgColorSubmit={this.props.palette.fillButton}
+          textColorSubmit={this.props.palette.fillTextColor}
           paddingSubmit="10px"
           marginSubmit="15px 20px 15px 0" 
           borderRadiusSubmit="0 12px 12px 0" 
