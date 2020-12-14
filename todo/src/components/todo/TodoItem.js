@@ -23,18 +23,22 @@ class TodoItem extends Component {
       isEditing: false,
       isDateEditing: false,
       tempPriority: 3,
-      sliderColor: "#cc5252",
+      sliderColor: this.props.palette.primary,
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.palette.primary !== prevProps.palette.primary) {
+      this.setState({ sliderColor: this.props.palette.primary })
+    }
   }
 
   getCheckboxStyle = () => {
     return {
       width: "1.3em",
       height: "1.3em",
-      backgroundColor: "white",
       borderRadius: "50%",
-      verticalAlign: "-0.3em",
-      border: "1px solid #ddd",
+      verticalAlign: "-0.3em",  
       outline: "none",
       cursor: "pointer",
     };
@@ -45,10 +49,10 @@ class TodoItem extends Component {
       padding: "15px 20px",
       marginBottom: "8px",
       textAlign: "left",
-      color: "#333",
+      color: this.props.palette.fillTextColor,
       fontWeight: "600",
       textDecoration: this.props.todo.is_done ? "line-through" : "none",
-      backgroundColor: "#f8f8f8"
+      backgroundColor: this.props.palette.fillTask
     };
   };
 
@@ -59,7 +63,7 @@ class TodoItem extends Component {
       border: "none",
       fontWeight: "bold",
       padding: "2px",
-      color: "black",
+      color: this.props.palette.fillTextColor,
       verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
     };
@@ -178,8 +182,8 @@ class TodoItem extends Component {
         editTodo={this.props.editTodo}
         finishEditing={this.finishEditing}
         btnText="Edit" 
-        bgColorSubmit="#cc5252"
-        textColorSubmit="white"
+        bgColorSubmit={this.props.palette.fillEditBg}
+        textColorSubmit={this.props.palette.fillEditText}
         height="65px"
         paddingInput="10px"
         paddingSubmit="10px"
