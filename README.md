@@ -1,8 +1,10 @@
 # tamk-group8-todo-frontend
-Teemu Viikeri
+Teemu Viikeri  
 Aleksi Pynnönen
 
+
 Huomioitavat toiminnot:  
+
 Muokattava ulkonäkö oikeassa yläkulmassa löytyvästä menusta.  
 Tehtävälistat sekä listavalikko ovat luhistettavissa.  
 Tekstihaku(WIP).  
