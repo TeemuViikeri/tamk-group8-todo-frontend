@@ -90,6 +90,7 @@ class TodoItem extends Component {
     await this.setState({ tempPriority })
   }
 
+  // Stop title from overflowing the confirmAlert for the priority slider.
   getDialogTitle = title => {
     if (title.length > 20) {
       title = title.substring(0, 18) + "...";
@@ -98,6 +99,9 @@ class TodoItem extends Component {
     return title;
   }
 
+  // Create a confirmation alert with the message being replaced by rc-slider.
+  // Set button sets the new todo priority by reading from the elements due to
+  // react-confirm-alert and rc-slider having issues with each other.
   setPriorityDialog = () => {
     confirmAlert({
       title: `Give "${this.getDialogTitle(this.props.todo.title)}" a priority.`,
