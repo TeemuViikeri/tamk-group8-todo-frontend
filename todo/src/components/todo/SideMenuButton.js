@@ -22,7 +22,7 @@ class SideMenuButton extends Component {
     this.state.menuIsOpen
     ? this.props.closeSideMenu()
     : this.props.openSideMenu()
-    await this.setState({ menuIsOpen: !this.state.menuIsOpen }, () => console.log(this.state.menuIsOpen))
+    await this.setState({ menuIsOpen: !this.state.menuIsOpen })
   }
 
   render() {

@@ -247,6 +247,12 @@ class App extends Component {
     }
   }
 
+  setColor = (id, color) => {
+    axios
+      .put(`${url}lists/${id}?apikey=${apikey}`, { color })
+      .then(() => this.getLists());
+  }
+
   render() {
     return (
       <div className="app-container">
@@ -266,6 +272,8 @@ class App extends Component {
             flex="1"
             openSideMenu={this.openSideMenu}
             closeSideMenu={this.closeSideMenu}
+            setColor={this.setColor}
+            currentList={this.state.currentList}
           />
           <TodoContainer
             todos={this.state.todos}

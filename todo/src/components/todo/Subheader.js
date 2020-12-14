@@ -13,8 +13,9 @@ class Subheader extends Component {
 
   getH2Style = () => {
     return {
-      color: "#cc5252",
-      padding: "15px 20px 0 20px",
+      color: "white",
+      backgroundColor: "#cc5252",
+      padding: "15px 20px 15px 20px",
       textAlign: "left",
     };
   };

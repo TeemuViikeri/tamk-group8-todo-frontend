@@ -11,11 +11,11 @@ class ListInputField extends Component {
   }
 
   onSubmit = (e) => {
+    e.preventDefault();
+
     if (this.state.listName === "") {
       return;
     }
-
-    e.preventDefault();
 
     this.props.addList(this.state.listName);
     this.setState({ title: "" });
@@ -29,7 +29,15 @@ class ListInputField extends Component {
     return (
       <form 
         onSubmit={this.onSubmit} 
-        style={{ display: "flex", height: "65px", width: "100%", justifyContent: "center" }}>
+        style={{ 
+          display: "flex", 
+          flexDirection: "row", 
+          height: "65px", 
+          alignItems: "center",
+          width: "100%",
+          margin: "0 auto"
+        }}
+      >
         <ListInput 
           title={this.state.listName} 
           onChange={this.onChange} 

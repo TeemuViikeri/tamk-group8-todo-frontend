@@ -9,8 +9,8 @@ class TodoContainer extends Component {
     super(props);
 
     const map = new Map();
-    map.set(1, ["block", false])
-    map.set(2, ["block", false])
+    map.set(1, ["92%", false])
+    map.set(2, ["92%", false])
 
     this.state = {
       todos: [],
@@ -36,20 +36,24 @@ class TodoContainer extends Component {
     }
   }
 
-  getWrapperStyle = (wrapperId) => {    
+  getWrapperStyle = (wrapperId) => {
     const e = document.getElementById(wrapperId);
     const id = wrapperId.slice(-1, wrapperId.length); 
     const d = this.state.display.get(Number(id))[0];
-    e.style.display = d;
+    e.style.height = d;
+    e.style.transition = "height 1s"
+    e.style.overflow = "hidden"
   }
 
   toggleDisplay = (subheaderId) => {
     const m = new Map(this.state.display)
     const id = subheaderId.slice(-1, subheaderId.length);
+    // d === displayed height which is either 0px or 92% of parent container
     const d = m.get(Number(id))[0];
+    // b === boolean value for caret: up (true) or down (false)
     const b = m.get(Number(id))[1];
     
-    m.set(Number(id), d === "block" && b === false ? ["none", !b] : ["block", !b]);
+    m.set(Number(id), d === "92%" && b === false ? [0, !b] : ["92%", !b]);
 
     this.setState({ display: m })
   }
@@ -85,13 +89,13 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id={"sub-1"}
             name="To Do"
             toggleDisplay={this.toggleDisplay}
             up={this.state.display.get(1)[1]}
-            />
+          />
           <div id="wrapper-1">
             {this.props.todos.map((todo) => {
               return (
@@ -124,7 +128,7 @@ class TodoContainer extends Component {
               activeClassName={"active"}/>
           </div>
         </div>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id="sub-2"
             name="Done" 

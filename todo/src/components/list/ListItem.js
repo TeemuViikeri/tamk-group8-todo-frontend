@@ -97,7 +97,12 @@ class TodoItem extends Component {
         style={this.getItemStyle()}
       >
         {name}
-        <span style={{display: "flex", flexDirection: "row", justifyContent: "space-around"}}>
+        <span style={{
+            display: "flex", 
+            flexDirection: "row", 
+            justifyContent: "space-around"
+          }}
+        >
           <button
             onClick={() => this.handleEditEvent()}
             style={this.getButtonStyle()}

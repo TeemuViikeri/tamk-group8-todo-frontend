@@ -5,22 +5,49 @@ class Caret extends Component {
     super(props);
 
     this.state = {
-      up: this.props.up,
+      up: false,
     }
   }
 
-  getCaretStyle = () => {
+  componentDidUpdate(prevProps) {
+    if (this.props.up !== prevProps.up) {
+      this.setState({ up: this.props.up });
+    }
+  }
+
+  getUpCaretStyle = () => {
     return {
       display: "inline-block",
       width: "0",
       height: "0",
+      borderWidth: "8px",
       borderStyle: "solid",
-      borderWidth: "6px 6px 0 6px",
-      borderColor: "#cc5252 transparent transparent transparent",
+      borderTopColor: "transparent",
+      borderRightColor: "transparent",
+      borderBottomColor: "white",
+      borderLeftColor: "transparent",
       position: "relative",
-      bottom: "6px",
-      left: "6px",
+      top: "4px",
       cursor: "pointer",
+      float: "right",
+    }
+  }
+
+  getDownCaretStyle = () => {
+    return {
+      display: "inline-block",
+      width: "0",
+      height: "0",
+      borderWidth: "8px",
+      borderStyle: "solid",
+      borderTopColor: "white",
+      borderRightColor: "transparent",
+      borderBottomColor: "transparent",
+      borderLeftColor: "transparent",
+      position: "relative",
+      top: "12px",
+      cursor: "pointer",
+      float: "right",
     }
   }
   
@@ -28,7 +55,7 @@ class Caret extends Component {
     return (
       <span 
         onClick={this.props.toggleDisplay.bind(this, this.props.id)}
-        style={this.getCaretStyle()}
+        style={this.state.up ? this.getUpCaretStyle() : this.getDownCaretStyle()}
       >
       </span>
     );

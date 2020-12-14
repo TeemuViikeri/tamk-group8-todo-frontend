@@ -19,6 +19,11 @@
   margin-left: 0;
 }
 
+.colorMenu .dropdown-content {
+  background-color: #ddd;
+  text-align: center;
+}
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
   display: none;

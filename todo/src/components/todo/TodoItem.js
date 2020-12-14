@@ -37,18 +37,18 @@ class TodoItem extends Component {
       border: "1px solid #ddd",
       outline: "none",
       cursor: "pointer",
-      transform: this.state.checked ? "scale(0.5)" : "scale(1)",
-      transition: "transform 100ms",
     };
   };
 
   getItemStyle = () => {
     return {
       padding: "15px 20px",
+      marginBottom: "8px",
       textAlign: "left",
       color: "#333",
       fontWeight: "600",
       textDecoration: this.props.todo.is_done ? "line-through" : "none",
+      backgroundColor: "#f8f8f8"
     };
   };
 
