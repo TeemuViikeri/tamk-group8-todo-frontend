@@ -44,6 +44,7 @@ class App extends Component {
     this.getTasksCount(false);
     this.getPageCount(true, this.state.donePaginationLimit, this.state.doneTodosCount)
     this.getPageCount(true, this.state.notDonePaginationLimit, this.state.todosCount)
+    this.getListColor(this.state.currentList)
   }
 
   /**
@@ -55,7 +56,20 @@ class App extends Component {
   getTasks = (isDone) => {
     axios.get(`${url}tasks/?apikey=${apikey}&list_id=${this.state.currentList}&is_done=${isDone}${this.getDeadlineFilter()}&sort=${this.state.orderTasks}&limit=${this.getPaginationLimit(isDone)}&offset=${this.getPaginationOffset(isDone)}`)
     .then((res) => isDone ? this.setState({ doneTodos: res.data }) : this.setState({ todos: res.data }))
-    .then(this.getTasksCount(isDone));
+    .then(this.getTasksCount(isDone))
+    .then(this.getListColor(this.state.currentList));
+  }
+
+  /**
+   * Used for checking the color of the list when the page is first loaded
+   * and when switching to a new list/refreshing tasks.
+   * 
+   * @param {int} listId id of the list whose color is being requested.
+   */
+  getListColor = (listId) => {
+    axios.get(`${url}lists/${listId}?apikey=${apikey}`).then((res) => {
+      this.setState({ currentColor: res.data[0].color });
+    });
   }
 
   /**
