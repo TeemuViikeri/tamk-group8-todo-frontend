@@ -39,22 +39,32 @@ class DateMenu extends Component {
     }
   }
 
-  render() {    
+  render() {
     return (
       !this.props.isDateEditing ?
-        <div>
+        <div style={{marginTop: "8px"}}>
           {this.dateAssembler()}
           {this.deleteDeadline()}
         </div>
       : // Else
-        <div className="App">
+        <div style={{marginTop: "8px", display: "flex", alignItems: "center"}}>
           <SingleDatePicker
             date={this.state.date} // momentPropTypes.momentObj or null
             onDateChange={date => this.props.stopDateEditing(date)} // PropTypes.func.isRequired
             focused={this.state.focused} // PropTypes.bool
             onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-            id="your_unique_id" // PropTypes.string.isRequired,
+            id={`date-picker-${this.props.todoId}`} // PropTypes.string.isRequired
+            small={true}
+            hideKeyboardShortcutsPanel={true}
+            withPortal={true}
+            firstDayOfWeek={1}
           />
+          <span 
+            onClick={e => this.props.stopDateEditing()} 
+            style={{padding: "7px", border: "none", marginLeft: "4px", color: this.props.palette.fillClearButton, cursor: "pointer", fontSize: "24px", position: "relative", bottom: "4px"}}
+          >
+            &times;
+          </span>
         </div>
     );
   }
