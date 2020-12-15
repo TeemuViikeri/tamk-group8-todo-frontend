@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import Subheader from "./Subheader";
 import ReactPaginate from 'react-paginate';
-import "./pagination.css"
+import "./pagination0.css";
+import "./pagination1.css";
+import "./pagination2.css";
+import "./pagination3.css";
+import "./pagination4.css";
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -127,7 +131,7 @@ class TodoContainer extends Component {
               );
             })}
           </div>
-          <div>
+          <div className={`colorSet${this.props.currentColor}`}>
             <ReactPaginate
               previousLabel={"prev"}
               nextLabel={"next"}
@@ -170,7 +174,7 @@ class TodoContainer extends Component {
               );
             })}
           </div>
-          <div>
+          <div className={`colorSet${this.props.currentColor}`}>
             <ReactPaginate
               previousLabel={"prev"}
               nextLabel={"next"}

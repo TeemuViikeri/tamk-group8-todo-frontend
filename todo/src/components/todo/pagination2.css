@@ -1,0 +1,40 @@
+.colorSet2 .pagination {
+  margin: 15px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+}
+
+.colorSet2 .pagination > .active > a{
+  background-color: #278427 ;
+  border-color: #278427 ;
+  color: #fff;
+}
+
+.colorSet2 .pagination > li > a{
+  border: 1px solid #278427 ;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.colorSet2 .pagination > li > a{
+  border: 1px solid #278427 ;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.colorSet2 .pagination > .active > a, .colorSet2 .pagination > .active > span, .colorSet2 .pagination > .active > a:hover, .colorSet2 .pagination > .active > span:hover, .colorSet2 .pagination > .active > a:focus, .colorSet2 .pagination > .active > span:focus{
+  background-color:#278427 ;
+  border-color: #278427;
+  outline: none ;
+}
+
+.colorSet2 .pagination > li > a, .colorSet2 .pagination > li > span{
+  color: #278427
+}
+
+.colorSet2 .pagination > li:first-child > a, .colorSet2 .pagination > li:first-child > span, .colorSet2 .pagination > li:last-child > a, .colorSet2 .pagination > li:last-child > span{
+  border-radius: unset
+}

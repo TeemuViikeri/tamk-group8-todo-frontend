@@ -461,6 +461,7 @@ class App extends Component {
             notDoneCurrentPage={this.state.notDoneCurrentPage}
             doneCurrentPage={this.state.doneCurrentPage}
             currentList={this.state.currentList}
+            currentColor={this.state.currentColor}
           />
           {/* Include inputs for creating new tasks.*/}
           <Dock 
