@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import Subheader from "./Subheader";
 import ReactPaginate from 'react-paginate';
+
+// Each css file is identical apart from color settings and .colorSet elements.
+// When colorSet className gets updated the file of that value takes over.
 import "./css/pagination0.css";
 import "./css/pagination1.css";
 import "./css/pagination2.css";
