@@ -216,20 +216,24 @@ class App extends Component {
 
   /**
    * This method deletes the task of given Id from local- and serverside data.
+   * Also refreshes taskCount and PageCount after that for pagination purposes.
    * 
    * @param {int} id id of the task being deleted.
-   * @param {*} checked used to determine where to delete the local data.
+   * @param {boolean} checked used to determine where to delete the local data.
    */
   deleteTodo = (id, checked) => {
     axios.delete(`${url}tasks/${id}?apikey=${apikey}`).then(() => {
-      checked ?
-      this.setState({
-        doneTodos: [...this.state.doneTodos.filter((todo) => todo.id !== id)],
-      })
-      : this.setState({
-        todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-      });
+      if (checked) {
+        this.setState({ doneTodos: [...this.state.doneTodos.filter((todo) => todo.id !== id)] });
+        this.getTasksCount(true);
+        this.getPageCount(true, this.state.donePaginationLimit, this.state.doneTodosCount);
+      } else {
+        this.setState({ todos: [...this.state.todos.filter((todo) => todo.id !== id)] });
+        this.getTasksCount(false);
+        this.getPageCount(false, this.state.notDonePaginationLimit, this.state.todosCount);
+      }
     });
+    
   };
 
   /**
