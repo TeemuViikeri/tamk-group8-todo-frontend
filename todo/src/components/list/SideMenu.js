@@ -46,7 +46,7 @@ class SideMenu extends Component {
       <div id="sideMenu" style={this.getSideMenuStyle()}>
         <h1 style={this.getSideMenuHeaderStyle()}>Lists</h1>
 
-        <div style={{ marginTop: "15px", minHeight: 0, flexGrow: "1"}}>
+        <div style={{ marginTop: "15px", minHeight: 0, flexGrow: "1", overflowY: "auto"}}>
           {this.props.lists.map((list) => {
             return (
               <ListItem
