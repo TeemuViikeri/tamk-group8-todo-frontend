@@ -96,7 +96,7 @@ class TodoItem extends Component {
         onClick={this.props.setList.bind(this, id)}
         style={this.getItemStyle()}
       >
-        {name}
+        <div style={{ textOverflow: "ellipsis", overflow: "hidden" }}>{name}</div>
         <span style={{
             display: "flex", 
             flexDirection: "row", 
