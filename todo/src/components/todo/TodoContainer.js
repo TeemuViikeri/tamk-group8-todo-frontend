@@ -108,7 +108,7 @@ class TodoContainer extends Component {
             up={this.state.display.get(1)[1]}
             palette={this.props.palette}
           />
-          <div id="wrapper-1" style={{ height: "100%", transition: "height 1s", overflow: "auto" }}>
+          <div id="wrapper-1" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
             {this.props.todos.map((todo) => {
               return (
                 <TodoItem
@@ -151,7 +151,7 @@ class TodoContainer extends Component {
             up={this.state.display.get(2)[1]}
             palette={this.props.palette}
           />
-          <div id="wrapper-2" style={{ height: "100%", transition: "height 1s", overflow: "auto" }}>
+          <div id="wrapper-2" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
             {this.props.doneTodos.map((todo) => {
               return (
                 <TodoItem
