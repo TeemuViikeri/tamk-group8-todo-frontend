@@ -13,10 +13,7 @@ class SearchField extends Component {
   getStyle = () => {
     return {
       flex: "1",
-      display: "inline-block", 
-      lineHeight: "36px",
-      position: "relative",
-      bottom: "12px",
+      display: "inline-block"
     }
   }
 
