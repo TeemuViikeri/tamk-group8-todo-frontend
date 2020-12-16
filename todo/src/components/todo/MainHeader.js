@@ -27,7 +27,6 @@ class MainHeader extends Component {
       justifyContent: "space-between",
       flex: this.props.flex,
       height: "72px",
-      lineHeight: "36px",
       color: this.props.palette.fillHeaderColor,
       backgroundColor: this.props.palette.primary,
       padding: "15px 20px",
