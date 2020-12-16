@@ -61,9 +61,18 @@ class TodoItem extends Component {
     this.setState({ isEditing: false })
   }
 
+  // Stop title from overflowing the confirmAlert for the priority slider.
+  getDialogTitle = title => {
+    if (title.length > 20) {
+      title = title.substring(0, 18) + "...";
+    }
+
+    return title;
+  }
+
   submit = (e, id) => {
     confirmAlert({
-      title: `Are you sure you want to delete list ${this.props.list.name}?`,
+      title: `Are you sure you want to delete list ${this.getDialogTitle(this.props.list.name)}?`,
       message: "This action cannot be undone.",
       buttons: [
         {
