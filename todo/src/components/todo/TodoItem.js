@@ -51,7 +51,6 @@ class TodoItem extends Component {
       textAlign: "left",
       color: this.props.palette.fillTextColor,
       fontWeight: "600",
-      textDecoration: this.props.todo.is_done ? "line-through" : "none",
       backgroundColor: this.props.palette.fillTask,
       whiteSpace: "pre-wrap",
     };
@@ -159,7 +158,18 @@ class TodoItem extends Component {
           style={this.getCheckboxStyle()}
           checked={this.props.checked}
         />
-        <label htmlFor="checkbox"></label> {title}{" "}
+        <label htmlFor="checkbox"></label>
+        {" "}
+        <span 
+          className="todo-item" 
+          style={{ 
+            textDecoration: this.props.todo.is_done ? "line-through" : "none",
+            textDecorationSkip: "spaces"
+          }}
+        >
+          {title}
+        </span>
+        {" "}
         <button
           onClick={() => this.handleEditEvent()}
           style={this.getButtonStyle()}
