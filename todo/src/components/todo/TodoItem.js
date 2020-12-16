@@ -13,7 +13,6 @@ import '../react-confirm-alert.css';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-
 class TodoItem extends Component {
   constructor(props) {
     super(props);
@@ -32,17 +31,6 @@ class TodoItem extends Component {
       this.setState({ sliderColor: this.props.palette.primary })
     }
   }
-
-  getCheckboxStyle = () => {
-    return {
-      width: "1.3em",
-      height: "1.3em",
-      borderRadius: "50%",
-      verticalAlign: "-0.3em",  
-      outline: "none",
-      cursor: "pointer",
-    };
-  };
 
   getItemStyle = () => {
     return {
@@ -154,11 +142,19 @@ class TodoItem extends Component {
       >
         <input
           type="checkbox"
+          id={`checkbox-${id}`}
+          className="css-checkbox"
           onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
-          style={this.getCheckboxStyle()}
           checked={this.props.checked}
         />
-        <label htmlFor="checkbox"></label>
+        <label 
+          for={`checkbox-${id}`} 
+          style={
+            this.props.checked
+            ? { backgroundColor: this.props.palette.primary, border: "none", padding: "9px" }
+            : { backgroundColor: this.props.palette.primaryBg, borderWidth: "2px", borderStyle: "solid", borderColor: this.props.palette.primary, padding: "7px" }
+          } 
+        />
         {" "}
         <span 
           style={{ 
@@ -172,7 +168,7 @@ class TodoItem extends Component {
         {" "}
         <button
           onClick={() => this.handleEditEvent()}
-          style={this.getButtonStyle()}
+          style={this.getButtonStyle()}import Checkbox from 
         >
           <FontAwesomeIcon icon={faEdit} />
         </button>
