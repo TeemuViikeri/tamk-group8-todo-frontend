@@ -161,10 +161,10 @@ class TodoItem extends Component {
         <label htmlFor="checkbox"></label>
         {" "}
         <span 
-          className="todo-item" 
           style={{ 
             textDecoration: this.props.todo.is_done ? "line-through" : "none",
-            textDecorationSkip: "spaces"
+            textDecorationSkip: "spaces",
+            overflowWrap: "break-word"
           }}
         >
           {title}
