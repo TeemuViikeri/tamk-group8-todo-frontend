@@ -9,8 +9,8 @@ class TodoContainer extends Component {
     super(props);
 
     const map = new Map();
-    map.set(1, ["92%", false])
-    map.set(2, ["92%", false])
+    map.set(1, ["100%", false])
+    map.set(2, ["100%", false])
 
     this.state = {
       todos: [],
@@ -43,6 +43,7 @@ class TodoContainer extends Component {
       flexDirection: "row",
       justifyContent: "space-evenly",
       flex: this.props.flex,
+      minHeight: "0"
     }
   }
 
@@ -51,19 +52,17 @@ class TodoContainer extends Component {
     const id = wrapperId.slice(-1, wrapperId.length); 
     const d = this.state.display.get(Number(id))[0];
     e.style.height = d;
-    e.style.transition = "height 1s"
-    e.style.overflow = "hidden"
   }
 
   toggleDisplay = (subheaderId) => {
     const m = new Map(this.state.display)
     const id = subheaderId.slice(-1, subheaderId.length);
-    // d === displayed height which is either 0px or 92% of parent container
+    // d === displayed height which is either 0px or 100% of parent container
     const d = m.get(Number(id))[0];
     // b === boolean value for caret: up (true) or down (false)
     const b = m.get(Number(id))[1];
     
-    m.set(Number(id), d === "92%" && b === false ? [0, !b] : ["92%", !b]);
+    m.set(Number(id), d === "100%" && b === false ? [0, !b] : ["100%", !b]);
 
     this.setState({ display: m })
   }
@@ -101,7 +100,7 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
-        <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
+        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id={"sub-1"}
             name="To Do"
@@ -109,7 +108,7 @@ class TodoContainer extends Component {
             up={this.state.display.get(1)[1]}
             palette={this.props.palette}
           />
-          <div id="wrapper-1">
+          <div id="wrapper-1" style={{ height: "100%", transition: "height 1s", overflow: "auto" }}>
             {this.props.todos.map((todo) => {
               return (
                 <TodoItem
@@ -141,10 +140,10 @@ class TodoContainer extends Component {
               subContainerClassName={"pages pagination"}
               activeClassName={"active"}
               forcePage={this.state.notDoneCurrentPage}
-              />
+            />
           </div>
         </div>
-        <div style={{ width: "50%", padding: "24px", margin: "24px" }}>
+        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id="sub-2"
             name="Done" 
@@ -152,7 +151,7 @@ class TodoContainer extends Component {
             up={this.state.display.get(2)[1]}
             palette={this.props.palette}
           />
-          <div id="wrapper-2">
+          <div id="wrapper-2" style={{ height: "100%", transition: "height 1s", overflow: "auto" }}>
             {this.props.doneTodos.map((todo) => {
               return (
                 <TodoItem
@@ -184,7 +183,7 @@ class TodoContainer extends Component {
               subContainerClassName={"pages pagination"}
               activeClassName={"active"}
               forcePage={this.state.doneCurrentPage}
-              />
+            />
           </div>
         </div>
       </div>
