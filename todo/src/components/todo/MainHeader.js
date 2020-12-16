@@ -48,7 +48,7 @@ class MainHeader extends Component {
         </h1>
         <div 
           className="widget-container" 
-          style={{display: "flex", flexDirection: "row", flex: "1"}}
+          style={{display: "flex", flexDirection: "row", flex: "1", alignItems: "center"}}
         >
           <SearchField palette={this.props.palette} />
           <ColorMenu setColor={this.props.setColor} currentList={this.props.currentList} palette={this.props.palette} />
