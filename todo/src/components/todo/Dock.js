@@ -15,7 +15,8 @@ class Dock extends Component {
     return {
       backgroundColor: this.props.palette.primary,
       lineHeight: "35px",
-      flex: this.props.flex
+      height: "65px",
+      flex: this.props.flex,
     };
   };
 
