@@ -401,7 +401,7 @@ class App extends Component {
     return (
       <div className="app-container" style={{
           display: "flex",
-          height: "100vh",
+          height: "100vh"
         }}
       >
         {/* Includes lists and the input for adding new lists. */}
@@ -416,10 +416,12 @@ class App extends Component {
           
         />
         <div className={"main-container"} style={{
-            flex: "1 1 auto",
+            width: "100%",
+            height: "100%",
+            flex: "auto",
             backgroundColor: palette.bgPrimary,
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
           }}
         >
           {/* Includes the title and dropdown menus for customization.*/}
@@ -427,7 +429,7 @@ class App extends Component {
             name={this.getListNameById()}
             setOrderTasks={this.setOrderTasks}
             setDeadlineFilter={this.setDeadlineFilter}
-            flex="1"
+            flex="initial"
             openSideMenu={this.openSideMenu}
             closeSideMenu={this.closeSideMenu}
             setColor={this.setColor}
@@ -447,7 +449,7 @@ class App extends Component {
             editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
             setTodoDeadlineNull={this.setTodoDeadlineNull}
-            flex="21"
+            flex="initial"
             palette={palette}
             todosCount={this.state.todosCount}
             doneTodosCount={this.state.doneTodosCount}
@@ -466,9 +468,9 @@ class App extends Component {
           <Dock 
             addTodo={this.addTodo} 
             currentList={this.state.currentList}
-            flex="1"
+            flex="initial"
             palette={palette}
-            />
+          />
         </div>
       </div>
     );
