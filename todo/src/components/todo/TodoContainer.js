@@ -134,20 +134,23 @@ class TodoContainer extends Component {
             })}
           </div>
           <div className={`colorSet${this.props.currentColor}`}>
-            <ReactPaginate
-              previousLabel={"prev"}
-              nextLabel={"next"}
-              breakLabel={"..."}
-              breakClassName={"break-me"}
-              pageCount={this.props.notDonePageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={this.handleNotDonePageClick}
-              containerClassName={"pagination"}
-              subContainerClassName={"pages pagination"}
-              activeClassName={"active"}
-              forcePage={this.state.notDoneCurrentPage}
-            />
+            {this.props.notDonePageCount > 1
+              ? <ReactPaginate
+                  previousLabel={"prev"}
+                  nextLabel={"next"}
+                  breakLabel={"..."}
+                  breakClassName={"break-me"}
+                  pageCount={this.props.notDonePageCount}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={this.handleNotDonePageClick}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"}
+                  forcePage={this.state.notDoneCurrentPage}
+                />
+              : <p>{""}</p>
+            }
           </div>
         </div>
         <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
@@ -177,20 +180,23 @@ class TodoContainer extends Component {
             })}
           </div>
           <div className={`colorSet${this.props.currentColor}`}>
-            <ReactPaginate
-              previousLabel={"prev"}
-              nextLabel={"next"}
-              breakLabel={"..."}
-              breakClassName={"break-me"}
-              pageCount={this.props.donePageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
-              onPageChange={this.handleDonePageClick}
-              containerClassName={"pagination"}
-              subContainerClassName={"pages pagination"}
-              activeClassName={"active"}
-              forcePage={this.state.doneCurrentPage}
-            />
+          {this.props.donePageCount > 1
+            ? <ReactPaginate
+                previousLabel={"prev"}
+                nextLabel={"next"}
+                breakLabel={"..."}
+                breakClassName={"break-me"}
+                pageCount={this.props.donePageCount}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={this.handleDonePageClick}
+                containerClassName={"pagination"}
+                subContainerClassName={"pages pagination"}
+                activeClassName={"active"}
+                forcePage={this.state.doneCurrentPage}
+              />
+            : <p>{""}</p>
+          }
           </div>
         </div>
       </div>
