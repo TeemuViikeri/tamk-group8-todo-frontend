@@ -463,7 +463,7 @@ class App extends Component {
             editTodo={this.editTodo}
             deleteTodo={this.deleteTodo}
             setTodoDeadlineNull={this.setTodoDeadlineNull}
-            flex="initial"
+            flex="auto"
             palette={palette}
             todosCount={this.state.todosCount}
             doneTodosCount={this.state.doneTodosCount}
