@@ -42,7 +42,10 @@ class MainHeader extends Component {
           openSideMenu={this.props.openSideMenu}
           closeSideMenu={this.props.closeSideMenu}
         />
-        <h1 style={{flex: "3", textAlign: "center"}}>{this.state.name}</h1>
+        <h1 style={{flex: "3", textAlign: "center", 
+                    textOverflow: "ellipsis", overflow: "hidden"}}>
+          {this.state.name}
+        </h1>
         <div 
           className="widget-container" 
           style={{display: "flex", flexDirection: "row", flex: "1"}}

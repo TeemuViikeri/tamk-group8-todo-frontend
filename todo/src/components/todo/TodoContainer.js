@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import Subheader from "./Subheader";
 import ReactPaginate from 'react-paginate';
-import "./pagination.css"
+
+// Each css file is identical apart from color settings and .colorSet elements.
+// When colorSet className gets updated the file of that value takes over.
+import "./css/pagination0.css";
+import "./css/pagination1.css";
+import "./css/pagination2.css";
+import "./css/pagination3.css";
+import "./css/pagination4.css";
 
 class TodoContainer extends Component {
   constructor(props) {
@@ -126,7 +133,7 @@ class TodoContainer extends Component {
               );
             })}
           </div>
-          <div>
+          <div className={`colorSet${this.props.currentColor}`}>
             <ReactPaginate
               previousLabel={"prev"}
               nextLabel={"next"}
@@ -169,7 +176,7 @@ class TodoContainer extends Component {
               );
             })}
           </div>
-          <div>
+          <div className={`colorSet${this.props.currentColor}`}>
             <ReactPaginate
               previousLabel={"prev"}
               nextLabel={"next"}
