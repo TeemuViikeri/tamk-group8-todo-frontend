@@ -42,6 +42,36 @@ class TodoContainer extends Component {
       this.props.setCurrentPage(true, this.state.doneCurrentPage)
       this.props.setCurrentPage(false, this.state.notDoneCurrentPage)
     }
+
+    // Check if pagination is on an empty page, change to previous page if true.
+    this.ifEmptyPage()
+    if (prevProps.donePaginationOffset !== this.props.getPaginationOffset(true)) {
+      this.props.getTasks(true)
+    }
+    if (prevProps.notDonePaginationOffset !== this.props.getPaginationOffset(false)) {
+      this.props.getTasks(false)
+    }
+  }
+
+  ifEmptyPage = async () => {
+    if (this.state.notDoneCurrentPage >= this.props.notDonePageCount) {
+
+      let offset = (this.props.notDonePageCount - 1) * this.props.getPaginationLimit(false);
+      this.props.setOffset(false, offset);
+
+      this.setState({ notDoneCurrentPage: this.props.notDonePageCount - 1 })
+      this.props.setCurrentPage(false, this.state.notDoneCurrentPage)
+    }
+
+    if (this.state.doneCurrentPage >= this.props.donePageCount) {
+
+      let offset = (this.props.donePageCount - 1) * this.props.getPaginationLimit(true);
+      this.props.setOffset(true, offset);
+      console.log(offset)
+
+      this.setState({ doneCurrentPage: this.props.donePageCount - 1 })
+      this.props.setCurrentPage(true, this.state.doneCurrentPage)
+    }
   }
 
   getFlexContainerStyle = () => {
@@ -134,7 +164,7 @@ class TodoContainer extends Component {
             })}
           </div>
           <div className={`colorSet${this.props.currentColor}`}>
-            {this.props.notDonePageCount > 1
+            {this.props.notDonePageCount > 0
               ? <ReactPaginate
                   previousLabel={"prev"}
                   nextLabel={"next"}
@@ -180,7 +210,7 @@ class TodoContainer extends Component {
             })}
           </div>
           <div className={`colorSet${this.props.currentColor}`}>
-          {this.props.donePageCount > 1
+          {this.props.donePageCount > 0
             ? <ReactPaginate
                 previousLabel={"prev"}
                 nextLabel={"next"}
