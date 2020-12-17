@@ -410,6 +410,10 @@ class App extends Component {
     }
   }
 
+  handleOnKeyUp = async (title) => {
+    await axios.get(`${url}tasks/?apikey=${apikey}&search_title=${title}`)
+  }
+
   render() {
     const color = this.getCurrentColor();
     const palette = colors[color];
@@ -443,15 +447,16 @@ class App extends Component {
         >
           {/* Includes the title and dropdown menus for customization.*/}
           <MainHeader 
-            name={this.getListNameById()}
-            setOrderTasks={this.setOrderTasks}
-            setDeadlineFilter={this.setDeadlineFilter}
             flex="initial"
+            palette={palette}
+            currentList={this.state.currentList}
             openSideMenu={this.openSideMenu}
             closeSideMenu={this.closeSideMenu}
+            name={this.getListNameById()}
+            handleOnKeyUp={this.handleOnKeyUp}
             setColor={this.setColor}
-            currentList={this.state.currentList}
-            palette={palette}
+            setOrderTasks={this.setOrderTasks}
+            setDeadlineFilter={this.setDeadlineFilter}
           />
 
           {/* Includes tasks, all of their associated buttons 

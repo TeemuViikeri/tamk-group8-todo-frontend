@@ -50,7 +50,7 @@ class MainHeader extends Component {
           className="widget-container" 
           style={{display: "flex", flexDirection: "row", flex: "1", alignItems: "center"}}
         >
-          <SearchField palette={this.props.palette} />
+          <SearchField palette={this.props.palette} handleOnKeyUp={this.props.handleOnKeyUp} />
           <ColorMenu setColor={this.props.setColor} currentList={this.props.currentList} palette={this.props.palette} />
           <SortMenu setOrderTasks={this.props.setOrderTasks} />
           <FilterMenu setDeadlineFilter={this.props.setDeadlineFilter} />

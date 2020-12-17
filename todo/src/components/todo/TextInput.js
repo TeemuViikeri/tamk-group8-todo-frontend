@@ -20,12 +20,14 @@ class TextInput extends Component {
   render() {
     return (
       <input
+        id={this.props.idInput}
         type="text"
         name="title"
         style={this.getTextInputStyle()}
         placeholder={this.props.placeholder}
         value={this.props.title}
         onChange={this.props.onChange}
+        onKeyUp={this.props.idInput === 'search' ? () => this.props.handleOnKeyUp(this.props.title) : () => {return}}
         borderbottom={this.props.borderBottom}
         borderradius={this.props.borderRadiusInput}
       />
