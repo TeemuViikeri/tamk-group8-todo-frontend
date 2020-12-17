@@ -58,7 +58,7 @@ class TodoContainer extends Component {
    * If true move to last page and update the offset accordingly.
    */ 
   ifEmptyPage = async () => {
-    if (this.state.notDoneCurrentPage >= this.props.notDonePageCount && this.state.notDoneCurrentPage) {
+    if (this.state.notDoneCurrentPage >= this.props.notDonePageCount && this.state.notDoneCurrentPage !== 0) {
 
       let offset = (this.props.notDonePageCount) * this.props.getPaginationLimit(false);
       this.props.setOffset(false, offset);
