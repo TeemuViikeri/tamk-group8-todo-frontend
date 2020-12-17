@@ -53,6 +53,10 @@ class TodoContainer extends Component {
     }
   }
 
+  /**
+   * Check both tasks lists if the current page is larger than pageCount.
+   * If true move to last page and update the offset accordingly.
+   */ 
   ifEmptyPage = async () => {
     if (this.state.notDoneCurrentPage >= this.props.notDonePageCount) {
 
@@ -137,6 +141,7 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
+        {/* Subheader and caret for unfinished tasks */}
         <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id={"sub-1"}
@@ -146,6 +151,7 @@ class TodoContainer extends Component {
             palette={this.props.palette}
           />
           <div id="wrapper-1" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
+            {/* Iterate through and render unfinished tasks */}
             {this.props.todos.map((todo) => {
               return (
                 <TodoItem
@@ -163,8 +169,10 @@ class TodoContainer extends Component {
               );
             })}
           </div>
+          {/* Set classname according to current customization settings for CSS */}
           <div className={`colorSet${this.props.currentColor}`}>
-            {this.props.notDonePageCount > 0
+            {/* If more than 1 page exists render pagination */}
+            {this.props.notDonePageCount > 1
               ? <ReactPaginate
                   previousLabel={"prev"}
                   nextLabel={"next"}
@@ -183,6 +191,7 @@ class TodoContainer extends Component {
             }
           </div>
         </div>
+        {/* Subheader and caret for finished tasks */}
         <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
           <Subheader  
             id="sub-2"
@@ -192,6 +201,7 @@ class TodoContainer extends Component {
             palette={this.props.palette}
           />
           <div id="wrapper-2" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
+            {/* Iterate through and render finished tasks */}
             {this.props.doneTodos.map((todo) => {
               return (
                 <TodoItem
@@ -209,8 +219,10 @@ class TodoContainer extends Component {
               );
             })}
           </div>
+          {/* Set classname according to current customization settings for CSS */}
           <div className={`colorSet${this.props.currentColor}`}>
-          {this.props.donePageCount > 0
+          {/* If more than 1 page exists render pagination */}
+          {this.props.donePageCount > 1
             ? <ReactPaginate
                 previousLabel={"prev"}
                 nextLabel={"next"}
