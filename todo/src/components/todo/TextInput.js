@@ -23,6 +23,7 @@ class TextInput extends Component {
         id={this.props.idInput}
         type="text"
         name="title"
+        autocomplete="off"
         style={this.getTextInputStyle()}
         placeholder={this.props.placeholder}
         value={this.props.title}
