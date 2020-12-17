@@ -14,6 +14,7 @@ class App extends Component {
     super();
 
     this.state = {
+      searchTasks: null,
       deadlineFilter: '',
       orderTasks: '+created',
       currentList: 1,
@@ -411,7 +412,13 @@ class App extends Component {
   }
 
   handleOnKeyUp = async (title) => {
-    await axios.get(`${url}tasks/?apikey=${apikey}&search_title=${title}`)
+    if (title === "") {
+      return
+    }
+
+    const results = await axios.get(`${url}tasks/?apikey=${apikey}&search_title=${title}`)
+    const tasks = results.data
+    await this.setState({ searchTasks: tasks })
   }
 
   render() {
@@ -450,6 +457,8 @@ class App extends Component {
             flex="initial"
             palette={palette}
             currentList={this.state.currentList}
+            searchTasks={this.state.searchTasks}
+            lists={this.state.lists}
             openSideMenu={this.openSideMenu}
             closeSideMenu={this.closeSideMenu}
             name={this.getListNameById()}
