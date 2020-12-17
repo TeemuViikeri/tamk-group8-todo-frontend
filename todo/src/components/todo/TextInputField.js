@@ -59,6 +59,8 @@ class TextInputField extends Component {
         <TextInput 
           title={this.state.title} 
           onChange={this.onChange} 
+          handleOnKeyUp={this.props.handleOnKeyUp}
+          idInput={this.props.idInput}
           flexInput={this.props.flexInput}
           paddingInput={this.props.paddingInput}
           marginInput={this.props.marginInput}
