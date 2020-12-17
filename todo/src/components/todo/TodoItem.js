@@ -148,7 +148,7 @@ class TodoItem extends Component {
           checked={this.props.checked}
         />
         <label 
-          for={`checkbox-${id}`} 
+          htmlFor={`checkbox-${id}`} 
           style={
             this.props.checked
             ? { backgroundColor: this.props.palette.primary, border: "none", padding: "9px" }
@@ -168,7 +168,7 @@ class TodoItem extends Component {
         {" "}
         <button
           onClick={() => this.handleEditEvent()}
-          style={this.getButtonStyle()}import Checkbox from 
+          style={this.getButtonStyle()}
         >
           <FontAwesomeIcon icon={faEdit} />
         </button>
