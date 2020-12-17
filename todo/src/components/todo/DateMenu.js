@@ -3,7 +3,7 @@ import 'react-dates/initialize';
 import { SingleDatePicker } from 'react-dates';
 import 'react-dates/lib/css/_datepicker.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEraser } from '@fortawesome/free-solid-svg-icons'
+import { faEraser, faClock } from '@fortawesome/free-solid-svg-icons'
 
 class DateMenu extends Component {
   constructor(props) {
@@ -22,7 +22,19 @@ class DateMenu extends Component {
 
   dateAssembler = () => {
     if (!isNaN(this.state.dateDisplay.getFullYear()) && this.props.deadline !== null) {
-      return `${this.state.dateDisplay.getFullYear()}-${this.state.dateDisplay.getMonth() + 1}-${this.state.dateDisplay.getDate()}`;
+      const year = this.state.dateDisplay.getFullYear()
+      const month = this.state.dateDisplay.toLocaleString('default', { month: 'short' });
+      const day = this.state.dateDisplay.getDate()
+
+      return (
+        <span style={{ display: "flex", flexDirection: "row", alignItems: "center", width: "auto"}}>
+          <FontAwesomeIcon icon={faClock} style={{ color: this.props.palette.primary}} />&nbsp;
+          <time dateTime={this.state.dateDisplay} style={{ fontStyle: "italic"}}>
+            {month}&nbsp;{day}, {year}
+          </time>&nbsp;
+          {this.deleteDeadline()}
+        </span>
+      )
     } else {
       return "";
     }
@@ -44,7 +56,7 @@ class DateMenu extends Component {
       !this.props.isDateEditing ?
         <div style={{marginTop: "8px"}}>
           {this.dateAssembler()}
-          {this.deleteDeadline()}
+
         </div>
       : // Else
         <div style={{marginTop: "8px", display: "flex", alignItems: "center"}}>

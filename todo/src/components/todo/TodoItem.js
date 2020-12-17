@@ -13,7 +13,6 @@ import '../react-confirm-alert.css';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-
 class TodoItem extends Component {
   constructor(props) {
     super(props);
@@ -33,17 +32,6 @@ class TodoItem extends Component {
     }
   }
 
-  getCheckboxStyle = () => {
-    return {
-      width: "1.3em",
-      height: "1.3em",
-      borderRadius: "50%",
-      verticalAlign: "-0.3em",  
-      outline: "none",
-      cursor: "pointer",
-    };
-  };
-
   getItemStyle = () => {
     return {
       padding: "15px 20px",
@@ -51,7 +39,6 @@ class TodoItem extends Component {
       textAlign: "left",
       color: this.props.palette.fillTextColor,
       fontWeight: "600",
-      textDecoration: this.props.todo.is_done ? "line-through" : "none",
       backgroundColor: this.props.palette.fillTask,
       whiteSpace: "pre-wrap",
     };
@@ -155,14 +142,33 @@ class TodoItem extends Component {
       >
         <input
           type="checkbox"
+          id={`checkbox-${id}`}
+          className="css-checkbox"
           onChange={this.props.toggleTodo.bind(this, id, !this.props.checked)}
-          style={this.getCheckboxStyle()}
           checked={this.props.checked}
         />
-        <label htmlFor="checkbox"></label> {title}{" "}
+        <label 
+          for={`checkbox-${id}`} 
+          style={
+            this.props.checked
+            ? { backgroundColor: this.props.palette.primary, border: "none", padding: "9px" }
+            : { backgroundColor: this.props.palette.primaryBg, borderWidth: "2px", borderStyle: "solid", borderColor: this.props.palette.primary, padding: "7px" }
+          } 
+        />
+        {" "}
+        <span 
+          style={{ 
+            textDecoration: this.props.todo.is_done ? "line-through" : "none",
+            textDecorationSkip: "spaces",
+            overflowWrap: "break-word"
+          }}
+        >
+          {title}
+        </span>
+        {" "}
         <button
           onClick={() => this.handleEditEvent()}
-          style={this.getButtonStyle()}
+          style={this.getButtonStyle()}import Checkbox from 
         >
           <FontAwesomeIcon icon={faEdit} />
         </button>
