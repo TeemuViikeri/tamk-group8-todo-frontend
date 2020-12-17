@@ -54,7 +54,7 @@ class TextInputField extends Component {
     return (
       <form 
         onSubmit={this.onSubmit} 
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", height: this.props.height, width: this.props.width }}
+        style={{ display: "flex", flexDirection: "row", alignItems: "center", height: this.props.height, width: this.props.width, autocomplete: "off" }}
       >
         <TextInput 
           title={this.state.title} 
@@ -71,17 +71,21 @@ class TextInputField extends Component {
           textColorInput={this.props.textColorInput}
           width={this.props.width}
           heightInput={this.props.heightInput}
-          />
-        <SubmitButton 
-          heightSubmit={this.props.heightSubmit}
-          paddingSubmit={this.props.paddingSubmit}
-          marginSubmit={this.props.marginSubmit}
-          flexBtn={this.props.flexBtn}
-          text={this.props.btnText} 
-          borderRadiusSubmit={this.props.borderRadiusSubmit}
-          bgColorSubmit={this.props.bgColorSubmit}
-          textColorSubmit={this.props.textColorSubmit}
         />
+        {
+          (this.props.showButton)
+          ? <SubmitButton 
+            heightSubmit={this.props.heightSubmit}
+            paddingSubmit={this.props.paddingSubmit}
+            marginSubmit={this.props.marginSubmit}
+            flexBtn={this.props.flexBtn}
+            text={this.props.btnText} 
+            borderRadiusSubmit={this.props.borderRadiusSubmit}
+            bgColorSubmit={this.props.bgColorSubmit}
+            textColorSubmit={this.props.textColorSubmit}
+          />
+          : <></>
+        }
       </form>
     );
   }
