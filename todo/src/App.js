@@ -261,7 +261,7 @@ class App extends Component {
         listId,
         title,
       })
-      .then(() => this.getTasks(false));
+      .then(() => this.getTasks(false), this.getTasks(true));
   };
 
   /**
