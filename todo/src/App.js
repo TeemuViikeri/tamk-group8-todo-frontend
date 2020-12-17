@@ -233,7 +233,6 @@ class App extends Component {
         this.getPageCount(false, this.state.notDonePaginationLimit, this.state.todosCount);
       }
     });
-    
   };
 
   /**
@@ -262,7 +261,7 @@ class App extends Component {
         listId,
         title,
       })
-      .then(() => this.getTasks(false));
+      .then(() => this.getTasks(false), this.getTasks(true));
   };
 
   /**
@@ -487,6 +486,8 @@ class App extends Component {
             doneCurrentPage={this.state.doneCurrentPage}
             currentList={this.state.currentList}
             currentColor={this.state.currentColor}
+            notDonePaginationOffset={this.state.notDonePaginationOffset}
+            donePaginationOffset={this.state.donePaginationOffset}
           />
           {/* Include inputs for creating new tasks.*/}
           <Dock 

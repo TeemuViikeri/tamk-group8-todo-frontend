@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class ListInput extends Component {
   getListInputStyle = () => {
     return {
-      padding: "10px",
+      padding: "0.625rem",
       margin: this.props.marginInput,
       border: "none",
       borderRadius: this.props.borderRadiusInput,

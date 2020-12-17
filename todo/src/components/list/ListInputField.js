@@ -32,7 +32,7 @@ class ListInputField extends Component {
         style={{ 
           display: "flex", 
           flexDirection: "row", 
-          height: "65px", 
+          height: "4.0625rem", 
           alignItems: "center",
           width: "100%",
           margin: "0 auto"
@@ -44,19 +44,19 @@ class ListInputField extends Component {
           textColorInput={this.props.palette.fillTextColor}
           bgColorInput={this.props.palette.fillInputColor}
           flexInput="4.5" 
-          paddingInput="10px"
-          marginInput="15px 0 15px 20px" 
-          borderRadiusInput="12px 0 0 12px" 
+          paddingInput="0.625rem"
+          marginInput="0.9375rem 0 0.9375rem 1.25rem" 
+          borderRadiusInput="0.75rem 0 0 0.75rem" 
         />
         <SubmitButton 
           text="Add" 
           flexBtn="1" 
           bgColorSubmit={this.props.palette.fillButton}
           textColorSubmit={this.props.palette.fillTextColor}
-          paddingSubmit="10px"
-          marginSubmit="15px 20px 15px 0" 
-          borderRadiusSubmit="0 12px 12px 0" 
-      />
+          paddingSubmit="0.625rem"
+          marginSubmit="0.9375rem 1.25rem 0.9375rem 0" 
+          borderRadiusSubmit="0 0.75rem 0.75rem 0" 
+        />
       </form>
     );
   }

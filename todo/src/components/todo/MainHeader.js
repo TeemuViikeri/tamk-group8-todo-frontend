@@ -26,10 +26,10 @@ class MainHeader extends Component {
       flexDirection: "row",
       justifyContent: "space-between",
       flex: this.props.flex,
-      height: "72px",
+      height: "4.5rem",
       color: this.props.palette.fillHeaderColor,
       backgroundColor: this.props.palette.primary,
-      padding: "15px 20px",
+      padding: "0.9375rem 1.25rem",
       textAlign: "left",
     };
   };

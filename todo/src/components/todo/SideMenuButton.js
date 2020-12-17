@@ -14,7 +14,7 @@ class SideMenuButton extends Component {
       flex: this.props.flex,
       display: "inline-block",
       cursor: "pointer",
-      fontSize: "32px"
+      fontSize: "2rem"
     };
   };
 

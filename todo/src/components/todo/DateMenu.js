@@ -54,12 +54,12 @@ class DateMenu extends Component {
   render() {
     return (
       !this.props.isDateEditing ?
-        <div style={{marginTop: "8px"}}>
+        <div style={{marginTop: "0.5rem"}}>
           {this.dateAssembler()}
 
         </div>
       : // Else
-        <div style={{marginTop: "8px", display: "flex", alignItems: "center"}}>
+        <div style={{marginTop: "0.5rem", display: "flex", alignItems: "center"}}>
           <SingleDatePicker
             date={this.state.date} // momentPropTypes.momentObj or null
             onDateChange={date => this.props.stopDateEditing(date)} // PropTypes.func.isRequired
@@ -73,7 +73,7 @@ class DateMenu extends Component {
           />
           <span 
             onClick={e => this.props.stopDateEditing()} 
-            style={{padding: "7px", border: "none", marginLeft: "4px", color: this.props.palette.fillClearButton, cursor: "pointer", fontSize: "24px", position: "relative", bottom: "4px"}}
+            style={{padding: "0.4375rem", border: "none", marginLeft: "0.25rem", color: this.props.palette.fillClearButton, cursor: "pointer", fontSize: "1.5rem", position: "relative", bottom: "0.25rem"}}
           >
             &times;
           </span>

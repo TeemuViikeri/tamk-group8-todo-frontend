@@ -42,6 +42,40 @@ class TodoContainer extends Component {
       this.props.setCurrentPage(true, this.state.doneCurrentPage)
       this.props.setCurrentPage(false, this.state.notDoneCurrentPage)
     }
+
+    // Check if pagination is on an empty page, change to previous page if true.
+    this.ifEmptyPage()
+    if (prevProps.donePaginationOffset !== this.props.getPaginationOffset(true)) {
+      this.props.getTasks(true)
+    }
+    if (prevProps.notDonePaginationOffset !== this.props.getPaginationOffset(false)) {
+      this.props.getTasks(false)
+    }
+  }
+
+  /**
+   * Check both tasks lists if the current page is larger than pageCount.
+   * If true move to last page and update the offset accordingly.
+   */ 
+  ifEmptyPage = async () => {
+    if (this.state.notDoneCurrentPage >= this.props.notDonePageCount) {
+
+      let offset = (this.props.notDonePageCount - 1) * this.props.getPaginationLimit(false);
+      this.props.setOffset(false, offset);
+
+      this.setState({ notDoneCurrentPage: this.props.notDonePageCount - 1 })
+      this.props.setCurrentPage(false, this.state.notDoneCurrentPage)
+    }
+
+    if (this.state.doneCurrentPage >= this.props.donePageCount) {
+
+      let offset = (this.props.donePageCount - 1) * this.props.getPaginationLimit(true);
+      this.props.setOffset(true, offset);
+      console.log(offset)
+
+      this.setState({ doneCurrentPage: this.props.donePageCount - 1 })
+      this.props.setCurrentPage(true, this.state.doneCurrentPage)
+    }
   }
 
   getFlexContainerStyle = () => {
@@ -107,7 +141,8 @@ class TodoContainer extends Component {
   render() {
     return (
       <div style={this.getFlexContainerStyle()}>
-        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
+        {/* Subheader and caret for unfinished tasks */}
+        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id={"sub-1"}
             name="To Do"
@@ -116,6 +151,7 @@ class TodoContainer extends Component {
             palette={this.props.palette}
           />
           <div id="wrapper-1" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
+            {/* Iterate through and render unfinished tasks */}
             {this.props.todos.map((todo) => {
               return (
                 <TodoItem
@@ -133,7 +169,9 @@ class TodoContainer extends Component {
               );
             })}
           </div>
+          {/* Set classname according to current customization settings for CSS */}
           <div className={`colorSet${this.props.currentColor}`}>
+            {/* If more than 1 page exists render pagination */}
             {this.props.notDonePageCount > 1
               ? <ReactPaginate
                   previousLabel={"prev"}
@@ -153,7 +191,8 @@ class TodoContainer extends Component {
             }
           </div>
         </div>
-        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
+        {/* Subheader and caret for finished tasks */}
+        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id="sub-2"
             name="Done" 
@@ -162,6 +201,7 @@ class TodoContainer extends Component {
             palette={this.props.palette}
           />
           <div id="wrapper-2" style={{ height: "100%", transition: "height 1s", overflowY: "auto" }}>
+            {/* Iterate through and render finished tasks */}
             {this.props.doneTodos.map((todo) => {
               return (
                 <TodoItem
@@ -179,7 +219,9 @@ class TodoContainer extends Component {
               );
             })}
           </div>
+          {/* Set classname according to current customization settings for CSS */}
           <div className={`colorSet${this.props.currentColor}`}>
+          {/* If more than 1 page exists render pagination */}
           {this.props.donePageCount > 1
             ? <ReactPaginate
                 previousLabel={"prev"}

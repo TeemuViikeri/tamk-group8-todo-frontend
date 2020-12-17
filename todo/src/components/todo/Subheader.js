@@ -15,7 +15,7 @@ class Subheader extends Component {
     return {
       color: this.props.palette.fillHeaderColor,
       backgroundColor: this.props.palette.primary,
-      padding: "15px 20px 15px 20px",
+      padding: "0.9375rem 1.25rem 0.9375rem 1.25rem",
       textAlign: "left",
     };
   };
