@@ -21,7 +21,9 @@ class SearchField extends Component {
     return (
       <div style={this.getStyle()}>
         <TextInputField
+          idInput="search"
           title={this.state.title} 
+          handleOnKeyUp={this.props.handleOnKeyUp}
           placeholder="Search task"
           paddingInput="10px"
           paddingSubmit="10px"
