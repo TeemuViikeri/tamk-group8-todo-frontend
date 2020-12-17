@@ -34,8 +34,8 @@ class TodoItem extends Component {
 
   getItemStyle = () => {
     return {
-      padding: "15px 20px",
-      marginBottom: "8px",
+      padding: "0.9375rem 1.25rem",
+      marginBottom: "0.5rem",
       textAlign: "left",
       color: this.props.palette.fillTextColor,
       fontWeight: "600",
@@ -50,7 +50,7 @@ class TodoItem extends Component {
       background: "none",
       border: "none",
       fontWeight: "bold",
-      padding: "2px",
+      padding: "0.125rem",
       color: this.props.palette.fillTextColor,
       verticalAlign: "0.05rem",
       display: this.state.btnStyle.display,
@@ -104,9 +104,9 @@ class TodoItem extends Component {
                   defaultValue={this.props.todo.priority} 
                   marks={{ 1: "Low", 2: "", 3: "Medium", 4: "", 5: "High" }}
                   onChange={this.handleValueChange}
-                  handleStyle={{border: `solid 2px ${this.state.sliderColor}`}}
+                  handleStyle={{border: `solid 0.125rem ${this.state.sliderColor}`}}
                   trackStyle={{backgroundColor: this.state.sliderColor}}
-                  activeDotStyle={{border: `solid 2px ${this.state.sliderColor}`}}
+                  activeDotStyle={{border: `solid 0.125rem ${this.state.sliderColor}`}}
                 />,
       buttons: [
         {
@@ -151,8 +151,8 @@ class TodoItem extends Component {
           for={`checkbox-${id}`} 
           style={
             this.props.checked
-            ? { backgroundColor: this.props.palette.primary, border: "none", padding: "9px" }
-            : { backgroundColor: this.props.palette.primaryBg, borderWidth: "2px", borderStyle: "solid", borderColor: this.props.palette.primary, padding: "7px" }
+            ? { backgroundColor: this.props.palette.primary, border: "none", padding: "0.5625rem" }
+            : { backgroundColor: this.props.palette.primaryBg, borderWidth: "0.125rem", borderStyle: "solid", borderColor: this.props.palette.primary, padding: "0.4375rem" }
           } 
         />
         {" "}
@@ -209,12 +209,12 @@ class TodoItem extends Component {
         btnText="Edit" 
         bgColorSubmit={this.props.palette.fillEditBg}
         textColorSubmit={this.props.palette.fillEditText}
-        height="65px"
-        paddingInput="10px"
-        paddingSubmit="10px"
-        marginInput="15px 20px"
-        marginSubmit="15px 0"
-        borderBottom="1px solid #999"
+        height="4.0625rem"
+        paddingInput="0.625rem"
+        paddingSubmit="0.625rem"
+        marginInput="0.9375rem 1.25rem"
+        marginSubmit="0.9375rem 0"
+        borderBottom="0.0625rem solid #999"
       />
     );
   }

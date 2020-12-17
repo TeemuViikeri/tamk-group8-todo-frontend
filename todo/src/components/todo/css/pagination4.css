@@ -1,5 +1,5 @@
 .colorSet4 .pagination {
-  margin: 15px auto;
+  margin: 0.9375rem auto;
   display: flex;
   list-style: none;
   outline: none;
@@ -12,15 +12,15 @@
 }
 
 .colorSet4 .pagination > li > a{
-  border: 1px solid #333 ;
-  padding: 5px 10px;
+  border: 0.0625rem solid #333 ;
+  padding: 0.3125rem 0.625rem;
   outline: none;
   cursor: pointer;
 }
 
 .colorSet4 .pagination > li > a{
-  border: 1px solid #333 ;
-  padding: 5px 10px;
+  border: 0.0625rem solid #333 ;
+  padding: 0.3125rem 0.625rem;
   outline: none;
   cursor: pointer;
 }

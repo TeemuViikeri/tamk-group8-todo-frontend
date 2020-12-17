@@ -45,9 +45,9 @@ class FilterMenu extends React.Component {
             style={{ 
               display: "inline-block",
               backgroundColor: "#cc5252",
-              width: "24px",
-              height: "24px",
-              margin: "4px",
+              width: "1.5rem",
+              height: "1.5rem",
+              margin: "0.25rem",
               border: "none",
               borderRadius: "50%",
               cursor: "pointer"
@@ -58,9 +58,9 @@ class FilterMenu extends React.Component {
             style={{ 
               display: "inline-block",
               backgroundColor: "#2554C7",
-              width: "24px",
-              height: "24px",
-              margin: "4px",
+              width: "1.5rem",
+              height: "1.5rem",
+              margin: "0.25rem",
               border: "none",
               borderRadius: "50%",
               cursor: "pointer"
@@ -71,9 +71,9 @@ class FilterMenu extends React.Component {
             style={{ 
               display: "inline-block",
               backgroundColor: "#278427",
-              width: "24px",
-              height: "24px",
-              margin: "4px",
+              width: "1.5rem",
+              height: "1.5rem",
+              margin: "0.25rem",
               border: "none",
               borderRadius: "50%",
               cursor: "pointer"
@@ -84,9 +84,9 @@ class FilterMenu extends React.Component {
             style={{ 
               display: "inline-block",
               backgroundColor: "#6e2ac7",
-              width: "24px",
-              height: "24px",
-              margin: "4px",
+              width: "1.5rem",
+              height: "1.5rem",
+              margin: "0.25rem",
               border: "none",
               borderRadius: "50%",
               cursor: "pointer"
@@ -97,9 +97,9 @@ class FilterMenu extends React.Component {
             style={{ 
               display: "inline-block",
               backgroundColor: "#333",
-              width: "24px",
-              height: "24px",
-              margin: "4px",
+              width: "1.5rem",
+              height: "1.5rem",
+              margin: "0.25rem",
               border: "none",
               borderRadius: "50%",
               cursor: "pointer"

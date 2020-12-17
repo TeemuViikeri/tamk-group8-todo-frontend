@@ -20,17 +20,17 @@ class TodoItem extends Component {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: "8px 20px",
+      padding: "0.5rem 1.25rem",
       fontSize: "1em",
       margin: "1% 1% 1% 0",
       textAlign: "left",
       color: this.props.currentList === this.props.id ? this.props.palette.fillActiveTextColor : this.props.palette.fillTextColor,
       fontStyle: this.props.currentList === this.props.id ? "italic" : "normal",
       fontWeight: "600",
-      borderRadius: "0 15px 15px 0",
-      borderTop: "1px solid rgba(0, 0, 0, 0.3)",
-      borderRight: "1px solid rgba(0, 0, 0, 0.3)",
-      borderBottom: "1px solid rgba(0, 0, 0, 0.3)",
+      borderRadius: "0 0.9375rem 0.9375rem 0",
+      borderTop: "0.0625rem solid rgba(0, 0, 0, 0.3)",
+      borderRight: "0.0625rem solid rgba(0, 0, 0, 0.3)",
+      borderBottom: "0.0625rem solid rgba(0, 0, 0, 0.3)",
       borderLeft: "none",
       width: "90%",
       cursor: "pointer",
@@ -45,7 +45,7 @@ class TodoItem extends Component {
       background: "none",
       border: "none",
       fontWeight: "bold",
-      padding: "2px",
+      padding: "0.125rem",
       color: this.props.currentList === this.props.id ? this.props.palette.fillActiveTextColor : this.props.palette.fillTextColor,
       display: this.state.btnStyle.display,
       zIndex: "1",
@@ -137,17 +137,17 @@ class TodoItem extends Component {
         finishEditing={this.finishEditing}
         flexInput="10"
         flexBtn="1"
-        height="39px"
+        height="2.4375rem"
         width="90%"
-        heightInput="39px"
-        heightSubmit="39px"
-        paddingInput="8px 20px"
-        paddingSubmit="8px 20px"
+        heightInput="2.4375rem"
+        heightSubmit="2.4375rem"
+        paddingInput="0.5rem 1.25rem"
+        paddingSubmit="0.5rem 1.25rem"
         marginInput="1% 0 1% 0"
         marginSubmit="1% 0 1% 0"
-        borderBottom="1px solid #999"
+        borderBottom="0.0625rem solid #999"
         borderRadiusInput= "0"
-        borderRadiusSubmit= "0 16px 16px 0"
+        borderRadiusSubmit= "0 1rem 1rem 0"
       />
     );
   }

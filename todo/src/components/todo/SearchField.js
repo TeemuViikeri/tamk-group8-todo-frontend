@@ -23,16 +23,16 @@ class SearchField extends Component {
         <TextInputField
           title={this.state.title} 
           placeholder="Search task"
-          paddingInput="10px"
-          paddingSubmit="10px"
-          marginInput="15px 0 15px 20px"
-          marginSubmit="15px 16px 15px 0"
+          paddingInput="0.625rem"
+          paddingSubmit="0.625rem"
+          marginInput="0.9375rem 0 0.9375rem 1.25rem"
+          marginSubmit="0.9375rem 1rem 0.9375rem 0"
           flexInput="3"
           flexBtn="1"
           btnText="Find"
           borderBottom="none"
-          borderRadiusInput="12px 0 0 12px"
-          borderRadiusSubmit="0 12px 12px 0"
+          borderRadiusInput="0.75rem 0 0 0.75rem"
+          borderRadiusSubmit="0 0.75rem 0.75rem 0"
           bgColorInput={this.props.palette.fillInputColor}
           textColorInput={this.props.palette.fillTextColor}
           bgColorSubmit={this.props.palette.fillButton}

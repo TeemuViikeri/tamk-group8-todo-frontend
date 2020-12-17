@@ -14,8 +14,8 @@ class Dock extends Component {
   getStyle = () => {
     return {
       backgroundColor: this.props.palette.primary,
-      lineHeight: "35px",
-      height: "65px",
+      lineHeight: "2.1875rem",
+      height: "4.0625rem",
       flex: this.props.flex,
     };
   };
@@ -30,17 +30,17 @@ class Dock extends Component {
             addTodo={this.props.addTodo} 
             currentList={this.props.currentList}
             btnText="Add"
-            paddingInput="10px"
-            paddingSubmit="10px"
-            marginInput="15px 0 15px 20px"
-            marginSubmit="15px 20px 15px 0"
+            paddingInput="0.625rem"
+            paddingSubmit="0.625rem"
+            marginInput="0.9375rem 0 0.9375rem 1.25rem"
+            marginSubmit="0.9375rem 1.25rem 0.9375rem 0"
             bgColorSubmit={this.props.palette.fillButton}
             textColorSubmit={this.props.palette.fillTextColor}
             bgColorInput={this.props.palette.fillInputColor}
             textColorInput={this.props.palette.fillTextColor}
             placeholder="Any homework to do?"
-            borderRadiusInput="12px 0 0 12px"
-            borderRadiusSubmit="0 12px 12px 0"
+            borderRadiusInput="0.75rem 0 0 0.75rem"
+            borderRadiusSubmit="0 0.75rem 0.75rem 0"
             borderBottom="none"
             flexInput="10"
             flexBtn="1"

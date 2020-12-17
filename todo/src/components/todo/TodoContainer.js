@@ -142,7 +142,7 @@ class TodoContainer extends Component {
     return (
       <div style={this.getFlexContainerStyle()}>
         {/* Subheader and caret for unfinished tasks */}
-        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
+        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id={"sub-1"}
             name="To Do"
@@ -192,7 +192,7 @@ class TodoContainer extends Component {
           </div>
         </div>
         {/* Subheader and caret for finished tasks */}
-        <div style={{ width: "50%", height: "80%", padding: "24px", margin: "24px" }}>
+        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id="sub-2"
             name="Done" 
