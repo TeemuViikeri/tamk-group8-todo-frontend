@@ -215,6 +215,7 @@ class TodoItem extends Component {
         marginInput="0.9375rem 1.25rem"
         marginSubmit="0.9375rem 0"
         borderBottom="0.0625rem solid #999"
+        showButton={true}
       />
     );
   }
