@@ -53,8 +53,9 @@ class TextInputField extends Component {
   render() {
     return (
       <form 
-        onSubmit={this.onSubmit} 
-        style={{ display: "flex", flexDirection: "row", alignItems: "center", height: this.props.height, width: this.props.width, autocomplete: "off" }}
+        onSubmit={this.onSubmit}
+        autocomplete="off" 
+        style={{ display: "flex", flexDirection: "row", alignItems: "center", height: this.props.height, width: this.props.width}}
       >
         <TextInput 
           title={this.state.title} 
