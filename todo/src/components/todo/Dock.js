@@ -44,6 +44,7 @@ class Dock extends Component {
             borderBottom="none"
             flexInput="10"
             flexBtn="1"
+            showButton={true}
           />
         )}
       </div>
