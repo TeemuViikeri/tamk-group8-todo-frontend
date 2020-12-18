@@ -69,7 +69,7 @@ class SearchField extends Component {
                 height: "50%",
                 backgroundColor: this.props.palette.bgPrimary,
                 position: "absolute",
-                top: "70px",
+                top: "4.375rem",
                 right: "8%",
                 zIndex: 1,
                 overflowY: "auto",
