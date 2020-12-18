@@ -148,6 +148,7 @@ class TodoItem extends Component {
         borderBottom="0.0625rem solid #999"
         borderRadiusInput= "0"
         borderRadiusSubmit= "0 1rem 1rem 0"
+        showButton={true}
       />
     );
   }
