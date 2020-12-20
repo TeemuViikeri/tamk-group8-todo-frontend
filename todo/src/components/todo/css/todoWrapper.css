@@ -1,15 +1,33 @@
 .todo {
-  width: 100%;
+  width: 90%;
   height: 80%; 
   padding: 1.5rem; 
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 5rem;
+  overflow: visible;
 }
 
 .done {
-  width: 100%;
+  width: 90%;
   height: 80%; 
   padding: 1.5rem; 
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 5rem;
+  overflow: visible;
+}
+
+@media (max-width: 900px) {
+  .todoGroup { 
+    grid-template-columns: repeat(2, 1fr); 
+    min-height: 0;
+    overflow-y: auto
+  }
+}
+@media (min-width: 901px) {
+  .todoGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 0;
+  } 
 }
 
 /* .todoGroup {
@@ -20,11 +38,11 @@
   min-height: "0";
 } */
 
-@media (max-aspect-ratio: 8/5) {
+/* @media (max-aspect-ratio: 8/5) {
   .todo {
     width: 100%;
   }
   .done {
     width: 100%;
   }
-}
+} */
