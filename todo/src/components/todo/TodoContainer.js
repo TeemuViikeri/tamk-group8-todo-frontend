@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 import Subheader from "./Subheader";
 import ReactPaginate from 'react-paginate';
+import "./css/todoWrapper.css";
 
 // Each css file is identical apart from color settings and .colorSet elements.
 // When colorSet className gets updated the file of that value takes over.
@@ -140,9 +141,9 @@ class TodoContainer extends Component {
 
   render() {
     return (
-      <div style={this.getFlexContainerStyle()}>
+      <div className="todoGroup" style={this.getFlexContainerStyle()}>
         {/* Subheader and caret for unfinished tasks */}
-        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
+        <div className="todo" style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id={"sub-1"}
             name="To Do"
@@ -192,7 +193,7 @@ class TodoContainer extends Component {
           </div>
         </div>
         {/* Subheader and caret for finished tasks */}
-        <div style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
+        <div className="done" style={{ width: "50%", height: "80%", padding: "1.5rem", margin: "1.5rem" }}>
           <Subheader  
             id="sub-2"
             name="Done" 
