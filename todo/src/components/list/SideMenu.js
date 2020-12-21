@@ -17,7 +17,7 @@ class SideMenu extends Component {
   getSideMenuStyle = () => {
     return {
       width: "0rem",
-      height: "100%",
+      height: "100vh",
       flex: "initial",
       display: "flex",
       flexDirection: "column",
