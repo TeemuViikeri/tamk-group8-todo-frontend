@@ -1,21 +1,20 @@
 .todo {
   width: 90%;
-  height: 80%; 
   padding: 1.5rem; 
-  margin: 1.5rem 1.5rem 5rem;
+  margin: 1.5rem 1.5rem 0rem;
   overflow: visible;
 }
 
 .done {
   width: 90%;
-  height: 80%; 
   padding: 1.5rem; 
-  margin: 1.5rem 1.5rem 5rem;
+  margin: 1.5rem 1.5rem 0rem;
   overflow: visible;
 }
 
 .todoGroup { 
   overflow-y: auto;
+  height: 100%;
 }
 
 @media (max-width: 900px) {
@@ -43,22 +42,8 @@
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 0;
-  } 
+  }
+  .todo, .done {
+    height: 80%;
+  }
 }
-
-/* .todoGroup {
-  display: "flex";
-  flex-direction: "column";
-  justify-content: "space-evenly";
-  flex: this.props.flex;
-  min-height: "0";
-} */
-
-/* @media (max-aspect-ratio: 8/5) {
-  .todo {
-    width: 100%;
-  }
-  .done {
-    width: 100%;
-  }
-} */
