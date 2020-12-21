@@ -349,14 +349,14 @@ class App extends Component {
   // Used for animated opening and closing of the list menu.
   openSideMenu = () => {
     const el = document.getElementById('sideMenu')
-    el.style.width = "20%"
-    el.style.transition = "width 0.5s"
+    el.style.width = "65%"
+    el.style.transition = "0.5s"
   };
 
   closeSideMenu = () => {
     const el = document.getElementById('sideMenu')
     el.style.width = "0%"
-    el.style.transition = "width 0.5s"
+    el.style.transition = "0.5s"
   };
 
   /** 
@@ -435,13 +435,13 @@ class App extends Component {
         {/* Includes lists and the input for adding new lists. */}
         <SideMenu
           lists={this.state.lists}
+          palette={palette}
+          currentList={this.state.currentList}
           deleteList={this.deleteList}
           setList={this.setList}
           addList={this.addList}
           editList={this.editList}
-          currentList={this.state.currentList}
-          palette={palette}
-          
+          closeSideMenu={this.closeSideMenu}
         />
         <div className={"main-container"} style={{
             width: "100%",
@@ -460,7 +460,6 @@ class App extends Component {
             searchTasks={this.state.searchTasks}
             lists={this.state.lists}
             openSideMenu={this.openSideMenu}
-            closeSideMenu={this.closeSideMenu}
             name={this.getListNameById()}
             handleOnKeyUp={this.handleOnKeyUp}
             setColor={this.setColor}
