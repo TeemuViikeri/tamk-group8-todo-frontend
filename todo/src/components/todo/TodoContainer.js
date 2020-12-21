@@ -79,16 +79,6 @@ class TodoContainer extends Component {
     }
   }
 
-  getFlexContainerStyle = () => {
-    return {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-evenly",
-      flex: this.props.flex,
-      minHeight: "0"
-    }
-  }
-
   getWrapperStyle = (wrapperId) => {    
     const e = document.getElementById(wrapperId);
     const id = wrapperId.slice(-1, wrapperId.length); 
