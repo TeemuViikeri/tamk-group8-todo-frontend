@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ListItem from "./ListItem";
 import ListInputField from "./ListInputField";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import "../todo/css/todoWrapper.css"
 
 class SideMenu extends Component {
   constructor(props) {
@@ -28,7 +31,11 @@ class SideMenu extends Component {
       padding: "0.9375rem 1.25rem",
       backgroundColor: this.props.palette.secondary,
       height: "4.5rem",
-      color: this.props.palette.fillHeaderColor
+      color: this.props.palette.fillHeaderColor,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center"
     };
   };
 
@@ -44,7 +51,16 @@ class SideMenu extends Component {
   render() {
     return (
       <div id="sideMenu" style={this.getSideMenuStyle()}>
-        <h1 style={this.getSideMenuHeaderStyle()}>Lists</h1>
+        <h1 style={this.getSideMenuHeaderStyle()}>
+          <span>Lists</span>
+          <FontAwesomeIcon 
+            id="list-arrow" 
+            icon={faArrowLeft} 
+            size="lg" 
+            style={{ paddingRight: "1rem", cursor: "pointer" }} 
+            onClick={this.props.closeSideMenu}
+          />
+        </h1>
 
         <div style={{ marginTop: "0.9375rem", minHeight: 0, flexGrow: "1", overflowY: "auto"}}>
           {this.props.lists.map((list) => {
