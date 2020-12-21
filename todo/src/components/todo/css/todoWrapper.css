@@ -24,6 +24,7 @@
 @media (min-width: 901px) {
   .todoGroup {
     display: flex;
+    flex: auto;
     flex-direction: row;
     justify-content: space-evenly;
     min-height: 0;
