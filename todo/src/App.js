@@ -346,11 +346,22 @@ class App extends Component {
     return dl;
   };
 
+  changeWidth = (el, mediaQuery) => {
+    if (mediaQuery.matches) {
+      el.style.width = "70%"
+    } else {
+      el.style.width = "33%"
+    }
+
+    el.style.transition = " width 0.5s"
+  };
+
   // Used for animated opening and closing of the list menu.
   openSideMenu = () => {
     const el = document.getElementById('sideMenu')
-    el.style.width = "65%"
-    el.style.transition = "0.5s"
+    const mediaQuery = window.matchMedia("(max-width: 900px)")
+
+    this.changeWidth(el, mediaQuery)
   };
 
   closeSideMenu = () => {
@@ -443,7 +454,10 @@ class App extends Component {
           editList={this.editList}
           closeSideMenu={this.closeSideMenu}
         />
-        <div className={"main-container"} style={{
+        <div 
+          id="main"
+          className={"main-container"} 
+          style={{
             width: "100%",
             height: "100%",
             flex: "auto",
@@ -466,7 +480,6 @@ class App extends Component {
             setOrderTasks={this.setOrderTasks}
             setDeadlineFilter={this.setDeadlineFilter}
           />
-
           {/* Includes tasks, all of their associated buttons 
               as well as pagination, subheaders and 
               carets for collapsing the content. */}
