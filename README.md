@@ -7,7 +7,7 @@ Huomioitavat toiminnot:
 
 Muokattava ulkonäkö oikeassa yläkulmassa löytyvästä menusta.  
 Tehtävälistat sekä listavalikko ovat luhistettavissa.  
-Tekstihaku(WIP).  
+Tekstihaku.  
 Kaikki data on jälkikäteen muokattavissa.  
 Paginaatio jos listalla on yli 11 tehtävää.  
 Tehtävien filtteröinti.  
