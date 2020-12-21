@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ButtonContainer from "../ButtonContainer";
 import TextInputField from "./TextInputField";
+import "./css/todoWrapper.css";
 
 class Dock extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class Dock extends Component {
 
   render() {
     return (
-      <div style={this.getStyle()}>
+      <div className="dock" style={this.getStyle()}>
         {this.state.isMobileView ? (
           <ButtonContainer />
         ) : (
