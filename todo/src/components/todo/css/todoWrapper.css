@@ -8,18 +8,14 @@
 .done {
   width: 90%;
   padding: 1.5rem; 
-  margin: 1.5rem 1.5rem 5rem;
+  margin: 1.5rem 1.5rem 0rem;
   overflow: visible;
 }
 
-@media (max-width: 900px) {
-  .todoGroup { 
-    grid-template-columns: repeat(2, 1fr); 
-    min-height: 0;
-    overflow-y: auto;
-    height: 100%;
-  }
+.todoGroup { 
+  overflow-y: auto;
 }
+
 @media (min-width: 901px) {
   .todoGroup {
     display: flex;
