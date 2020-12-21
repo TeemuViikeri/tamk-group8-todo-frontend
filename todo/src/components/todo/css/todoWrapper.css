@@ -18,7 +18,8 @@
   .todoGroup { 
     grid-template-columns: repeat(2, 1fr); 
     min-height: 0;
-    overflow-y: auto
+    overflow-y: auto;
+    height: 100%;
   }
 }
 @media (min-width: 901px) {
