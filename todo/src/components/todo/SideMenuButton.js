@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 
-class SideMenuButton extends Component {
-  getStyle = () => {
-    return {
-      flex: this.props.flex,
-      display: "inline-block",
-      cursor: "pointer",
-      fontSize: "2rem"
-    };
-  };
-
+class SideMenuButton extends Component {  
   render() {
     return (
       <div 
-        style={this.getStyle()}
-        onClick={ this.props.openSideMenu }
+        style={{
+          flex: this.props.flex,
+          display: "inline-block",
+          fontSize: "2rem"
+        }}
       >
-        &#9776;
+        <span
+          onClick={ this.props.openSideMenu }
+          style={{ cursor: "pointer" }}
+        >
+          &#9776;
+        </span>
       </div>
     )
   }
