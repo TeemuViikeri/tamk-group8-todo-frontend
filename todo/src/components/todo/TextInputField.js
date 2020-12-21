@@ -54,7 +54,7 @@ class TextInputField extends Component {
     return (
       <form 
         onSubmit={this.onSubmit}
-        autocomplete="off" 
+        autoComplete="off" 
         style={{ display: "flex", flexDirection: "row", alignItems: "center", height: this.props.height, width: this.props.width}}
       >
         <TextInput 
