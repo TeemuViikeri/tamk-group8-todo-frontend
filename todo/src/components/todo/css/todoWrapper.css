@@ -14,13 +14,28 @@
   overflow: visible;
 }
 
+.todoGroup { 
+  overflow-y: auto;
+}
+
 @media (max-width: 900px) {
-  .todoGroup { 
-    grid-template-columns: repeat(2, 1fr); 
-    min-height: 0;
-    overflow-y: auto
+  .dock {
+    margin-top: 1.25rem;
+  }
+
+  #sideMenu {
+    display: block;
+    width: 0rem;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
   }
 }
+
 @media (min-width: 901px) {
   .todoGroup {
     display: flex;
