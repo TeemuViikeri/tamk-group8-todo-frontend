@@ -52,7 +52,7 @@ class DateMenu extends Component {
   }
 
   render() {
-    const onSmallDevice = window.matchMedia('(max-width: 767px)').matches
+    const onSmallDevice = window.matchMedia('(max-width: 667px)').matches
     const orientation = onSmallDevice ? "vertical" : "horizontal";
 
     return (
