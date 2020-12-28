@@ -74,6 +74,7 @@ class DateMenu extends Component {
             withPortal={true}
             orientation={orientation}
             firstDayOfWeek={1}
+            readOnly={true}
           />
           <span 
             onClick={e => this.props.stopDateEditing()} 
