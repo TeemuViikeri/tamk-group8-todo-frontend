@@ -6,7 +6,7 @@ import Dock from "./components/todo/Dock";
 import axios from "axios";
 import colors from "./colors";
 
-const url = "https://tamk-4a00ez62-3001-group08.herokuapp.com/api/";
+const url = process.env.REACT_APP_URL;
 const apikey = process.env.REACT_APP_BACKEND_APIKEY;
 
 class App extends Component {
