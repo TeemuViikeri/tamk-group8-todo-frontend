@@ -348,7 +348,7 @@ class App extends Component {
 
   changeWidth = (el, mediaQuery) => {
     if (mediaQuery.matches) {
-      el.style.width = "70%"
+      el.style.width = "100%"
     } else {
       el.style.width = "33%"
     }
