@@ -14,4 +14,8 @@ Tehtävien filtteröinti.
 Tehtävien järjestäminen erilaisten kriteerien mukaan.  
 Kustomisoitu varmistus dialogi listoja poistaessa.  
 Tehtävän tärkeyden määrittely sliderillä.  
-Käyttää APIKeytä.  
+Käyttää APIKeytä.
+
+## Installaatio
+
+Installaatio-ohjeet löytyvät repositoriosta https://github.com/iskela45/tamk-group8-todo-backend
