@@ -52,6 +52,9 @@ class DateMenu extends Component {
   }
 
   render() {
+    const onSmallDevice = window.matchMedia('(max-width: 767px)').matches
+    const orientation = onSmallDevice ? "vertical" : "horizontal";
+
     return (
       !this.props.isDateEditing ?
         <div style={{marginTop: "0.5rem"}}>
@@ -69,6 +72,7 @@ class DateMenu extends Component {
             small={true}
             hideKeyboardShortcutsPanel={true}
             withPortal={true}
+            orientation={orientation}
             firstDayOfWeek={1}
           />
           <span 
