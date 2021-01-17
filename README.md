@@ -1,5 +1,4 @@
 # SimpleDo
-
 SimpleDo was a pair school project where the purpose was to create a full-fledged full stack to-do application for students. You can try SimpleDo via this link: https://tamk-4a00ez62-3001-group08.herokuapp.com/. Note: application is editable by everyone if they have the link.
 
 ![Full screen deskotop picture of SimpleDo](https://i.imgur.com/qmCcQDS.png)
